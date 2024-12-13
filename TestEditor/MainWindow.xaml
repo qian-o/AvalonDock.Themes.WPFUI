@@ -1,6 +1,5 @@
 ﻿<ui:FluentWindow x:Class="TestEditor.MainWindow"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                 xmlns:aakthemes="http://aakstudio.themes.avalondock"
                  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -21,49 +20,6 @@
 
         <ui:TitleBar Grid.Row="0"
                      Title="Test Editor" />
-
-        <DockingManager Grid.Row="1">
-            <LayoutRoot>
-                <LayoutRoot.LeftSide>
-                    <LayoutAnchorSide>
-                        <LayoutAnchorGroup>
-                            <LayoutAnchorable Title="工具箱"
-                                              AutoHideMinWidth="400" />
-                            <LayoutAnchorable Title="属性"
-                                              AutoHideMinWidth="400" />
-                        </LayoutAnchorGroup>
-                    </LayoutAnchorSide>
-                </LayoutRoot.LeftSide>
-
-                <LayoutRoot.BottomSide>
-                    <LayoutAnchorSide>
-                        <LayoutAnchorGroup>
-                            <LayoutAnchorable Title="输出"
-                                              AutoHideMinHeight="300" />
-                            <LayoutAnchorable Title="错误列表"
-                                              AutoHideMinHeight="300" />
-                        </LayoutAnchorGroup>
-                    </LayoutAnchorSide>
-                </LayoutRoot.BottomSide>
-
-                <LayoutPanel Orientation="Horizontal">
-                    <LayoutDocumentPaneGroup>
-                        <LayoutDocumentPane>
-                            <LayoutDocument Title="Document 1" />
-                            <LayoutDocument Title="Document 2" />
-                        </LayoutDocumentPane>
-                    </LayoutDocumentPaneGroup>
-
-                    <LayoutAnchorablePaneGroup DockWidth="400"
-                                               DockMinWidth="100">
-                        <LayoutAnchorablePane>
-                            <LayoutAnchorable Title="解决方案" />
-                            <LayoutAnchorable Title="Git 更改" />
-                        </LayoutAnchorablePane>
-                    </LayoutAnchorablePaneGroup>
-                </LayoutPanel>
-            </LayoutRoot>
-        </DockingManager>
 
     </Grid>
 </ui:FluentWindow>
