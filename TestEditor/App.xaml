@@ -1,0 +1,19 @@
+﻿<Application x:Class="TestEditor.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemesDictionary Theme="Unknown" />
+                <ui:ControlsDictionary />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="DefaultControlFocusVisualStyle">
+                <Setter Property="Control.Template"
+                        Value="{x:Null}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
