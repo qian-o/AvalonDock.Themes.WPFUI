@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
 namespace TestEditor;
@@ -9,7 +10,7 @@ public partial class MainWindow : FluentWindow
     {
         InitializeComponent();
 
-        // SystemThemeWatcher.Watch(this);
+        SystemThemeWatcher.Watch(this);
 
         Loaded += MainWindow_Loaded;
     }

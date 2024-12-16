@@ -4,6 +4,7 @@
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:docking="clr-namespace:Docking;assembly=Docking"
                  mc:Ignorable="d"
                  Title="MainWindow"
                  Height="450"
@@ -20,6 +21,14 @@
 
         <ui:TitleBar Grid.Row="0"
                      Title="Test Editor" />
+
+        <Grid Grid.Row="1">
+            <docking:AnchorableDocument Title="浮动窗口"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center">
+                Test Anchorable Document
+            </docking:AnchorableDocument>
+        </Grid>
 
     </Grid>
 </ui:FluentWindow>
