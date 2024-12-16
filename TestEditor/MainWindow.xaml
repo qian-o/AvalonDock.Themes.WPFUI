@@ -22,13 +22,18 @@
         <ui:TitleBar Grid.Row="0"
                      Title="Test Editor" />
 
-        <Grid Grid.Row="1">
-            <docking:AnchorableDocument Title="浮动窗口"
+        <UniformGrid Grid.Row="1">
+            <docking:AnchorableDocument Title="Anchorable Document 1"
                                         HorizontalContentAlignment="Center"
                                         VerticalContentAlignment="Center">
-                Test Anchorable Document
+                Test Anchorable Document 1
             </docking:AnchorableDocument>
-        </Grid>
+            <docking:AnchorableDocument Title="Anchorable Document 2"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center">
+                Test Anchorable Document 2
+            </docking:AnchorableDocument>
+        </UniformGrid>
 
     </Grid>
 </ui:FluentWindow>

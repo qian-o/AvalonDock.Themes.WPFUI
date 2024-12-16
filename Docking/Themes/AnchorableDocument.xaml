@@ -41,7 +41,8 @@
                                     <UniformGrid Rows="3"
                                                  Columns="1"
                                                  Margin="8,0,8,0">
-                                        <Line VerticalAlignment="Center"
+                                        <Line x:Name="Line1"
+                                              VerticalAlignment="Center"
                                               Stroke="{ui:ThemeResource CardStrokeColorDefaultBrush}"
                                               X1="0"
                                               Y1="0"
@@ -49,7 +50,8 @@
                                               Y2="0"
                                               StrokeDashArray="4,2"
                                               StrokeThickness="1" />
-                                        <Line VerticalAlignment="Center"
+                                        <Line x:Name="Line2"
+                                              VerticalAlignment="Center"
                                               Stroke="{ui:ThemeResource CardStrokeColorDefaultBrush}"
                                               X1="0"
                                               Y1="0"
@@ -58,7 +60,8 @@
                                               StrokeDashArray="4,2"
                                               StrokeDashOffset="2"
                                               StrokeThickness="1" />
-                                        <Line VerticalAlignment="Center"
+                                        <Line x:Name="Line3"
+                                              VerticalAlignment="Center"
                                               Stroke="{ui:ThemeResource CardStrokeColorDefaultBrush}"
                                               X1="0"
                                               Y1="0"
@@ -89,8 +92,16 @@
                                     Property="TextElement.Foreground"
                                     Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
 
-                            <Setter TargetName="Header"
-                                    Property="Shape.Stroke"
+                            <Setter TargetName="Line1"
+                                    Property="Stroke"
+                                    Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
+
+                            <Setter TargetName="Line2"
+                                    Property="Stroke"
+                                    Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
+
+                            <Setter TargetName="Line3"
+                                    Property="Stroke"
                                     Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
