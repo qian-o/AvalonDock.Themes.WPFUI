@@ -20,7 +20,11 @@
         </Grid.RowDefinitions>
 
         <ui:TitleBar Grid.Row="0"
-                     Title="Test Editor" />
+                     Title="Test Editor">
+            <ui:TitleBar.Header>
+                <ui:ToggleSwitch Click="ToggleSwitch_Click" />
+            </ui:TitleBar.Header>
+        </ui:TitleBar>
 
         <DockingManager Grid.Row="1">
             <DockingManager.Theme>

@@ -19,4 +19,18 @@ public partial class MainWindow : FluentWindow
     {
         WindowState = WindowState.Maximized;
     }
+
+    private void ToggleSwitch_Click(object sender, RoutedEventArgs e)
+    {
+        ToggleSwitch toggleSwitch = (ToggleSwitch)sender;
+
+        if (toggleSwitch.IsChecked is true)
+        {
+            ApplicationThemeManager.Apply(ApplicationTheme.Dark);
+        }
+        else
+        {
+            ApplicationThemeManager.Apply(ApplicationTheme.Light);
+        }
+    }
 }

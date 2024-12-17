@@ -1,4 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
                     xmlns:avalonDockConverters="clr-namespace:AvalonDock.Converters;assembly=AvalonDock"
@@ -56,27 +57,32 @@
                                         </avalonDockControls:ContextMenuEx.ItemContainerStyle>
                                     </avalonDockControls:ContextMenuEx>
                                 </avalonDockControls:DropDownButton.DropDownContextMenu>
-                                <Border Background="White">
-                                    <Image Source="/AvalonDock.Themes.WPFUI;component/Images/PinDocMenu.png" />
-                                </Border>
+                                <ui:SymbolIcon Symbol="ArrowEject20">
+                                    <ui:SymbolIcon.RenderTransform>
+                                        <ScaleTransform ScaleX="1"
+                                                        ScaleY="-1" />
+                                    </ui:SymbolIcon.RenderTransform>
+                                    <ui:SymbolIcon.RenderTransformOrigin>
+                                        <Point X="0.5"
+                                               Y="0.5" />
+                                    </ui:SymbolIcon.RenderTransformOrigin>
+                                </ui:SymbolIcon>
                             </avalonDockControls:DropDownButton>
                         </Grid>
-                        <Border x:Name="ContentPanel"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                KeyboardNavigation.DirectionalNavigation="Contained"
-                                KeyboardNavigation.TabIndex="2"
-                                KeyboardNavigation.TabNavigation="Cycle">
+                        <ui:Card x:Name="ContentPanel"
+                                 Grid.Row="1"
+                                 Grid.Column="0"
+                                 BorderThickness="1,0,1,1"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Stretch"
+                                 KeyboardNavigation.DirectionalNavigation="Contained"
+                                 KeyboardNavigation.TabIndex="2"
+                                 KeyboardNavigation.TabNavigation="Cycle">
                             <ContentPresenter x:Name="PART_SelectedContentHost"
                                               Margin="{TemplateBinding Padding}"
                                               ContentSource="SelectedContent"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Border>
+                        </ui:Card>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled"
@@ -94,70 +100,89 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type TabItem}">
                     <Setter Property="Visibility"
                             Value="{Binding IsVisible, Converter={avalonDockConverters:BoolToVisibilityConverter}}" />
-                    <Setter Property="IsSelected"
-                            Value="{Binding IsSelected, Mode=TwoWay}" />
-                    <Setter Property="IsEnabled"
-                            Value="{Binding IsEnabled}" />
-                    <Setter Property="ToolTip"
-                            Value="{Binding ToolTip}" />
-                    <Setter Property="Padding"
-                            Value="2,0,2,0" />
-                    <Setter Property="Margin"
-                            Value="0,2,0,0" />
+                    <Setter Property="Background"
+                            Value="{DynamicResource TabViewItemHeaderBackground}" />
+                    <Setter Property="BorderBrush"
+                            Value="Transparent" />
+                    <Setter Property="HorizontalAlignment"
+                            Value="Stretch" />
+                    <Setter Property="VerticalAlignment"
+                            Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment"
+                            Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                    <Setter Property="FocusVisualStyle"
+                            Value="{DynamicResource DefaultControlFocusVisualStyle}" />
+                    <Setter Property="KeyboardNavigation.IsTabStop"
+                            Value="True" />
+                    <Setter Property="Focusable"
+                            Value="True" />
+                    <Setter Property="OverridesDefaultStyle"
+                            Value="True" />
+                    <Setter Property="SnapsToDevicePixels"
+                            Value="True" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type TabItem}">
-                                <Grid SnapsToDevicePixels="true">
-
-                                    <Border x:Name="Bd"
-                                            Padding="{TemplateBinding Padding}"
+                                <Grid x:Name="Root">
+                                    <Border x:Name="Border"
+                                            MinWidth="180"
+                                            MinHeight="36"
+                                            Margin="0"
+                                            Padding="6"
                                             Background="{TemplateBinding Background}"
                                             BorderBrush="{TemplateBinding BorderBrush}"
-                                            BorderThickness="1,1,1,0">
-                                        <ContentPresenter x:Name="Content"
-                                                          HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                                          VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                            BorderThickness="1,1,1,0"
+                                            CornerRadius="8,8,0,0">
+                                        <ContentPresenter x:Name="ContentSite"
+                                                          Margin="0"
+                                                          HorizontalAlignment="Stretch"
+                                                          VerticalAlignment="Center"
                                                           ContentSource="Header"
-                                                          RecognizesAccessKey="True"
-                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                          RecognizesAccessKey="True" />
                                     </Border>
+
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="SelectionStates">
+                                            <VisualState x:Name="Unselected" />
+                                            <VisualState x:Name="Selected" />
+
+                                        </VisualStateGroup>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Normal" />
+                                            <VisualState x:Name="MouseOver" />
+                                            <VisualState x:Name="Disabled">
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="Border"
+                                                                     Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Opacity)"
+                                                                     From="0.0"
+                                                                     To="0.5"
+                                                                     Duration="0:0:.16" />
+                                                </Storyboard>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
                                 </Grid>
                                 <ControlTemplate.Triggers>
-                                    <Trigger Property="Selector.IsSelected"
-                                             Value="true">
-                                        <Setter Property="Background"
-                                                Value="White" />
+                                    <Trigger Property="IsSelected"
+                                             Value="True">
                                         <Setter Property="Panel.ZIndex"
-                                                Value="1" />
-                                        <Setter Property="Margin"
-                                                Value="0,0,0,-2" />
-                                        <Setter TargetName="Content"
-                                                Property="Margin"
-                                                Value="0,0,0,3" />
-                                    </Trigger>
-                                    <MultiTrigger>
-                                        <MultiTrigger.Conditions>
-                                            <Condition Property="IsMouseOver"
-                                                       Value="true" />
-                                            <Condition Property="Selector.IsSelected"
-                                                       Value="false" />
-                                        </MultiTrigger.Conditions>
-                                        <Setter Property="Background"
-                                                Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" />
-                                        <Setter Property="BorderBrush"
-                                                Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                        <Setter Property="Panel.ZIndex"
-                                                Value="0" />
-                                    </MultiTrigger>
-                                    <Trigger Property="IsEnabled"
-                                             Value="false">
+                                                Value="100" />
+                                        <Setter TargetName="Border"
+                                                Property="Background"
+                                                Value="{DynamicResource TabViewItemHeaderBackgroundSelected}" />
+                                        <Setter TargetName="Border"
+                                                Property="BorderBrush"
+                                                Value="{DynamicResource TabViewSelectedItemBorderBrush}" />
                                         <Setter Property="Foreground"
-                                                Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                                                Value="{DynamicResource TabViewItemForegroundSelected}" />
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -166,6 +191,7 @@
                 </Style>
             </Setter.Value>
         </Setter>
+
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -205,20 +231,23 @@
                         <!--  Following border is required to catch mouse events  -->
                         <Border Grid.RowSpan="2"
                                 Background="Transparent" />
-                        <Border x:Name="ContentPanel"
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                KeyboardNavigation.DirectionalNavigation="Contained"
-                                KeyboardNavigation.TabIndex="2"
-                                KeyboardNavigation.TabNavigation="Cycle">
+
+                        <ui:Card x:Name="ContentPanel"
+                                 Grid.Row="0"
+                                 Grid.Column="0"
+                                 BorderThickness="1,1,1,0"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Stretch"
+                                 VerticalContentAlignment="Top"
+                                 KeyboardNavigation.DirectionalNavigation="Contained"
+                                 KeyboardNavigation.TabIndex="2"
+                                 KeyboardNavigation.TabNavigation="Cycle">
                             <ContentPresenter x:Name="PART_SelectedContentHost"
                                               Margin="{TemplateBinding Padding}"
                                               ContentSource="SelectedContent"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Border>
+                        </ui:Card>
+
                         <avalonDockControls:AnchorablePaneTabPanel x:Name="HeaderPanel"
                                                                    Grid.Row="1"
                                                                    Margin="2,0,2,2"
@@ -246,51 +275,83 @@
                             Value="{Binding IsEnabled}" />
                     <Setter Property="ToolTip"
                             Value="{Binding ToolTip}" />
+                    <Setter Property="Background"
+                            Value="{DynamicResource TabViewItemHeaderBackground}" />
+                    <Setter Property="BorderBrush"
+                            Value="Transparent" />
+                    <Setter Property="HorizontalAlignment"
+                            Value="Stretch" />
+                    <Setter Property="VerticalAlignment"
+                            Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment"
+                            Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                    <Setter Property="FocusVisualStyle"
+                            Value="{DynamicResource DefaultControlFocusVisualStyle}" />
+                    <Setter Property="KeyboardNavigation.IsTabStop"
+                            Value="True" />
+                    <Setter Property="Focusable"
+                            Value="True" />
+                    <Setter Property="OverridesDefaultStyle"
+                            Value="True" />
+                    <Setter Property="SnapsToDevicePixels"
+                            Value="True" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type TabItem}">
-                                <Grid SnapsToDevicePixels="true">
-                                    <Border x:Name="Bd"
-                                            Padding="{TemplateBinding Padding}"
+                                <Grid x:Name="Root">
+                                    <Border x:Name="Border"
+                                            MinWidth="180"
+                                            MinHeight="36"
+                                            Margin="0"
+                                            Padding="6"
                                             Background="{TemplateBinding Background}"
                                             BorderBrush="{TemplateBinding BorderBrush}"
-                                            BorderThickness="1,0,1,1">
-                                        <ContentPresenter x:Name="Content"
-                                                          HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                                          VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                            BorderThickness="1,0,1,1"
+                                            CornerRadius="0,0,8,8">
+                                        <ContentPresenter x:Name="ContentSite"
+                                                          Margin="0"
+                                                          HorizontalAlignment="Stretch"
+                                                          VerticalAlignment="Center"
                                                           ContentSource="Header"
-                                                          RecognizesAccessKey="True"
-                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                          RecognizesAccessKey="True" />
                                     </Border>
+
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="SelectionStates">
+                                            <VisualState x:Name="Unselected" />
+                                            <VisualState x:Name="Selected" />
+
+                                        </VisualStateGroup>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Normal" />
+                                            <VisualState x:Name="MouseOver" />
+                                            <VisualState x:Name="Disabled">
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="Border"
+                                                                     Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Opacity)"
+                                                                     From="0.0"
+                                                                     To="0.5"
+                                                                     Duration="0:0:.16" />
+                                                </Storyboard>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
                                 </Grid>
                                 <ControlTemplate.Triggers>
-                                    <Trigger Property="Selector.IsSelected"
-                                             Value="true">
-                                        <Setter Property="Background"
-                                                Value="White" />
+                                    <Trigger Property="IsSelected"
+                                             Value="True">
                                         <Setter Property="Panel.ZIndex"
-                                                Value="1" />
-                                        <Setter Property="Margin"
-                                                Value="0,-1,-1,-2" />
-                                    </Trigger>
-                                    <MultiTrigger>
-                                        <MultiTrigger.Conditions>
-                                            <Condition Property="IsMouseOver"
-                                                       Value="true" />
-                                            <Condition Property="Selector.IsSelected"
-                                                       Value="false" />
-                                        </MultiTrigger.Conditions>
-                                        <Setter Property="Background"
-                                                Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" />
-                                        <Setter Property="BorderBrush"
-                                                Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                        <Setter Property="Panel.ZIndex"
-                                                Value="0" />
-                                    </MultiTrigger>
-                                    <Trigger Property="IsEnabled"
-                                             Value="false">
+                                                Value="100" />
+                                        <Setter TargetName="Border"
+                                                Property="Background"
+                                                Value="{DynamicResource TabViewItemHeaderBackgroundSelected}" />
+                                        <Setter TargetName="Border"
+                                                Property="BorderBrush"
+                                                Value="{DynamicResource TabViewSelectedItemBorderBrush}" />
                                         <Setter Property="Foreground"
-                                                Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                                                Value="{DynamicResource TabViewItemForegroundSelected}" />
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -352,9 +413,8 @@
                                                                Focusable="False"
                                                                Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}"
                                                                ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_CxMenu_Hint}">
-                                <Border Background="Transparent">
-                                    <Image Source="/AvalonDock.Themes.WPFUI;component/Images/PinMenu.png" />
-                                </Border>
+                                <ui:SymbolIcon Symbol="CaretDown12"
+                                               Filled="True" />
                             </avalonDockControls:DropDownButton>
 
                             <Button x:Name="PART_AutoHidePin"
@@ -364,9 +424,7 @@
                                     Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                     ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_BtnAutoHide_Hint}"
                                     Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                <Border Background="Transparent">
-                                    <Image Source="/AvalonDock.Themes.WPFUI;component/Images/PinAutoHide.png" />
-                                </Border>
+                                <ui:SymbolIcon Symbol="Pin12" />
                             </Button>
 
                             <Button x:Name="PART_HidePin"
@@ -376,9 +434,7 @@
                                     Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                     ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_BtnClose_Hint}"
                                     Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                <Border Background="Transparent">
-                                    <Image Source="/AvalonDock.Themes.WPFUI;component/Images/PinClose.png" />
-                                </Border>
+                                <ui:SymbolIcon Symbol="Dismiss12" />
                             </Button>
 
                         </Grid>
@@ -612,6 +668,7 @@
 
     <DataTemplate x:Key="DocumentHeaderTemplate">
         <TextBlock Text="{Binding Title}"
+                   VerticalAlignment="Center"
                    TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
@@ -642,11 +699,13 @@
 
     <DataTemplate x:Key="DocumentTitleTemplate">
         <TextBlock Text="{Binding Title}"
+                   VerticalAlignment="Center"
                    TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
     <DataTemplate x:Key="AnchorableTitleTemplate">
         <TextBlock Text="{Binding Title}"
+                   VerticalAlignment="Center"
                    TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
@@ -778,7 +837,6 @@
                                               HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                               Content="{TemplateBinding AutoHideWindow}" />
-                            <!--    -->
                         </Grid>
                     </Border>
                 </ControlTemplate>
@@ -836,12 +894,13 @@
                                                   ContentTemplateSelector="{Binding DocumentHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
 
                                 <Button x:Name="DocumentCloseButton"
+                                        Padding="2"
                                         Grid.Column="2"
                                         Command="{Binding Path=LayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                         ToolTip="{x:Static avalonDockProperties:Resources.Document_Close}"
                                         Visibility="Hidden">
-                                    <Image Source="/AvalonDock.Themes.WPFUI;component/Images/PinClose.png" />
+                                    <ui:SymbolIcon Symbol="Dismiss12" />
                                 </Button>
                             </Grid>
                         </Border>
@@ -865,7 +924,6 @@
                                     Property="Visibility"
                                     Value="Visible" />
                         </MultiDataTrigger>
-                        <!--BD: 17.08.2020 use HideCommand if CanClose=false but CanHide=true-->
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Path=CanClose}"
@@ -880,7 +938,6 @@
                                     Property="ToolTip"
                                     Value="{x:Static avalonDockProperties:Resources.Anchorable_Hide}" />
                         </MultiDataTrigger>
-                        <!--BD: 17.08.2020 hide button if both CanClose=false and CanHide=false-->
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Path=CanClose}"
@@ -1047,7 +1104,7 @@
                                             Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Window_Maximize}"
                                             Visibility="{Binding IsMaximized, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:InverseBoolToVisibilityConverter}}">
-                                        <Image Source="/AvalonDock.Themes.WPFUI;component/Images/PinMaximize.png" />
+                                        <ui:SymbolIcon Symbol="FullScreenMaximize16" />
                                     </Button>
 
                                     <Button Grid.Column="1"
@@ -1058,7 +1115,7 @@
                                             Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Window_Restore}"
                                             Visibility="{Binding IsMaximized, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                        <Image Source="/AvalonDock.Themes.WPFUI;component/Images/PinRestore.png" />
+                                        <ui:SymbolIcon Symbol="FullScreenMinimize16" />
                                     </Button>
 
                                     <Button Grid.Column="2"
@@ -1068,7 +1125,7 @@
                                             Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Document_Close}"
                                             Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                        <Image Source="/AvalonDock.Themes.WPFUI;component/Images/PinClose.png" />
+                                        <ui:SymbolIcon Symbol="Dismiss12" />
                                     </Button>
                                 </Grid>
                                 <ContentPresenter Grid.Row="1"
@@ -1153,7 +1210,8 @@
                                                                        Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}"
                                                                        ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_CxMenu_Hint}"
                                                                        Visibility="{Binding Path=Model.IsSinglePane, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                        <Image Source="/AvalonDock.Themes.WPFUI;component/Images/PinMenu.png" />
+                                        <ui:SymbolIcon Symbol="CaretDown12"
+                                                       Filled="True" />
                                     </avalonDockControls:DropDownButton>
 
                                     <Button Grid.Column="2"
@@ -1164,7 +1222,7 @@
                                             Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Window_Maximize}"
                                             Visibility="{Binding IsMaximized, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:InverseBoolToVisibilityConverter}}">
-                                        <Image Source="/AvalonDock.Themes.WPFUI;component/Images/PinMaximize.png" />
+                                        <ui:SymbolIcon Symbol="FullScreenMaximize16" />
                                     </Button>
 
                                     <Button Grid.Column="2"
@@ -1175,7 +1233,7 @@
                                             Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Window_Restore}"
                                             Visibility="{Binding IsMaximized, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                        <Image Source="/AvalonDock.Themes.WPFUI;component/Images/PinRestore.png" />
+                                        <ui:SymbolIcon Symbol="FullScreenMinimize16" />
                                     </Button>
 
                                     <Button x:Name="CloseButton"
@@ -1186,7 +1244,7 @@
                                             Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_BtnClose_Hint}"
                                             Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                        <Image Source="/AvalonDock.Themes.WPFUI;component/Images/PinClose.png" />
+                                        <ui:SymbolIcon Symbol="Dismiss12" />
                                     </Button>
                                 </Grid>
                                 <ContentPresenter Grid.Row="1"
