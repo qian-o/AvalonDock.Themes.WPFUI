@@ -15,7 +15,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Grid>
+                    <Grid Width="{TemplateBinding ActualWidth}"
+                          Height="{TemplateBinding ActualHeight}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -72,7 +73,7 @@
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="Padding"
-                Value="6,8,6,8" />
+                Value="6,4,6,4" />
         <Setter Property="Focusable"
                 Value="True" />
         <Setter Property="Template">
@@ -98,11 +99,12 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Thumb x:Name="DragThumb"
+                                    <Thumb x:Name="PART_DragThumb"
                                            Grid.Column="0"
                                            Style="{StaticResource DragThumb}" />
 
-                                    <Button Grid.Column="1"
+                                    <Button x:Name="PART_CloseButton"
+                                            Grid.Column="1"
                                             Margin="4,0,0,0"
                                             Padding="4"
                                             Visibility="{TemplateBinding CanClose, Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -126,15 +128,11 @@
                                     Property="Background"
                                     Value="{DynamicResource AccentFillColorDefaultBrush}" />
 
-                            <Setter TargetName="Header"
-                                    Property="TextElement.Foreground"
-                                    Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
-
-                            <Setter TargetName="DragThumb"
+                            <Setter TargetName="PART_DragThumb"
                                     Property="Foreground"
                                     Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
 
-                            <Setter TargetName="DragThumb"
+                            <Setter TargetName="PART_DragThumb"
                                     Property="BorderBrush"
                                     Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
                         </Trigger>

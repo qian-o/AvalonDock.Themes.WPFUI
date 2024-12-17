@@ -2,6 +2,6 @@
 
 namespace Docking;
 
-public class DockingManager : Control
+public class DockingManager : Canvas
 {
 }
