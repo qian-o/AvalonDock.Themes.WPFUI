@@ -10,17 +10,28 @@
 
     <Style x:Key="DragThumb"
            TargetType="{x:Type Thumb}">
-        <Setter Property="Foreground"
+        <Setter Property="BorderBrush"
                 Value="{ui:ThemeResource CardStrokeColorDefaultBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Grid>
-                        <StackPanel Orientation="Vertical"
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <ContentPresenter Grid.Column="0"
+                                          Content="{Binding Title, RelativeSource={RelativeSource AncestorType=docking:AnchorableDocument}}"
+                                          VerticalAlignment="Center"
+                                          Margin="0,0,4,0" />
+
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Vertical"
                                     VerticalAlignment="Center">
                             <Line Height="3"
                                   VerticalAlignment="Center"
-                                  Stroke="{TemplateBinding Foreground}"
+                                  Stroke="{TemplateBinding BorderBrush}"
                                   X1="0"
                                   X2="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
                                   Y1="1.5"
@@ -29,17 +40,17 @@
                                   StrokeThickness="1" />
                             <Line Height="3"
                                   VerticalAlignment="Center"
-                                  Stroke="{TemplateBinding Foreground}"
+                                  Stroke="{TemplateBinding BorderBrush}"
                                   X1="0"
                                   X2="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
                                   Y1="1.5"
                                   Y2="1.5"
                                   StrokeDashArray="4,2"
-                                  StrokeDashOffset="2"
+                                  StrokeDashOffset="4"
                                   StrokeThickness="1" />
                             <Line Height="3"
                                   VerticalAlignment="Center"
-                                  Stroke="{TemplateBinding Foreground}"
+                                  Stroke="{TemplateBinding BorderBrush}"
                                   X1="0"
                                   X2="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
                                   Y1="1.5"
@@ -83,26 +94,20 @@
                                     CornerRadius="8,8,0,0">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <ContentPresenter Content="{TemplateBinding Title}"
-                                                      VerticalAlignment="Center"
-                                                      Margin="0,0,4,0"
-                                                      DockPanel.Dock="Left" />
-
                                     <Thumb x:Name="DragThumb"
-                                           Grid.Column="1"
+                                           Grid.Column="0"
                                            Style="{StaticResource DragThumb}" />
 
-                                    <ui:SymbolIcon Grid.Column="2"
-                                                   Symbol="Dismiss12"
-                                                   VerticalAlignment="Center"
-                                                   Margin="4,0,0,0"
-                                                   DockPanel.Dock="Right"
-                                                   Visibility="{TemplateBinding CanClose, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                    <Button Grid.Column="1"
+                                            Margin="4,0,0,0"
+                                            Padding="4"
+                                            Visibility="{TemplateBinding CanClose, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <ui:SymbolIcon Symbol="Dismiss12" />
+                                    </Button>
                                 </Grid>
                             </Border>
 
@@ -127,6 +132,10 @@
 
                             <Setter TargetName="DragThumb"
                                     Property="Foreground"
+                                    Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
+
+                            <Setter TargetName="DragThumb"
+                                    Property="BorderBrush"
                                     Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
