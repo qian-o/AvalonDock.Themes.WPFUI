@@ -36,7 +36,9 @@
                     <LayoutAnchorSide>
                         <LayoutAnchorGroup>
                             <LayoutAnchorable Title="工具箱"
-                                              AutoHideMinWidth="400" />
+                                              AutoHideMinWidth="400">
+                                123
+                            </LayoutAnchorable>
                             <LayoutAnchorable Title="属性"
                                               AutoHideMinWidth="400" />
                         </LayoutAnchorGroup>
@@ -65,7 +67,9 @@
                     <LayoutAnchorablePaneGroup DockWidth="400"
                                                DockMinWidth="100">
                         <LayoutAnchorablePane>
-                            <LayoutAnchorable Title="解决方案" />
+                            <LayoutAnchorable Title="解决方案">
+                                123123
+                            </LayoutAnchorable>
                             <LayoutAnchorable Title="Git 更改" />
                         </LayoutAnchorablePane>
                     </LayoutAnchorablePaneGroup>

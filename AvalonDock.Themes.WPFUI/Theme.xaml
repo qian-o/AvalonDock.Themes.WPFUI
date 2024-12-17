@@ -10,6 +10,8 @@
     <!--  DocumentPaneControlStyle  -->
     <Style x:Key="DocumentPaneControlStyle"
            TargetType="{x:Type avalonDockControls:LayoutDocumentPaneControl}">
+        <Setter Property="TextElement.Foreground"
+                Value="{DynamicResource TextFillColorPrimaryBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutDocumentPaneControl}">
@@ -57,6 +59,7 @@
                                         </avalonDockControls:ContextMenuEx.ItemContainerStyle>
                                     </avalonDockControls:ContextMenuEx>
                                 </avalonDockControls:DropDownButton.DropDownContextMenu>
+
                                 <ui:SymbolIcon Symbol="ArrowEject20">
                                     <ui:SymbolIcon.RenderTransform>
                                         <ScaleTransform ScaleX="1"
@@ -68,6 +71,7 @@
                                     </ui:SymbolIcon.RenderTransformOrigin>
                                 </ui:SymbolIcon>
                             </avalonDockControls:DropDownButton>
+
                         </Grid>
                         <ui:Card x:Name="ContentPanel"
                                  Grid.Row="1"
@@ -85,11 +89,6 @@
                         </ui:Card>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled"
-                                 Value="false">
-                            <Setter Property="Foreground"
-                                    Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-                        </Trigger>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.ChildrenCount}"
                                      Value="0">
                             <Setter TargetName="MenuDropDownButton"
@@ -104,6 +103,8 @@
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="IsSelected"
+                            Value="{Binding IsSelected, Mode=TwoWay}" />
                     <Setter Property="Visibility"
                             Value="{Binding IsVisible, Converter={avalonDockConverters:BoolToVisibilityConverter}}" />
                     <Setter Property="Background"
@@ -171,7 +172,7 @@
                                     </VisualStateManager.VisualStateGroups>
                                 </Grid>
                                 <ControlTemplate.Triggers>
-                                    <Trigger Property="IsSelected"
+                                    <Trigger Property="Selector.IsSelected"
                                              Value="True">
                                         <Setter Property="Panel.ZIndex"
                                                 Value="100" />
@@ -212,10 +213,8 @@
     <!--  AnchorablePaneControlStyle  -->
     <Style x:Key="AnchorablePaneControlStyle"
            TargetType="{x:Type avalonDockControls:LayoutAnchorablePaneControl}">
-        <Setter Property="Foreground"
-                Value="{Binding Model.Root.Manager.Foreground, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="Background"
-                Value="{Binding Model.Root.Manager.Background, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="TextElement.Foreground"
+                Value="{DynamicResource TextFillColorPrimaryBrush}" />
         <Setter Property="TabStripPlacement"
                 Value="Bottom" />
         <Setter Property="Template">
@@ -238,7 +237,7 @@
                                  BorderThickness="1,1,1,0"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Stretch"
-                                 VerticalContentAlignment="Top"
+                                 VerticalContentAlignment="Stretch"
                                  KeyboardNavigation.DirectionalNavigation="Contained"
                                  KeyboardNavigation.TabIndex="2"
                                  KeyboardNavigation.TabNavigation="Cycle">
@@ -255,13 +254,6 @@
                                                                    IsItemsHost="true"
                                                                    KeyboardNavigation.TabIndex="1" />
                     </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled"
-                                 Value="false">
-                            <Setter Property="Foreground"
-                                    Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -513,14 +505,12 @@
 
     <ControlTemplate x:Key="AnchorTemplate"
                      TargetType="{x:Type avalonDockControls:LayoutAnchorControl}">
-        <Border Margin="2"
-                Padding="2"
-                BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"
-                BorderThickness="1">
+        <ui:Card Margin="2"
+                 Padding="6">
             <ContentPresenter Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
                               ContentTemplate="{Binding AnchorableHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
                               ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
-        </Border>
+        </ui:Card>
     </ControlTemplate>
 
     <Style x:Key="{x:Type avalonDockControls:OverlayWindow}"
@@ -698,15 +688,15 @@
     </DataTemplate>
 
     <DataTemplate x:Key="DocumentTitleTemplate">
-        <TextBlock Text="{Binding Title}"
-                   VerticalAlignment="Center"
-                   TextTrimming="CharacterEllipsis" />
+        <ui:TextBlock Text="{Binding Title}"
+                      VerticalAlignment="Center"
+                      TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
     <DataTemplate x:Key="AnchorableTitleTemplate">
-        <TextBlock Text="{Binding Title}"
-                   VerticalAlignment="Center"
-                   TextTrimming="CharacterEllipsis" />
+        <ui:TextBlock Text="{Binding Title}"
+                      VerticalAlignment="Center"
+                      TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
     <DataTemplate x:Key="IconContentTemplate">
@@ -983,8 +973,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorableControl}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
+                    <Border VerticalAlignment="Stretch"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             KeyboardNavigation.TabNavigation="Cycle">
                         <Grid>
@@ -996,31 +985,15 @@
                                 <avalonDockControls:AnchorablePaneTitle Model="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}" />
                             </Border>
 
-                            <!--
-								Added ContentTemplate and ContentTemplateSelector
-								https://github.com/xceedsoftware/wpftoolkit/issues/1525
-							-->
                             <ContentPresenter Grid.Row="1"
                                               Content="{Binding LayoutItem.View, RelativeSource={RelativeSource TemplatedParent}}"
                                               ContentTemplate="{Binding LayoutItem.View.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
                                               ContentTemplateSelector="{Binding LayoutItem.View.ContentTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
                                               FlowDirection="{TemplateBinding FlowDirection}" />
-
-                            <!--<ContentPresenter
-                                FlowDirection="{TemplateBinding FlowDirection}"
-                                Content="{Binding Model.Content, RelativeSource={RelativeSource TemplatedParent}}"
-                                ContentTemplate="{Binding LayoutItemTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
-                                ContentTemplateSelector="{Binding LayoutItemTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
-                                Grid.Row="1"/>-->
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <MultiDataTrigger>
-                            <!--
-								Hide the title if the control is directly hosted in floating window
-								The floating window control will show the title if there is only one control to host
-								without any other LayoutAnchorableControl
-							-->
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.IsFloating}"
                                            Value="True" />
@@ -1032,10 +1005,6 @@
                                     Value="Collapsed" />
                         </MultiDataTrigger>
                         <MultiDataTrigger>
-                            <!--
-								Also hide the title, if model cannot be bound which can happen when using virtualization
-								See Issue #148 Drop Down Menu for LayoutAnchorables is not correct with Virtualization
-							-->
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model}"
                                            Value="{x:Null}" />
@@ -1284,13 +1253,67 @@
     <Style x:Key="{x:Type avalonDockControls:LayoutAutoHideWindowControl}"
            TargetType="{x:Type avalonDockControls:LayoutAutoHideWindowControl}">
         <Setter Property="Background"
-                Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                Value="{DynamicResource LayerFillColorAltBrush}" />
+        <Setter Property="AnchorableStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type avalonDockControls:LayoutAnchorableControl}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorableControl}">
+                                <ui:Card VerticalAlignment="Stretch"
+                                         VerticalContentAlignment="Stretch"
+                                         BorderThickness="{TemplateBinding BorderThickness}"
+                                         KeyboardNavigation.TabNavigation="Cycle">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Border x:Name="Header">
+                                            <avalonDockControls:AnchorablePaneTitle Model="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        </Border>
+
+                                        <ContentPresenter Grid.Row="1"
+                                                          Content="{Binding LayoutItem.View, RelativeSource={RelativeSource TemplatedParent}}"
+                                                          ContentTemplate="{Binding LayoutItem.View.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
+                                                          ContentTemplateSelector="{Binding LayoutItem.View.ContentTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
+                                                          FlowDirection="{TemplateBinding FlowDirection}" />
+                                    </Grid>
+                                </ui:Card>
+                                <ControlTemplate.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.IsFloating}"
+                                                       Value="True" />
+                                            <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.Parent.IsDirectlyHostedInFloatingWindow}"
+                                                       Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter TargetName="Header"
+                                                Property="Visibility"
+                                                Value="Collapsed" />
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model}"
+                                                       Value="{x:Null}" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter TargetName="Header"
+                                                Property="Visibility"
+                                                Value="Collapsed" />
+                                    </MultiDataTrigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="{x:Type avalonDockControls:NavigatorWindow}"
            TargetType="{x:Type avalonDockControls:NavigatorWindow}">
         <Setter Property="Background"
-                Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                Value="{DynamicResource ControlFillColorDefaultBrush}" />
         <Setter Property="SizeToContent"
                 Value="WidthAndHeight" />
         <Setter Property="ResizeMode"
@@ -1370,15 +1393,6 @@
                                                 <Style TargetType="ListBoxItem">
                                                     <Setter Property="Cursor"
                                                             Value="Hand" />
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsMouseOver"
-                                                                 Value="True">
-                                                            <Setter Property="Background"
-                                                                    Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                                            <Setter Property="TextElement.Foreground"
-                                                                    Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
-                                                        </Trigger>
-                                                    </Style.Triggers>
                                                 </Style>
                                             </ListBox.ItemContainerStyle>
                                             <ListBox.ItemTemplate>
@@ -1421,15 +1435,6 @@
                                                 <Style TargetType="ListBoxItem">
                                                     <Setter Property="Cursor"
                                                             Value="Hand" />
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsMouseOver"
-                                                                 Value="True">
-                                                            <Setter Property="Background"
-                                                                    Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                                            <Setter Property="TextElement.Foreground"
-                                                                    Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
-                                                        </Trigger>
-                                                    </Style.Triggers>
                                                 </Style>
                                             </ListBox.ItemContainerStyle>
                                             <ListBox.ItemTemplate>
