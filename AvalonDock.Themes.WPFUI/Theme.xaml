@@ -484,22 +484,22 @@
                             <Image x:Name="PART_DockingManagerDropTargetLeft"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
-                                   Source="/AvalonDock.Themes.WPFUI;component/Images/DockLeft.PNG"
+                                   Source="/AvalonDock.Themes.WPFUI;component/Images/DockLeft.png"
                                    Stretch="None" />
                             <Image x:Name="PART_DockingManagerDropTargetRight"
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Center"
-                                   Source="/AvalonDock.Themes.WPFUI;component/Images/DockRight.PNG"
+                                   Source="/AvalonDock.Themes.WPFUI;component/Images/DockRight.png"
                                    Stretch="None" />
                             <Image x:Name="PART_DockingManagerDropTargetBottom"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Bottom"
-                                   Source="/AvalonDock.Themes.WPFUI;component/Images/DockBottom.PNG"
+                                   Source="/AvalonDock.Themes.WPFUI;component/Images/DockBottom.png"
                                    Stretch="None" />
                             <Image x:Name="PART_DockingManagerDropTargetTop"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Top"
-                                   Source="/AvalonDock.Themes.WPFUI;component/Images/DockTop.PNG"
+                                   Source="/AvalonDock.Themes.WPFUI;component/Images/DockTop.png"
                                    Stretch="None" />
                         </Grid>
                         <Grid x:Name="PART_AnchorablePaneDropTargets">
