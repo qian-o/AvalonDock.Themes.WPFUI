@@ -2,6 +2,56 @@
                     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:docking="clr-namespace:Docking">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="DragThumb"
+           TargetType="{x:Type Thumb}">
+        <Setter Property="Foreground"
+                Value="{ui:ThemeResource CardStrokeColorDefaultBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid>
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <Line Height="3"
+                                  VerticalAlignment="Center"
+                                  Stroke="{TemplateBinding Foreground}"
+                                  X1="0"
+                                  X2="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Y1="1.5"
+                                  Y2="1.5"
+                                  StrokeDashArray="4,2"
+                                  StrokeThickness="1" />
+                            <Line Height="3"
+                                  VerticalAlignment="Center"
+                                  Stroke="{TemplateBinding Foreground}"
+                                  X1="0"
+                                  X2="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Y1="1.5"
+                                  Y2="1.5"
+                                  StrokeDashArray="4,2"
+                                  StrokeDashOffset="2"
+                                  StrokeThickness="1" />
+                            <Line Height="3"
+                                  VerticalAlignment="Center"
+                                  Stroke="{TemplateBinding Foreground}"
+                                  X1="0"
+                                  X2="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Y1="1.5"
+                                  Y2="1.5"
+                                  StrokeDashArray="4,2"
+                                  StrokeThickness="1" />
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style TargetType="{x:Type docking:AnchorableDocument}">
         <Setter Property="Background"
@@ -10,6 +60,8 @@
                 Value="{ui:ThemeResource CardStrokeColorDefaultBrush}" />
         <Setter Property="BorderThickness"
                 Value="1" />
+        <Setter Property="Padding"
+                Value="6,8,6,8" />
         <Setter Property="Focusable"
                 Value="True" />
         <Setter Property="Template">
@@ -27,50 +79,31 @@
 
                             <Border x:Name="Header"
                                     Grid.Row="0"
-                                    Padding="6,8,6,8"
+                                    Padding="{TemplateBinding Padding}"
                                     CornerRadius="8,8,0,0">
-                                <DockPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
                                     <ContentPresenter Content="{TemplateBinding Title}"
                                                       VerticalAlignment="Center"
+                                                      Margin="0,0,4,0"
                                                       DockPanel.Dock="Left" />
 
-                                    <ui:SymbolIcon Symbol="Dismiss12"
-                                                   VerticalAlignment="Center"
-                                                   DockPanel.Dock="Right" />
+                                    <Thumb x:Name="DragThumb"
+                                           Grid.Column="1"
+                                           Style="{StaticResource DragThumb}" />
 
-                                    <UniformGrid Rows="3"
-                                                 Columns="1"
-                                                 Margin="8,0,8,0">
-                                        <Line x:Name="Line1"
-                                              VerticalAlignment="Center"
-                                              Stroke="{ui:ThemeResource CardStrokeColorDefaultBrush}"
-                                              X1="0"
-                                              Y1="0"
-                                              X2="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
-                                              Y2="0"
-                                              StrokeDashArray="4,2"
-                                              StrokeThickness="1" />
-                                        <Line x:Name="Line2"
-                                              VerticalAlignment="Center"
-                                              Stroke="{ui:ThemeResource CardStrokeColorDefaultBrush}"
-                                              X1="0"
-                                              Y1="0"
-                                              X2="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
-                                              Y2="0"
-                                              StrokeDashArray="4,2"
-                                              StrokeDashOffset="2"
-                                              StrokeThickness="1" />
-                                        <Line x:Name="Line3"
-                                              VerticalAlignment="Center"
-                                              Stroke="{ui:ThemeResource CardStrokeColorDefaultBrush}"
-                                              X1="0"
-                                              Y1="0"
-                                              X2="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
-                                              Y2="0"
-                                              StrokeDashArray="4,2"
-                                              StrokeThickness="1" />
-                                    </UniformGrid>
-                                </DockPanel>
+                                    <ui:SymbolIcon Grid.Column="2"
+                                                   Symbol="Dismiss12"
+                                                   VerticalAlignment="Center"
+                                                   Margin="4,0,0,0"
+                                                   DockPanel.Dock="Right"
+                                                   Visibility="{TemplateBinding CanClose, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                </Grid>
                             </Border>
 
                             <ContentPresenter Grid.Row="1"
@@ -92,16 +125,8 @@
                                     Property="TextElement.Foreground"
                                     Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
 
-                            <Setter TargetName="Line1"
-                                    Property="Stroke"
-                                    Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
-
-                            <Setter TargetName="Line2"
-                                    Property="Stroke"
-                                    Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
-
-                            <Setter TargetName="Line3"
-                                    Property="Stroke"
+                            <Setter TargetName="DragThumb"
+                                    Property="Foreground"
                                     Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
