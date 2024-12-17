@@ -79,6 +79,7 @@
                                  BorderThickness="1,0,1,1"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Stretch"
+                                 VerticalContentAlignment="Stretch"
                                  KeyboardNavigation.DirectionalNavigation="Contained"
                                  KeyboardNavigation.TabIndex="2"
                                  KeyboardNavigation.TabNavigation="Cycle">
@@ -1037,7 +1038,7 @@
                                              Background="{TemplateBinding Background}"
                                              BorderBrush="{TemplateBinding BorderBrush}"
                                              BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid Margin="3">
+                            <Grid Margin="8,4,8,4">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"
                                                    MinHeight="16" />
@@ -1116,29 +1117,22 @@
     <Style x:Key="{x:Type avalonDockControls:LayoutAnchorableFloatingWindowControl}"
            TargetType="{x:Type avalonDockControls:LayoutAnchorableFloatingWindowControl}">
         <Setter Property="Background"
-                Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                Value="{DynamicResource WindowBackground}" />
         <Setter Property="BorderBrush"
-                Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+                Value="{DynamicResource AccentFillColorTertiaryBrush}" />
         <Setter Property="BorderThickness"
                 Value="3" />
-        <Setter Property="shell:WindowChrome.WindowChrome">
-            <Setter.Value>
-                <shell:WindowChrome CaptionHeight="16"
-                                    CornerRadius="3,3,3,3"
-                                    GlassFrameThickness="0"
-                                    ResizeBorderThickness="10"
-                                    ShowSystemMenu="False" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="TextElement.Foreground"
+                Value="{DynamicResource TextFillColorPrimaryBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorableFloatingWindowControl}">
-                    <Grid>
-                        <Border x:Name="WindowBorder"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid Margin="3">
+                    <AdornerDecorator>
+                        <ui:ClientAreaBorder x:Name="WindowBorder"
+                                             Background="{TemplateBinding Background}"
+                                             BorderBrush="{TemplateBinding BorderBrush}"
+                                             BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid Margin="8,4,8,4">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"
                                                    MinHeight="16" />
@@ -1211,8 +1205,8 @@
                                 <ContentPresenter Grid.Row="1"
                                                   Content="{TemplateBinding Content}" />
                             </Grid>
-                        </Border>
-                    </Grid>
+                        </ui:ClientAreaBorder>
+                    </AdornerDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="WindowState"
                                  Value="Maximized">
@@ -1224,7 +1218,7 @@
                                      Value="True">
                             <Setter TargetName="WindowBorder"
                                     Property="BorderBrush"
-                                    Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                    Value="{DynamicResource AccentFillColorDefaultBrush}" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.CanClose, RelativeSource={RelativeSource Mode=Self}}"
                                      Value="True">
@@ -1245,18 +1239,19 @@
     <Style x:Key="{x:Type avalonDockControls:LayoutAutoHideWindowControl}"
            TargetType="{x:Type avalonDockControls:LayoutAutoHideWindowControl}">
         <Setter Property="Background"
-                Value="{DynamicResource LayerFillColorAltBrush}" />
+                Value="{DynamicResource WindowBackground}" />
         <Setter Property="AnchorableStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type avalonDockControls:LayoutAnchorableControl}">
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorableControl}">
-                                <ui:Card VerticalAlignment="Stretch"
-                                         VerticalContentAlignment="Stretch"
-                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                         KeyboardNavigation.TabNavigation="Cycle">
-                                    <Grid>
+                                <ui:ClientAreaBorder Background="{TemplateBinding Background}"
+                                                     BorderBrush="{DynamicResource AccentFillColorDefaultBrush}"
+                                                     BorderThickness="3"
+                                                     TextElement.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                                     KeyboardNavigation.TabNavigation="Cycle">
+                                    <Grid Margin="8,4,8,4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="*" />
@@ -1271,7 +1266,7 @@
                                                           ContentTemplateSelector="{Binding LayoutItem.View.ContentTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
                                                           FlowDirection="{TemplateBinding FlowDirection}" />
                                     </Grid>
-                                </ui:Card>
+                                </ui:ClientAreaBorder>
                                 <ControlTemplate.Triggers>
                                     <MultiDataTrigger>
                                         <MultiDataTrigger.Conditions>

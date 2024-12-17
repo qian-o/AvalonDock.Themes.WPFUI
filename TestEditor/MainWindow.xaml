@@ -59,7 +59,9 @@
                 <LayoutPanel Orientation="Horizontal">
                     <LayoutDocumentPaneGroup>
                         <LayoutDocumentPane>
-                            <LayoutDocument Title="Document 1" />
+                            <LayoutDocument Title="Document 1">
+                                123123
+                            </LayoutDocument>
                             <LayoutDocument Title="Document 2" />
                         </LayoutDocumentPane>
                     </LayoutDocumentPaneGroup>
