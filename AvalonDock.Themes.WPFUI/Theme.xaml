@@ -417,7 +417,15 @@
                                     Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                                     ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_BtnAutoHide_Hint}"
                                     Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                <ui:SymbolIcon Symbol="Pin12" />
+                                <ui:SymbolIcon Symbol="Pin12">
+                                    <ui:SymbolIcon.RenderTransform>
+                                        <RotateTransform Angle="-45" />
+                                    </ui:SymbolIcon.RenderTransform>
+                                    <ui:SymbolIcon.RenderTransformOrigin>
+                                        <Point X="0.5"
+                                               Y="0.5" />
+                                    </ui:SymbolIcon.RenderTransformOrigin>
+                                </ui:SymbolIcon>
                             </Button>
 
                             <Button x:Name="PART_HidePin"
