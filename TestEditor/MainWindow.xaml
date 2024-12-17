@@ -4,7 +4,7 @@
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 xmlns:docking="clr-namespace:Docking;assembly=Docking"
+                 xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WPFUI"
                  mc:Ignorable="d"
                  Title="MainWindow"
                  Height="450"
@@ -22,15 +22,52 @@
         <ui:TitleBar Grid.Row="0"
                      Title="Test Editor" />
 
-        <docking:DockingManager Grid.Row="1">
-            <docking:AnchorableDocument Title="Anchorable Document 1"
-                                        Width="400"
-                                        Height="100"
-                                        HorizontalContentAlignment="Center"
-                                        VerticalContentAlignment="Center">
-                Test Anchorable Document 1
-            </docking:AnchorableDocument>
-        </docking:DockingManager>
+        <DockingManager Grid.Row="1">
+            <DockingManager.Theme>
+                <wpfui:WPFUITheme />
+            </DockingManager.Theme>
+            
+            <LayoutRoot>
+                <LayoutRoot.LeftSide>
+                    <LayoutAnchorSide>
+                        <LayoutAnchorGroup>
+                            <LayoutAnchorable Title="工具箱"
+                                              AutoHideMinWidth="400" />
+                            <LayoutAnchorable Title="属性"
+                                              AutoHideMinWidth="400" />
+                        </LayoutAnchorGroup>
+                    </LayoutAnchorSide>
+                </LayoutRoot.LeftSide>
+
+                <LayoutRoot.BottomSide>
+                    <LayoutAnchorSide>
+                        <LayoutAnchorGroup>
+                            <LayoutAnchorable Title="输出"
+                                              AutoHideMinHeight="300" />
+                            <LayoutAnchorable Title="错误列表"
+                                              AutoHideMinHeight="300" />
+                        </LayoutAnchorGroup>
+                    </LayoutAnchorSide>
+                </LayoutRoot.BottomSide>
+
+                <LayoutPanel Orientation="Horizontal">
+                    <LayoutDocumentPaneGroup>
+                        <LayoutDocumentPane>
+                            <LayoutDocument Title="Document 1" />
+                            <LayoutDocument Title="Document 2" />
+                        </LayoutDocumentPane>
+                    </LayoutDocumentPaneGroup>
+
+                    <LayoutAnchorablePaneGroup DockWidth="400"
+                                               DockMinWidth="100">
+                        <LayoutAnchorablePane>
+                            <LayoutAnchorable Title="解决方案" />
+                            <LayoutAnchorable Title="Git 更改" />
+                        </LayoutAnchorablePane>
+                    </LayoutAnchorablePaneGroup>
+                </LayoutPanel>
+            </LayoutRoot>
+        </DockingManager>
 
     </Grid>
 </ui:FluentWindow>
