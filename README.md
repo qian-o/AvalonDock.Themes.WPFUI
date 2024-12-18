@@ -1,5 +1,10 @@
 # AvalonDock.Themes.WPFUI
-![image](https://github.com/user-attachments/assets/ebdd2f02-9b57-4769-8ecc-8962e1c512b6)
+
+| Light | Dark |
+| ----------- | ----------- |
+| ![image](https://github.com/user-attachments/assets/ebdd2f02-9b57-4769-8ecc-8962e1c512b6) | ![image](https://github.com/user-attachments/assets/ebdd2f02-9b57-4769-8ecc-8962e1c512b6) |
+
+
 ![image](https://github.com/user-attachments/assets/ab103b57-9ca7-4b81-905b-94da64027623)
 ![image](https://github.com/user-attachments/assets/b101af91-70ab-4f84-b046-32d3964bc17d)
 ![image](https://github.com/user-attachments/assets/044853d4-07d5-415b-a77c-25296fa64589)
