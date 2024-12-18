@@ -1,12 +1,9 @@
-﻿using System;
+﻿namespace AvalonDock.Themes.WPFUI;
 
-namespace AvalonDock.Themes.WPFUI
+public class WPFUITheme : Theme
 {
-    public class WPFUITheme : Theme
+    public override Uri GetResourceUri()
     {
-        public override Uri GetResourceUri()
-        {
-            return new Uri("/AvalonDock.Themes.WPFUI;component/Theme.xaml", UriKind.Relative);
-        }
+        return new Uri("/AvalonDock.Themes.WPFUI;component/Theme.xaml", UriKind.Relative);
     }
 }
