@@ -11,6 +11,20 @@ dotnet add package AvalonDock.Themes.WPFUI
 
 ## Usage
 ```xaml
+// App.xaml
+xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ui:ThemesDictionary Theme="Unknown" />
+            <ui:ControlsDictionary />
+    </ResourceDictionary.MergedDictionaries>
+</Application.Resources>
+```
+
+```xaml
+// Use WPFUITheme in DockingManager
 xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WPFUI"
 
 <DockingManager>
