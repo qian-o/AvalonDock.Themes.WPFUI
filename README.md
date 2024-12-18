@@ -1,6 +1,6 @@
 # AvalonDock.Themes.WPFUI
 
-AvalonDock.Themes.WPFUI 是一个基于 [WPF-UI](https://github.com/lepoco/wpfui) 制作的 AvalonDock 主题库。
+AvalonDock.Themes.WPFUI is a theme library for AvalonDock based on [WPF-UI](https://github.com/lepoco/wpfui).
 
 ## Usage
 ```xaml
