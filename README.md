@@ -32,3 +32,11 @@ xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WP
 - [AvalonDock](https://github.com/Dirkster99/AvalonDock)
 - [WPF-UI](https://github.com/lepoco/wpfui)
 - [AakStudio.Shell.UI.Themes.AvalonDock](https://github.com/Wenveo/AakStudio.Shell.UI.Themes.AvalonDock)
+
+## Version History
+- 1.0.1
+  - Split style dictionary.
+  - Improve NavigatorWindow style.
+  - Fix some style issues.
+- 1.0.0
+  - Initial release.
