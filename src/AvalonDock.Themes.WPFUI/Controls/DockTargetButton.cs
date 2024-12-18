@@ -188,7 +188,7 @@ public partial class DockTargetButton : Button
     {
         if ((bool)e.NewValue)
         {
-            foreach (var item in dockTargets)
+            foreach (DockTargetButton item in dockTargets)
             {
                 Rect rect = new(0,
                                 0,

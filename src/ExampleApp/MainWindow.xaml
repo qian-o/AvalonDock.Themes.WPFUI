@@ -5,6 +5,7 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WPFUI"
+                 xmlns:exampleapp="clr-namespace:ExampleApp"
                  mc:Ignorable="d"
                  ExtendsContentIntoTitleBar="True"
                  WindowBackdropType="Mica"
@@ -13,6 +14,11 @@
                  Title="MainWindow"
                  Height="450"
                  Width="800">
+
+    <ui:FluentWindow.DataContext>
+        <exampleapp:MainViewModel />
+    </ui:FluentWindow.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -22,7 +28,12 @@
         <ui:TitleBar Grid.Row="0"
                      Title="Example App">
             <ui:TitleBar.Header>
-                <ui:ToggleSwitch />
+                <Grid Margin="0,0,20,0">
+                    <ui:ToggleSwitch IsChecked="{Binding IsLightTheme}"
+                                     OnContent="Light"
+                                     OffContent="Dark">
+                    </ui:ToggleSwitch>
+                </Grid>
             </ui:TitleBar.Header>
         </ui:TitleBar>
 
