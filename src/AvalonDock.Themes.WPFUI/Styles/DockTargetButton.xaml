@@ -1,0 +1,552 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:AvalonDock.Themes.WPFUI.Controls">
+    <Style TargetType="{x:Type controls:DockTargetButton}">
+        <Style.Resources>
+            <Style TargetType="Canvas">
+                <Setter Property="SnapsToDevicePixels"
+                        Value="true" />
+                <Setter Property="UseLayoutRounding"
+                        Value="true" />
+            </Style>
+            <Style TargetType="Path">
+                <Setter Property="StrokeStartLineCap"
+                        Value="Square" />
+                <Setter Property="StrokeEndLineCap"
+                        Value="Square" />
+                <Setter Property="SnapsToDevicePixels"
+                        Value="true" />
+                <Setter Property="UseLayoutRounding"
+                        Value="true" />
+                <Setter Property="StrokeThickness"
+                        Value="1" />
+            </Style>
+            <Style TargetType="Line">
+                <Setter Property="StrokeStartLineCap"
+                        Value="Square" />
+                <Setter Property="StrokeEndLineCap"
+                        Value="Square" />
+                <Setter Property="SnapsToDevicePixels"
+                        Value="true" />
+                <Setter Property="UseLayoutRounding"
+                        Value="true" />
+                <Setter Property="StrokeThickness"
+                        Value="1" />
+            </Style>
+        </Style.Resources>
+
+        <Setter Property="Margin"
+                Value="2" />
+        <Setter Property="Padding"
+                Value="4" />
+        <Setter Property="Width"
+                Value="32" />
+        <Setter Property="Height"
+                Value="32" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Opacity"
+                Value="0.6" />
+        <Setter Property="CornerRadius"
+                Value="2" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="true" />
+        <Setter Property="UseLayoutRounding"
+                Value="true" />
+
+        <Setter Property="Background"
+                Value="{DynamicResource AccentAcrylicBackgroundFillColorBaseBrush}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+        <Setter Property="GlyphBackground"
+                Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+        <Setter Property="GlyphBorderBrush"
+                Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+        <Setter Property="GlyphArrowBrush"
+                Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+        <Setter Property="OuterBackground"
+                Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+        <Setter Property="OuterBorderBrush"
+                Value="{DynamicResource FocusStrokeColorOuterBrush}" />
+
+        <Style.Triggers>
+            <Trigger Property="IsTargeted"
+                     Value="true">
+                <Setter Property="Opacity"
+                        Value="1" />
+            </Trigger>
+
+            <Trigger Property="TargetDock"
+                     Value="Center">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                <Canvas Width="24"
+                                        Height="24">
+                                    <Border Width="24"
+                                            Height="24"
+                                            Background="{TemplateBinding GlyphBackground}"
+                                            BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                            BorderThickness="1,3,1,1"
+                                            CornerRadius="0,0,1,1" />
+                                </Canvas>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="TargetDock"
+                     Value="SplitLeft">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                <Canvas Width="24"
+                                        Height="24">
+                                    <Border Canvas.Left="0"
+                                            Width="12"
+                                            Height="24"
+                                            Background="{TemplateBinding GlyphBackground}"
+                                            BorderThickness="1,3,0,1" />
+                                    <Border Width="24"
+                                            Height="24"
+                                            BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                            BorderThickness="1,3,1,1"
+                                            CornerRadius="0,0,1,1" />
+                                    <Line Canvas.Left="11"
+                                          Stroke="{TemplateBinding GlyphBorderBrush}"
+                                          StrokeDashArray="1"
+                                          X1="0.5"
+                                          X2="0.5"
+                                          Y1="2"
+                                          Y2="23" />
+                                </Canvas>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="TargetDock"
+                     Value="SplitTop">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                <Canvas Width="24"
+                                        Height="24">
+                                    <Border Canvas.Top="0"
+                                            Width="24"
+                                            Height="12"
+                                            Background="{TemplateBinding GlyphBackground}"
+                                            BorderThickness="1,3,1,0" />
+                                    <Border Width="24"
+                                            Height="24"
+                                            BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                            BorderThickness="1,3,1,1"
+                                            CornerRadius="0,0,1,1" />
+                                    <Line Canvas.Top="11"
+                                          Stroke="{TemplateBinding GlyphBorderBrush}"
+                                          StrokeDashArray="1"
+                                          X1="23"
+                                          X2="1"
+                                          Y1="0.5"
+                                          Y2="0.5" />
+                                </Canvas>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="TargetDock"
+                     Value="SplitRight">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                <Canvas Width="24"
+                                        Height="24">
+                                    <Border Canvas.Right="0"
+                                            Width="12"
+                                            Height="24"
+                                            Background="{TemplateBinding GlyphBackground}"
+                                            BorderThickness="0,3,1,1" />
+                                    <Border Width="24"
+                                            Height="24"
+                                            BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                            BorderThickness="1,3,1,1"
+                                            CornerRadius="0,0,1,1" />
+                                    <Line Canvas.Left="12"
+                                          Stroke="{TemplateBinding GlyphBorderBrush}"
+                                          StrokeDashArray="1"
+                                          X1="0.5"
+                                          X2="0.5"
+                                          Y1="2"
+                                          Y2="23" />
+                                </Canvas>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="TargetDock"
+                     Value="SplitBottom">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                <Canvas Width="24"
+                                        Height="24">
+                                    <Border Canvas.Bottom="0"
+                                            Width="24"
+                                            Height="12"
+                                            Background="{TemplateBinding GlyphBackground}"
+                                            BorderThickness="1,0,1,1" />
+                                    <Border Width="24"
+                                            Height="24"
+                                            BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                            BorderThickness="1,3,1,1"
+                                            CornerRadius="0,0,1,1" />
+                                    <Line Canvas.Top="12"
+                                          Stroke="{TemplateBinding GlyphBorderBrush}"
+                                          StrokeDashArray="1"
+                                          X1="23"
+                                          X2="1"
+                                          Y1="0.5"
+                                          Y2="0.5" />
+                                </Canvas>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+
+            <Trigger Property="TargetDock"
+                     Value="DockLeft">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                <Canvas Width="24"
+                                        Height="24">
+                                    <Path Data="M22,8 L22,16 L18,12 Z"
+                                          Fill="{TemplateBinding GlyphArrowBrush}" />
+                                    <Border Canvas.Left="0"
+                                            Width="12"
+                                            Height="24"
+                                            Background="{TemplateBinding GlyphBackground}"
+                                            BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                            BorderThickness="1,3,1,1"
+                                            CornerRadius="0,0,1,1" />
+                                </Canvas>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="TargetDock"
+                     Value="DockTop">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                <Canvas Width="24"
+                                        Height="24">
+                                    <Path Data="M8,22 L16,22 L12,18 Z"
+                                          Fill="{TemplateBinding GlyphArrowBrush}" />
+                                    <Border Canvas.Top="0"
+                                            Width="24"
+                                            Height="12"
+                                            Background="{TemplateBinding GlyphBackground}"
+                                            BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                            BorderThickness="1,3,1,1"
+                                            CornerRadius="0,0,1,1" />
+                                </Canvas>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="TargetDock"
+                     Value="DockRight">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                <Canvas Width="24"
+                                        Height="24">
+                                    <Path Data="M2,8 L6,12 L2,16 Z"
+                                          Fill="{TemplateBinding GlyphArrowBrush}" />
+                                    <Border Canvas.Right="0"
+                                            Width="12"
+                                            Height="24"
+                                            Background="{TemplateBinding GlyphBackground}"
+                                            BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                            BorderThickness="1,3,1,1"
+                                            CornerRadius="0,0,1,1" />
+                                </Canvas>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="TargetDock"
+                     Value="DockBottom">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                <Canvas Width="24"
+                                        Height="24">
+                                    <Path Data="M8,2 L16,2 L12,6 Z"
+                                          Fill="{TemplateBinding GlyphArrowBrush}" />
+                                    <Border Canvas.Bottom="0"
+                                            Width="24"
+                                            Height="12"
+                                            Background="{TemplateBinding GlyphBackground}"
+                                            BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                            BorderThickness="1,3,1,1"
+                                            CornerRadius="0,0,1,1" />
+                                </Canvas>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TargetDock"
+                               Value="DockLeft" />
+                    <Condition Property="IsOuter"
+                               Value="true" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Height"
+                            Value="40" />
+                    <Setter Property="Width"
+                            Value="40" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                                <Border Background="{TemplateBinding OuterBackground}"
+                                        BorderBrush="{TemplateBinding OuterBorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                        UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                    <Border Margin="{TemplateBinding Padding}"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="{TemplateBinding CornerRadius}"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                            UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                        <Canvas Width="24"
+                                                Height="24">
+                                            <Path Data="M22,8 L22,16 L18,12 Z"
+                                                  Fill="{TemplateBinding GlyphArrowBrush}" />
+                                            <Border Canvas.Left="0"
+                                                    Width="12"
+                                                    Height="24"
+                                                    Background="{TemplateBinding GlyphBackground}"
+                                                    BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                                    BorderThickness="1,3,1,1"
+                                                    CornerRadius="0,0,1,1" />
+                                        </Canvas>
+                                    </Border>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TargetDock"
+                               Value="DockTop" />
+                    <Condition Property="IsOuter"
+                               Value="true" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Height"
+                            Value="40" />
+                    <Setter Property="Width"
+                            Value="40" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                                <Border Background="{TemplateBinding OuterBackground}"
+                                        BorderBrush="{TemplateBinding OuterBorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                        UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                    <Border Margin="{TemplateBinding Padding}"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="{TemplateBinding CornerRadius}"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                            UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                        <Canvas Width="24"
+                                                Height="24">
+                                            <Path Data="M8,22 L16,22 L12,18 Z"
+                                                  Fill="{TemplateBinding GlyphArrowBrush}" />
+                                            <Border Canvas.Top="0"
+                                                    Width="24"
+                                                    Height="12"
+                                                    Background="{TemplateBinding GlyphBackground}"
+                                                    BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                                    BorderThickness="1,3,1,1"
+                                                    CornerRadius="0,0,1,1" />
+                                        </Canvas>
+                                    </Border>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TargetDock"
+                               Value="DockRight" />
+                    <Condition Property="IsOuter"
+                               Value="true" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Height"
+                            Value="40" />
+                    <Setter Property="Width"
+                            Value="40" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                                <Border Background="{TemplateBinding OuterBackground}"
+                                        BorderBrush="{TemplateBinding OuterBorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                        UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                    <Border Margin="{TemplateBinding Padding}"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="{TemplateBinding CornerRadius}"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                            UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                        <Canvas Width="24"
+                                                Height="24">
+                                            <Path Data="M2,8 L6,12 L2,16 Z"
+                                                  Fill="{TemplateBinding GlyphArrowBrush}" />
+                                            <Border Canvas.Right="0"
+                                                    Width="12"
+                                                    Height="24"
+                                                    Background="{TemplateBinding GlyphBackground}"
+                                                    BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                                    BorderThickness="1,3,1,1"
+                                                    CornerRadius="0,0,1,1" />
+                                        </Canvas>
+                                    </Border>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TargetDock"
+                               Value="DockBottom" />
+                    <Condition Property="IsOuter"
+                               Value="true" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Height"
+                            Value="40" />
+                    <Setter Property="Width"
+                            Value="40" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
+                                <Border Background="{TemplateBinding OuterBackground}"
+                                        BorderBrush="{TemplateBinding OuterBorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                        UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                    <Border Margin="{TemplateBinding Padding}"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="{TemplateBinding CornerRadius}"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                            UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                                        <Canvas Width="24"
+                                                Height="24">
+                                            <Path Data="M8,2 L16,2 L12,6 Z"
+                                                  Fill="{TemplateBinding GlyphArrowBrush}" />
+                                            <Border Canvas.Bottom="0"
+                                                    Width="24"
+                                                    Height="12"
+                                                    Background="{TemplateBinding GlyphBackground}"
+                                                    BorderBrush="{TemplateBinding GlyphBorderBrush}"
+                                                    BorderThickness="1,3,1,1"
+                                                    CornerRadius="0,0,1,1" />
+                                        </Canvas>
+                                    </Border>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
