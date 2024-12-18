@@ -4,7 +4,6 @@
                     xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
                     xmlns:avalonDockConverters="clr-namespace:AvalonDock.Converters;assembly=AvalonDock"
                     xmlns:avalonDockProperties="clr-namespace:AvalonDock.Properties;assembly=AvalonDock"
-                    xmlns:avalonDock="clr-namespace:AvalonDock;assembly=AvalonDock"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=AvalonDock">
 
     <ResourceDictionary.MergedDictionaries>
@@ -12,180 +11,13 @@
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/Common.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/DockingManager.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/DockTargetButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/LayoutAnchorableControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/LayoutAnchorableTabItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/LayoutDocumentControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/LayoutDocumentTabItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/LayoutGridResizerControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/OverlayWindow.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
-    <Style TargetType="{x:Type avalonDockControls:LayoutDocumentControl}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutDocumentControl}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <ContentPresenter Content="{Binding LayoutItem.View, RelativeSource={RelativeSource TemplatedParent}}" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="{x:Type avalonDockControls:LayoutDocumentTabItem}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutDocumentTabItem}">
-                    <avalonDockControls:DropDownControlArea DropDownContextMenu="{Binding Root.Manager.DocumentContextMenu}"
-                                                            DropDownContextMenuDataContext="{Binding LayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Border Grid.ColumnSpan="3"
-                                        Background="Transparent" />
-                                <ContentPresenter Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
-                                                  ContentTemplate="{Binding DocumentHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
-                                                  ContentTemplateSelector="{Binding DocumentHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
-
-                                <Button x:Name="DocumentCloseButton"
-                                        Padding="2"
-                                        Grid.Column="2"
-                                        Command="{Binding Path=LayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
-                                        ToolTip="{x:Static avalonDockProperties:Resources.Document_Close}"
-                                        Visibility="Hidden">
-                                    <ui:SymbolIcon Symbol="Dismiss12" />
-                                </Button>
-                            </Grid>
-                        </Border>
-                    </avalonDockControls:DropDownControlArea>
-                    <ControlTemplate.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=IsSelected}"
-                                           Value="True" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter TargetName="DocumentCloseButton"
-                                    Property="Visibility"
-                                    Value="Visible" />
-                        </MultiDataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource TemplatedParent}}"
-                                           Value="True" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter TargetName="DocumentCloseButton"
-                                    Property="Visibility"
-                                    Value="Visible" />
-                        </MultiDataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=CanClose}"
-                                           Value="false" />
-                                <Condition Binding="{Binding Path=CanHide}"
-                                           Value="true" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter TargetName="DocumentCloseButton"
-                                    Property="Command"
-                                    Value="{Binding Path=LayoutItem.HideCommand, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="DocumentCloseButton"
-                                    Property="ToolTip"
-                                    Value="{x:Static avalonDockProperties:Resources.Anchorable_Hide}" />
-                        </MultiDataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=CanClose}"
-                                           Value="false" />
-                                <Condition Binding="{Binding Path=CanHide}"
-                                           Value="false" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter TargetName="DocumentCloseButton"
-                                    Property="Visibility"
-                                    Value="Collapsed" />
-                        </MultiDataTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="{x:Type avalonDockControls:LayoutAnchorableTabItem}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorableTabItem}">
-                    <avalonDockControls:DropDownControlArea DropDownContextMenu="{Binding Root.Manager.AnchorableContextMenu}"
-                                                            DropDownContextMenuDataContext="{Binding LayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid>
-                                <ContentPresenter Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
-                                                  ContentTemplate="{Binding AnchorableHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
-                                                  ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
-                                <avalonDockControls:DropDownControlArea Grid.Column="0"
-                                                                        DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
-                                                                        DropDownContextMenuDataContext="{Binding Path=Model, RelativeSource={RelativeSource TemplatedParent}}" />
-                            </Grid>
-                        </Border>
-                    </avalonDockControls:DropDownControlArea>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="{x:Type avalonDockControls:LayoutAnchorableControl}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorableControl}">
-                    <Border VerticalAlignment="Stretch"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            KeyboardNavigation.TabNavigation="Cycle">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Border x:Name="Header">
-                                <avalonDockControls:AnchorablePaneTitle Model="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}" />
-                            </Border>
-
-                            <ContentPresenter Grid.Row="1"
-                                              Content="{Binding LayoutItem.View, RelativeSource={RelativeSource TemplatedParent}}"
-                                              ContentTemplate="{Binding LayoutItem.View.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
-                                              ContentTemplateSelector="{Binding LayoutItem.View.ContentTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
-                                              FlowDirection="{TemplateBinding FlowDirection}" />
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.IsFloating}"
-                                           Value="True" />
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.Parent.IsDirectlyHostedInFloatingWindow}"
-                                           Value="True" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter TargetName="Header"
-                                    Property="Visibility"
-                                    Value="Collapsed" />
-                        </MultiDataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model}"
-                                           Value="{x:Null}" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter TargetName="Header"
-                                    Property="Visibility"
-                                    Value="Collapsed" />
-                        </MultiDataTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 
     <Style x:Key="{x:Type avalonDockControls:LayoutDocumentFloatingWindowControl}"
            TargetType="{x:Type avalonDockControls:LayoutDocumentFloatingWindowControl}">
