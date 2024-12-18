@@ -16,7 +16,7 @@ xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WP
 ## Screenshots
 | Light | Dark |
 | ----- | ---- |
-| ![image](https://github.com/qian-o/AvalonDock.Themes.WPFUI/blob/master/Screenshots/1L.png) | ![image](https://github.com/qian-o/AvalonDock.Themes.WPFUI/blob/master/Screenshots/1D.png) |
-| ![image](https://github.com/qian-o/AvalonDock.Themes.WPFUI/blob/master/Screenshots/2L.png) | ![image](https://github.com/qian-o/AvalonDock.Themes.WPFUI/blob/master/Screenshots/2D.png) |
-| ![image](https://github.com/qian-o/AvalonDock.Themes.WPFUI/blob/master/Screenshots/3L.png) | ![image](https://github.com/qian-o/AvalonDock.Themes.WPFUI/blob/master/Screenshots/3D.png) |
-| ![image](https://github.com/qian-o/AvalonDock.Themes.WPFUI/blob/master/Screenshots/4L.png) | ![image](https://github.com/qian-o/AvalonDock.Themes.WPFUI/blob/master/Screenshots/4D.png) |
+| ![image](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/1L.png) | ![image](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/1D.png) |
+| ![image](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/2L.png) | ![image](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/2D.png) |
+| ![image](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/3L.png) | ![image](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/3D.png) |
+| ![image](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/4L.png) | ![image](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/4D.png) |

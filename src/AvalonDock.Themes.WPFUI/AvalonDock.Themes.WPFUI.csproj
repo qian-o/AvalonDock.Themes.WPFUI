@@ -18,6 +18,7 @@
 		<PackageProjectUrl>https://github.com/qian-o/AvalonDock.Themes.WPFUI</PackageProjectUrl>
 		<PackageTags>AvalonDock;WPFUI</PackageTags>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -27,6 +28,13 @@
 
 	<ItemGroup>
 		<None Include="..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
