@@ -31,8 +31,7 @@
                 <Grid Margin="0,0,20,0">
                     <ui:ToggleSwitch IsChecked="{Binding IsLightTheme}"
                                      OnContent="Light"
-                                     OffContent="Dark">
-                    </ui:ToggleSwitch>
+                                     OffContent="Dark" />
                 </Grid>
             </ui:TitleBar.Header>
         </ui:TitleBar>
