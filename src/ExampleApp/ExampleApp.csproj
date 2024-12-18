@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\AvalonDock.Themes.WPFUI\AvalonDock.Themes.WPFUI.csproj" />
+		<ProjectReference Include="..\AvalonDock.Themes.WPFUI\AvalonDock.Themes.WPFUI.csproj" />
 	</ItemGroup>
 
 </Project>
