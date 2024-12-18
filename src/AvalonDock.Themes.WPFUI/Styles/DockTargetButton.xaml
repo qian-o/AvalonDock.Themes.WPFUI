@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:AvalonDock.Themes.WPFUI.Controls">
+
     <Style TargetType="{x:Type controls:DockTargetButton}">
         <Style.Resources>
             <Style TargetType="Canvas">
@@ -57,17 +58,17 @@
         <Setter Property="Background"
                 Value="{DynamicResource AccentAcrylicBackgroundFillColorBaseBrush}" />
         <Setter Property="BorderBrush"
-                Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+                Value="{DynamicResource CardStrokeColorDefaultBrush}" />
         <Setter Property="GlyphBackground"
-                Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+                Value="{DynamicResource AccentFillColorDefaultBrush}" />
         <Setter Property="GlyphBorderBrush"
-                Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+                Value="{DynamicResource CardStrokeColorDefaultBrush}" />
         <Setter Property="GlyphArrowBrush"
-                Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+                Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
         <Setter Property="OuterBackground"
-                Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+                Value="{DynamicResource AccentAcrylicBackgroundFillColorBaseBrush}" />
         <Setter Property="OuterBorderBrush"
-                Value="{DynamicResource FocusStrokeColorOuterBrush}" />
+                Value="{DynamicResource CardStrokeColorDefaultBrush}" />
 
         <Style.Triggers>
             <Trigger Property="IsTargeted"
@@ -76,6 +77,7 @@
                         Value="1" />
             </Trigger>
 
+            <!--Center-->
             <Trigger Property="TargetDock"
                      Value="Center">
                 <Setter Property="Template">
@@ -101,6 +103,8 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+
+            <!--SplitLeft-->
             <Trigger Property="TargetDock"
                      Value="SplitLeft">
                 <Setter Property="Template">
@@ -137,6 +141,8 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+
+            <!--SplitTop-->
             <Trigger Property="TargetDock"
                      Value="SplitTop">
                 <Setter Property="Template">
@@ -173,6 +179,8 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+
+            <!--SplitRight-->
             <Trigger Property="TargetDock"
                      Value="SplitRight">
                 <Setter Property="Template">
@@ -209,6 +217,8 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+
+            <!--SplitBottom-->
             <Trigger Property="TargetDock"
                      Value="SplitBottom">
                 <Setter Property="Template">
@@ -246,6 +256,7 @@
                 </Setter>
             </Trigger>
 
+            <!--DockLeft-->
             <Trigger Property="TargetDock"
                      Value="DockLeft">
                 <Setter Property="Template">
@@ -274,6 +285,8 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+
+            <!--DockTop-->
             <Trigger Property="TargetDock"
                      Value="DockTop">
                 <Setter Property="Template">
@@ -302,6 +315,8 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+
+            <!--DockRight-->
             <Trigger Property="TargetDock"
                      Value="DockRight">
                 <Setter Property="Template">
@@ -330,6 +345,8 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+
+            <!--DockBottom-->
             <Trigger Property="TargetDock"
                      Value="DockBottom">
                 <Setter Property="Template">
@@ -366,6 +383,7 @@
                     <Condition Property="IsOuter"
                                Value="true" />
                 </MultiTrigger.Conditions>
+
                 <MultiTrigger.Setters>
                     <Setter Property="Height"
                             Value="40" />
@@ -406,6 +424,7 @@
                     </Setter>
                 </MultiTrigger.Setters>
             </MultiTrigger>
+
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="TargetDock"
@@ -413,6 +432,7 @@
                     <Condition Property="IsOuter"
                                Value="true" />
                 </MultiTrigger.Conditions>
+
                 <MultiTrigger.Setters>
                     <Setter Property="Height"
                             Value="40" />
@@ -453,6 +473,7 @@
                     </Setter>
                 </MultiTrigger.Setters>
             </MultiTrigger>
+
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="TargetDock"
@@ -460,6 +481,7 @@
                     <Condition Property="IsOuter"
                                Value="true" />
                 </MultiTrigger.Conditions>
+
                 <MultiTrigger.Setters>
                     <Setter Property="Height"
                             Value="40" />
@@ -500,6 +522,7 @@
                     </Setter>
                 </MultiTrigger.Setters>
             </MultiTrigger>
+
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="TargetDock"
@@ -507,6 +530,7 @@
                     <Condition Property="IsOuter"
                                Value="true" />
                 </MultiTrigger.Conditions>
+
                 <MultiTrigger.Setters>
                     <Setter Property="Height"
                             Value="40" />
@@ -549,4 +573,5 @@
             </MultiTrigger>
         </Style.Triggers>
     </Style>
+
 </ResourceDictionary>
