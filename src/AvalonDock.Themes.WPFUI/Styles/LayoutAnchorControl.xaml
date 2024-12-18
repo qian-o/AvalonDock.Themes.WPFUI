@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
+                    xmlns:avalonDock="clr-namespace:AvalonDock;assembly=AvalonDock">
+
+    <ControlTemplate x:Key="AnchorTemplate"
+                     TargetType="{x:Type avalonDockControls:LayoutAnchorControl}">
+        <ui:Card Margin="2"
+                 Padding="6">
+            <ContentPresenter Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
+                              ContentTemplate="{Binding AnchorableHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
+                              ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
+        </ui:Card>
+    </ControlTemplate>
+
+</ResourceDictionary>

@@ -1,0 +1,257 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
+                    xmlns:controls="clr-namespace:AvalonDock.Themes.WPFUI.Controls">
+
+    <Style x:Key="{x:Type avalonDockControls:OverlayWindow}"
+           TargetType="{x:Type avalonDockControls:OverlayWindow}">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type avalonDockControls:OverlayWindow}">
+                    <Canvas x:Name="PART_DropTargetsContainer"
+                            Opacity="0.9">
+                        <Path x:Name="PART_PreviewBox"
+                              Fill="{DynamicResource AccentFillColorDefaultBrush}"
+                              Stroke="{DynamicResource CardStrokeColorDefaultBrush}"
+                              StrokeThickness="5"
+                              UseLayoutRounding="true" />
+
+                        <Grid x:Name="PART_DockingManagerDropTargets">
+                            <controls:DockTargetButton x:Name="PART_DockingManagerDropTargetLeft"
+                                                       HorizontalAlignment="Left"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalContentAlignment="Stretch"
+                                                       VerticalContentAlignment="Stretch"
+                                                       IsOuter="true"
+                                                       TargetDock="DockLeft" />
+
+                            <controls:DockTargetButton x:Name="PART_DockingManagerDropTargetRight"
+                                                       HorizontalAlignment="Right"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalContentAlignment="Stretch"
+                                                       VerticalContentAlignment="Stretch"
+                                                       IsOuter="true"
+                                                       TargetDock="DockRight" />
+
+                            <controls:DockTargetButton x:Name="PART_DockingManagerDropTargetBottom"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Bottom"
+                                                       HorizontalContentAlignment="Stretch"
+                                                       VerticalContentAlignment="Stretch"
+                                                       IsOuter="true"
+                                                       TargetDock="DockBottom" />
+
+                            <controls:DockTargetButton x:Name="PART_DockingManagerDropTargetTop"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Top"
+                                                       HorizontalContentAlignment="Stretch"
+                                                       VerticalContentAlignment="Stretch"
+                                                       IsOuter="true"
+                                                       TargetDock="DockTop" />
+                        </Grid>
+                        <Grid x:Name="PART_AnchorablePaneDropTargets">
+                            <Path Height="112"
+                                  Data="{DynamicResource Path_DockPaneEmpty}"
+                                  Fill="{DynamicResource ControlFillColorDefaultBrush}"
+                                  Stretch="Uniform"
+                                  Stroke="{DynamicResource CardStrokeColorDefaultBrush}"
+                                  StrokeThickness="1" />
+                            <Grid HorizontalAlignment="Center"
+                                  VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <controls:DockTargetButton x:Name="PART_AnchorablePaneDropTargetTop"
+                                                           Grid.Row="0"
+                                                           Grid.Column="1"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="DockTop" />
+
+                                <controls:DockTargetButton x:Name="PART_AnchorablePaneDropTargetRight"
+                                                           Grid.Row="1"
+                                                           Grid.Column="2"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="DockRight" />
+
+                                <controls:DockTargetButton x:Name="PART_AnchorablePaneDropTargetBottom"
+                                                           Grid.Row="2"
+                                                           Grid.Column="1"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="DockBottom" />
+
+                                <controls:DockTargetButton x:Name="PART_AnchorablePaneDropTargetLeft"
+                                                           Grid.Row="1"
+                                                           Grid.Column="0"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="DockLeft" />
+
+                                <controls:DockTargetButton x:Name="PART_AnchorablePaneDropTargetInto"
+                                                           Grid.Row="1"
+                                                           Grid.Column="1"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="Center" />
+                            </Grid>
+                        </Grid>
+                        <Grid x:Name="PART_DocumentPaneDropTargets">
+                            <Path Height="112"
+                                  Data="{DynamicResource Path_DockPaneEmpty}"
+                                  Fill="{DynamicResource ControlFillColorDefaultBrush}"
+                                  Stretch="Uniform"
+                                  Stroke="{DynamicResource CardStrokeColorDefaultBrush}"
+                                  StrokeThickness="1" />
+                            <Grid HorizontalAlignment="Center"
+                                  VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetTop"
+                                                           Grid.Row="0"
+                                                           Grid.Column="1"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="SplitTop" />
+
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetRight"
+                                                           Grid.Row="1"
+                                                           Grid.Column="2"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="SplitRight" />
+
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetBottom"
+                                                           Grid.Row="2"
+                                                           Grid.Column="1"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="SplitBottom" />
+
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetLeft"
+                                                           Grid.Row="1"
+                                                           Grid.Column="0"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="SplitLeft" />
+
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetInto"
+                                                           Grid.Row="1"
+                                                           Grid.Column="1"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="Center" />
+                            </Grid>
+                        </Grid>
+                        <Grid x:Name="PART_DocumentPaneFullDropTargets">
+                            <Path Width="184"
+                                  Data="{DynamicResource Path_DockPaneLargeEmpty}"
+                                  Fill="{DynamicResource ControlFillColorDefaultBrush}"
+                                  Stretch="Uniform"
+                                  Stroke="{DynamicResource CardStrokeColorDefaultBrush}"
+                                  StrokeThickness="1" />
+                            <Grid HorizontalAlignment="Center"
+                                  VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneFullDropTargetTop"
+                                                           Grid.Row="1"
+                                                           Grid.Column="2"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="SplitTop" />
+
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneFullDropTargetRight"
+                                                           Grid.Row="2"
+                                                           Grid.Column="3"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="SplitRight" />
+
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneFullDropTargetBottom"
+                                                           Grid.Row="3"
+                                                           Grid.Column="2"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="SplitBottom" />
+
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneFullDropTargetLeft"
+                                                           Grid.Row="2"
+                                                           Grid.Column="1"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="SplitLeft" />
+
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneFullDropTargetInto"
+                                                           Grid.Row="2"
+                                                           Grid.Column="2"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="Center" />
+
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetTopAsAnchorablePane"
+                                                           Grid.Row="0"
+                                                           Grid.Column="2"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="DockTop" />
+
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetRightAsAnchorablePane"
+                                                           Grid.Row="2"
+                                                           Grid.Column="4"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="DockRight" />
+
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetBottomAsAnchorablePane"
+                                                           Grid.Row="4"
+                                                           Grid.Column="2"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="DockBottom" />
+
+                                <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetLeftAsAnchorablePane"
+                                                           Grid.Row="2"
+                                                           Grid.Column="0"
+                                                           HorizontalContentAlignment="Stretch"
+                                                           VerticalContentAlignment="Stretch"
+                                                           TargetDock="DockLeft" />
+                            </Grid>
+                        </Grid>
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
