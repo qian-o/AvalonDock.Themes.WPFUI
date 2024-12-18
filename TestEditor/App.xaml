@@ -6,7 +6,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Wpf.Ui;component/Resources/Wpf.Ui.xaml" />
                 <ui:ThemesDictionary Theme="Unknown" />
                 <ui:ControlsDictionary />
             </ResourceDictionary.MergedDictionaries>
