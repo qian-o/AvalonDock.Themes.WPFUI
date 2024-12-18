@@ -1,7 +1,8 @@
 ﻿using System.Windows;
 
-namespace TestEditor;
+namespace ExampleApp;
 
 public partial class App : Application
 {
 }
+

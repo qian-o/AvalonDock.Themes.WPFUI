@@ -1,4 +1,4 @@
-﻿<ui:FluentWindow x:Class="TestEditor.MainWindow"
+﻿<ui:FluentWindow x:Class="ExampleApp.MainWindow"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,13 +6,13 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WPFUI"
                  mc:Ignorable="d"
-                 Title="MainWindow"
-                 Height="450"
-                 Width="800"
                  ExtendsContentIntoTitleBar="True"
                  WindowBackdropType="Mica"
                  WindowCornerPreference="Round"
-                 WindowStartupLocation="CenterScreen">
+                 WindowStartupLocation="CenterScreen"
+                 Title="MainWindow"
+                 Height="450"
+                 Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -20,9 +20,9 @@
         </Grid.RowDefinitions>
 
         <ui:TitleBar Grid.Row="0"
-                     Title="Test Editor">
+                     Title="Example App">
             <ui:TitleBar.Header>
-                <ui:ToggleSwitch Click="ToggleSwitch_Click" />
+                <ui:ToggleSwitch />
             </ui:TitleBar.Header>
         </ui:TitleBar>
 
@@ -30,17 +30,19 @@
             <DockingManager.Theme>
                 <wpfui:WPFUITheme />
             </DockingManager.Theme>
-            
+
             <LayoutRoot>
                 <LayoutRoot.LeftSide>
                     <LayoutAnchorSide>
                         <LayoutAnchorGroup>
-                            <LayoutAnchorable Title="工具箱"
-                                              AutoHideMinWidth="400">
-                                123
+                            <LayoutAnchorable Title="Toolbox"
+                                              AutoHideMinWidth="200">
+                                Toolbox
                             </LayoutAnchorable>
-                            <LayoutAnchorable Title="属性"
-                                              AutoHideMinWidth="400" />
+                            <LayoutAnchorable Title="Properties"
+                                              AutoHideMinWidth="200">
+                                Properties
+                            </LayoutAnchorable>
                         </LayoutAnchorGroup>
                     </LayoutAnchorSide>
                 </LayoutRoot.LeftSide>
@@ -48,10 +50,14 @@
                 <LayoutRoot.BottomSide>
                     <LayoutAnchorSide>
                         <LayoutAnchorGroup>
-                            <LayoutAnchorable Title="输出"
-                                              AutoHideMinHeight="300" />
-                            <LayoutAnchorable Title="错误列表"
-                                              AutoHideMinHeight="300" />
+                            <LayoutAnchorable Title="Output"
+                                              AutoHideMinHeight="300">
+                                Output
+                            </LayoutAnchorable>
+                            <LayoutAnchorable Title="Errors"
+                                              AutoHideMinHeight="300">
+                                Errors
+                            </LayoutAnchorable>
                         </LayoutAnchorGroup>
                     </LayoutAnchorSide>
                 </LayoutRoot.BottomSide>
@@ -60,19 +66,23 @@
                     <LayoutDocumentPaneGroup>
                         <LayoutDocumentPane>
                             <LayoutDocument Title="Document 1">
-                                123123
+                                Document 1
                             </LayoutDocument>
-                            <LayoutDocument Title="Document 2" />
+                            <LayoutDocument Title="Document 2">
+                                Document 2
+                            </LayoutDocument>
                         </LayoutDocumentPane>
                     </LayoutDocumentPaneGroup>
 
                     <LayoutAnchorablePaneGroup DockWidth="400"
                                                DockMinWidth="100">
                         <LayoutAnchorablePane>
-                            <LayoutAnchorable Title="解决方案">
-                                123123
+                            <LayoutAnchorable Title="Solution Explorer">
+                                Solution Explorer
                             </LayoutAnchorable>
-                            <LayoutAnchorable Title="Git 更改" />
+                            <LayoutAnchorable Title="Git">
+                                Git
+                            </LayoutAnchorable>
                         </LayoutAnchorablePane>
                     </LayoutAnchorablePaneGroup>
                 </LayoutPanel>
