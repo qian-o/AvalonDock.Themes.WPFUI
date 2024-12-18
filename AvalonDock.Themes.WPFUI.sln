@@ -2,9 +2,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvalonDock.Themes.WPFUI", "AvalonDock.Themes.WPFUI\AvalonDock.Themes.WPFUI.csproj", "{626260DA-4753-45F0-93AC-22CC99BBFF26}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2F3F2EF1-A710-4940-A931-C9B13511F41E}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{748FA7B8-EFC9-43F7-8AC3-7D5E98559A1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvalonDock.Themes.WPFUI", "src\AvalonDock.Themes.WPFUI\AvalonDock.Themes.WPFUI.csproj", "{E5EC5876-F28A-4787-842B-B1129BCEACC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{6C912352-3C6E-4495-8FF4-EAD8760DE298}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "src\Examples\ExampleApp\ExampleApp.csproj", "{92D2F0F5-9F7E-4037-965A-D901D589BF66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,16 +21,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{626260DA-4753-45F0-93AC-22CC99BBFF26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{626260DA-4753-45F0-93AC-22CC99BBFF26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{626260DA-4753-45F0-93AC-22CC99BBFF26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{626260DA-4753-45F0-93AC-22CC99BBFF26}.Release|Any CPU.Build.0 = Release|Any CPU
-		{748FA7B8-EFC9-43F7-8AC3-7D5E98559A1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{748FA7B8-EFC9-43F7-8AC3-7D5E98559A1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{748FA7B8-EFC9-43F7-8AC3-7D5E98559A1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{748FA7B8-EFC9-43F7-8AC3-7D5E98559A1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5EC5876-F28A-4787-842B-B1129BCEACC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5EC5876-F28A-4787-842B-B1129BCEACC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5EC5876-F28A-4787-842B-B1129BCEACC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5EC5876-F28A-4787-842B-B1129BCEACC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92D2F0F5-9F7E-4037-965A-D901D589BF66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92D2F0F5-9F7E-4037-965A-D901D589BF66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92D2F0F5-9F7E-4037-965A-D901D589BF66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92D2F0F5-9F7E-4037-965A-D901D589BF66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{92D2F0F5-9F7E-4037-965A-D901D589BF66} = {6C912352-3C6E-4495-8FF4-EAD8760DE298}
 	EndGlobalSection
 EndGlobal
