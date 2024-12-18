@@ -1,6 +1,13 @@
 # AvalonDock.Themes.WPFUI
 
+[![NuGet Version](https://img.shields.io/nuget/v/AvalonDock.Themes.WPFUI)](https://nuget.org/packages/AvalonDock.Themes.WPFUI)
+
 AvalonDock.Themes.WPFUI is a theme library for AvalonDock based on [WPF-UI](https://github.com/lepoco/wpfui).
+
+## Installation
+```bash
+dotnet add package AvalonDock.Themes.WPFUI
+```
 
 ## Usage
 ```xaml
