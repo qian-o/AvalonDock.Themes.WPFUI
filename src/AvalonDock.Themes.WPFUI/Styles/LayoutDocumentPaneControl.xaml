@@ -67,7 +67,6 @@
                                     </ui:SymbolIcon.RenderTransformOrigin>
                                 </ui:SymbolIcon>
                             </avalonDockControls:DropDownButton>
-
                         </Grid>
                         <ui:Card x:Name="ContentPanel"
                                  Grid.Row="1"
