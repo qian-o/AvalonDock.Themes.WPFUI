@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 
-namespace ExampleApp;
-
-public partial class App : Application
+namespace ExampleApp
 {
+    public partial class App : Application
+    {
+    }
 }
-

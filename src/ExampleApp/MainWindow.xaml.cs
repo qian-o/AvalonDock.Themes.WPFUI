@@ -1,14 +1,15 @@
 ﻿using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
-namespace ExampleApp;
-
-public partial class MainWindow : FluentWindow
+namespace ExampleApp
 {
-    public MainWindow()
+    public partial class MainWindow : FluentWindow
     {
-        InitializeComponent();
+        public MainWindow()
+        {
+            InitializeComponent();
 
-        SystemThemeWatcher.Watch(this);
+            SystemThemeWatcher.Watch(this);
+        }
     }
 }

@@ -1,15 +1,24 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Wpf.Ui.Appearance;
 
-namespace ExampleApp;
-
-public partial class MainViewModel : ObservableRecipient
+namespace ExampleApp
 {
-    [ObservableProperty]
-    private bool isLightTheme = true;
-
-    partial void OnIsLightThemeChanged(bool value)
+    public class MainViewModel : ObservableRecipient
     {
-        ApplicationThemeManager.Apply(value ? ApplicationTheme.Light : ApplicationTheme.Dark);
+        private bool isLightTheme = true;
+
+        public bool IsLightTheme
+        {
+            get => isLightTheme;
+            set
+            {
+                if (IsLightTheme != value)
+                {
+                    SetProperty(ref isLightTheme, value);
+
+                    ApplicationThemeManager.Apply(value ? ApplicationTheme.Light : ApplicationTheme.Dark);
+                }
+            }
+        }
     }
 }
