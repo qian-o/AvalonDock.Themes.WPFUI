@@ -1,22 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0-windows</TargetFramework>
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
+		<TargetFrameworks>net462;net472;net481;net6.0-windows;net8.0-windows;net9.0-windows</TargetFrameworks>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Title>$(AssemblyName)</Title>
 		<Version>1.0.1</Version>
 		<Authors>qian-o</Authors>
 		<Copyright>MIT</Copyright>
+		<PackageTags>AvalonDock;WPFUI</PackageTags>
 		<Description>Based on WPFUI theme library for AvalonDock.</Description>
 		<RepositoryUrl>https://github.com/qian-o/AvalonDock.Themes.WPFUI</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/qian-o/AvalonDock.Themes.WPFUI</PackageProjectUrl>
-		<PackageTags>AvalonDock;WPFUI</PackageTags>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
