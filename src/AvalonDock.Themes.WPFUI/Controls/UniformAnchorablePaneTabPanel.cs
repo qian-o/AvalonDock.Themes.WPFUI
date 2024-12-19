@@ -21,7 +21,7 @@ namespace AvalonDock.Themes.WPFUI.Controls
 
             double enumerableWidth = width / enumerable.Length;
 
-            foreach (var item in enumerable)
+            foreach (UIElement item in enumerable)
             {
                 item.Measure(new Size(enumerableWidth, height));
 
@@ -45,7 +45,7 @@ namespace AvalonDock.Themes.WPFUI.Controls
 
             double offset = 0.0;
 
-            foreach (var item in enumerable)
+            foreach (UIElement item in enumerable)
             {
                 item.Arrange(new Rect(offset, 0.0, enumerableWidth, finalSize.Height));
 
