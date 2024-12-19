@@ -216,7 +216,6 @@ namespace AvalonDock.Themes.WPFUI.Controls
                                          item.RenderSize.Height + 2);
 #endif
 
-
                     Point point = item.PointFromScreen(GetMousePosition());
 
                     if (rect.Contains(point))
