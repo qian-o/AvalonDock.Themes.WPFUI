@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock">
+                    xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
+                    xmlns:converters="clr-namespace:AvalonDock.Themes.WPFUI.Converters">
 
     <Style TargetType="{x:Type avalonDockControls:LayoutAutoHideWindowControl}">
         <Setter Property="Background"
@@ -16,7 +17,8 @@
                                                      BorderBrush="{DynamicResource AccentFillColorDefaultBrush}"
                                                      BorderThickness="3"
                                                      TextElement.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                                     KeyboardNavigation.TabNavigation="Cycle">
+                                                     KeyboardNavigation.TabNavigation="Cycle"
+                                                     RenderTransform="{Binding Model, RelativeSource={RelativeSource TemplatedParent}, Converter={converters:ModelToTransformConverter}}">
                                     <Grid Margin="8,4,8,4">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />

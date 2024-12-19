@@ -39,9 +39,9 @@
         <Setter Property="IconContentTemplate"
                 Value="{StaticResource IconContentTemplate}" />
         <Setter Property="GridSplitterWidth"
-                Value="2" />
+                Value="6" />
         <Setter Property="GridSplitterHeight"
-                Value="2" />
+                Value="6" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDock:DockingManager}">

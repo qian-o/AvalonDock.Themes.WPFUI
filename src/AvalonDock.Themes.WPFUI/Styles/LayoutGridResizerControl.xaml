@@ -4,7 +4,7 @@
 
     <Style TargetType="{x:Type avalonDockControls:LayoutGridResizerControl}">
         <Setter Property="Background"
-                Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutGridResizerControl}">

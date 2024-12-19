@@ -47,11 +47,11 @@
                         <LayoutAnchorGroup>
                             <LayoutAnchorable Title="Toolbox"
                                               AutoHideMinWidth="200">
-                                Toolbox
+                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
                             </LayoutAnchorable>
                             <LayoutAnchorable Title="Properties"
                                               AutoHideMinWidth="200">
-                                Properties
+                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
                             </LayoutAnchorable>
                         </LayoutAnchorGroup>
                     </LayoutAnchorSide>
@@ -62,11 +62,11 @@
                         <LayoutAnchorGroup>
                             <LayoutAnchorable Title="Output"
                                               AutoHideMinHeight="300">
-                                Output
+                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
                             </LayoutAnchorable>
                             <LayoutAnchorable Title="Errors"
                                               AutoHideMinHeight="300">
-                                Errors
+                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
                             </LayoutAnchorable>
                         </LayoutAnchorGroup>
                     </LayoutAnchorSide>
@@ -76,10 +76,10 @@
                     <LayoutDocumentPaneGroup>
                         <LayoutDocumentPane>
                             <LayoutDocument Title="Document 1">
-                                Document 1
+                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
                             </LayoutDocument>
                             <LayoutDocument Title="Document 2">
-                                Document 2
+                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
                             </LayoutDocument>
                         </LayoutDocumentPane>
                     </LayoutDocumentPaneGroup>
@@ -88,10 +88,10 @@
                                                DockMinWidth="100">
                         <LayoutAnchorablePane>
                             <LayoutAnchorable Title="Solution Explorer">
-                                Solution Explorer
+                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
                             </LayoutAnchorable>
                             <LayoutAnchorable Title="Git">
-                                Git
+                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
                             </LayoutAnchorable>
                         </LayoutAnchorablePane>
                     </LayoutAnchorablePaneGroup>

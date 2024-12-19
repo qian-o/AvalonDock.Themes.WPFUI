@@ -30,7 +30,7 @@ namespace AvalonDock.Themes.WPFUI.Controls
             public int Y;
         }
 
-#if NET7_0_OR_GREATER
+#if NET8_0_OR_GREATER
         [LibraryImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static partial bool GetCursorPos(out PointI lpPoint);
@@ -49,9 +49,9 @@ namespace AvalonDock.Themes.WPFUI.Controls
         public static readonly DependencyProperty IsTargetedProperty;
         public static readonly DependencyProperty IsOuterProperty;
 
-#if NET7_0_OR_GREATER
+#if NET8_0_OR_GREATER
         private static readonly List<DockTargetButton> dockTargets = [];
-#elif NET5_0_OR_GREATER
+#elif NET6_0_OR_GREATER
         private static readonly List<DockTargetButton> dockTargets = new();
 #else
         private static readonly List<DockTargetButton> dockTargets = new List<DockTargetButton>();
