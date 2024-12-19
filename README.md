@@ -48,6 +48,12 @@ xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WP
 - [AakStudio.Shell.UI.Themes.AvalonDock](https://github.com/Wenveo/AakStudio.Shell.UI.Themes.AvalonDock)
 
 ## Version History
+- 1.0.3
+  - Ajust the layout of TabHeader in LayoutAnchorablePaneControl.
+  - Simplify the style dictionary of TabHeader.
+  - Complete the menu style of DocumentPane.
+  - Fix some style issues.
+
 - 1.0.2
   - Add more framework support.
 

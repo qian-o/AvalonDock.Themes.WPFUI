@@ -14,35 +14,32 @@ namespace AvalonDock.Themes.WPFUI.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is LayoutAnchorable layoutAnchorable)
+            if (value is LayoutAnchorable layoutAnchorable && layoutAnchorable.FindParent<LayoutAnchorSide>() is LayoutAnchorSide layoutAnchorSide)
             {
-                if (layoutAnchorable.FindParent<LayoutAnchorSide>() is LayoutAnchorSide layoutAnchorSide)
+                DockingManager manager = layoutAnchorable.Root.Manager;
+
+                double x = 0.0;
+                double y = 0.0;
+
+                switch (layoutAnchorSide.Side)
                 {
-                    DockingManager manager = layoutAnchorable.Root.Manager;
-
-                    double x = 0.0;
-                    double y = 0.0;
-
-                    switch (layoutAnchorSide.Side)
-                    {
-                        case AnchorSide.Left:
-                            x += manager.GridSplitterWidth / 2;
-                            break;
-                        case AnchorSide.Top:
-                            y += manager.GridSplitterHeight / 2;
-                            break;
-                        case AnchorSide.Right:
-                            x -= manager.GridSplitterWidth / 2;
-                            break;
-                        case AnchorSide.Bottom:
-                            y -= manager.GridSplitterHeight / 2;
-                            break;
-                        default:
-                            break;
-                    }
-
-                    return new TranslateTransform(x, y);
+                    case AnchorSide.Left:
+                        x += manager.GridSplitterWidth / 2;
+                        break;
+                    case AnchorSide.Top:
+                        y += manager.GridSplitterHeight / 2;
+                        break;
+                    case AnchorSide.Right:
+                        x -= manager.GridSplitterWidth / 2;
+                        break;
+                    case AnchorSide.Bottom:
+                        y -= manager.GridSplitterHeight / 2;
+                        break;
+                    default:
+                        break;
                 }
+
+                return new TranslateTransform(x, y);
             }
 
             return Transform.Identity;
