@@ -150,7 +150,7 @@
                                     <Trigger Property="IsSelected"
                                              Value="True">
                                         <Setter Property="Panel.ZIndex"
-                                                Value="100" />
+                                                Value="1" />
                                         <Setter TargetName="Border"
                                                 Property="Background"
                                                 Value="{DynamicResource TabViewItemHeaderBackgroundSelected}" />

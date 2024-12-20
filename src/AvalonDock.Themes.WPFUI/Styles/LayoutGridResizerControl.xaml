@@ -5,6 +5,8 @@
     <Style TargetType="{x:Type avalonDockControls:LayoutGridResizerControl}">
         <Setter Property="Background"
                 Value="Transparent" />
+        <Setter Property="Panel.ZIndex"
+                Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutGridResizerControl}">
