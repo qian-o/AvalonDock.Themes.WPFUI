@@ -19,7 +19,8 @@ xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         <ResourceDictionary.MergedDictionaries>
             <ui:ThemesDictionary Theme="Unknown" />
             <ui:ControlsDictionary />
-    </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
 </Application.Resources>
 ```
 
