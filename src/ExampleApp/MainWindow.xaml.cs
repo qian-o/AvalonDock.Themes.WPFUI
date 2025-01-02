@@ -1,4 +1,5 @@
-﻿using Wpf.Ui.Appearance;
+﻿using System.Windows;
+using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
 namespace ExampleApp
@@ -10,6 +11,11 @@ namespace ExampleApp
             InitializeComponent();
 
             SystemThemeWatcher.Watch(this);
+        }
+
+        private void FluentWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Maximized;
         }
     }
 }
