@@ -6,6 +6,7 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WPFUI"
                  xmlns:exampleapp="clr-namespace:ExampleApp"
+                 xmlns:fluent="urn:fluent-ribbon"
                  mc:Ignorable="d"
                  ExtendsContentIntoTitleBar="True"
                  WindowBackdropType="Mica"
@@ -13,7 +14,7 @@
                  WindowStartupLocation="CenterScreen"
                  Title="MainWindow"
                  Height="450"
-                 Width="800" 
+                 Width="800"
                  Loaded="FluentWindow_Loaded">
 
     <ui:FluentWindow.DataContext>
@@ -29,76 +30,92 @@
         <ui:TitleBar Grid.Row="0"
                      Title="Example App">
             <ui:TitleBar.Header>
-                <Grid Margin="0,0,20,0">
-                    <ui:ToggleSwitch IsChecked="{Binding IsLightTheme}"
-                                     OnContent="Light"
-                                     OffContent="Dark" />
-                </Grid>
+                <fluent:RibbonTitleBar x:Name="RibbonTitleBar" />
             </ui:TitleBar.Header>
         </ui:TitleBar>
 
-        <DockingManager Grid.Row="1">
-            <DockingManager.Theme>
-                <wpfui:WPFUITheme />
-            </DockingManager.Theme>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-            <LayoutRoot>
-                <LayoutRoot.LeftSide>
-                    <LayoutAnchorSide>
-                        <LayoutAnchorGroup>
-                            <LayoutAnchorable Title="Toolbox"
-                                              AutoHideMinWidth="200">
-                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
-                            </LayoutAnchorable>
-                            <LayoutAnchorable Title="Properties"
-                                              AutoHideMinWidth="200">
-                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
-                            </LayoutAnchorable>
-                        </LayoutAnchorGroup>
-                    </LayoutAnchorSide>
-                </LayoutRoot.LeftSide>
+            <fluent:Ribbon Grid.Row="0">
+                <fluent:RibbonTabItem Header="Themes">
+                    <fluent:RibbonGroupBox Header="Group">
+                        <fluent:ToggleButton IsChecked="{Binding IsLightTheme}"
+                                             Header="Light">
+                            <fluent:ToggleButton.Icon>
+                                <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                                             Glyph="&#xE706;" />
+                            </fluent:ToggleButton.Icon>
+                        </fluent:ToggleButton>
+                    </fluent:RibbonGroupBox>
+                </fluent:RibbonTabItem>
+            </fluent:Ribbon>
 
-                <LayoutRoot.BottomSide>
-                    <LayoutAnchorSide>
-                        <LayoutAnchorGroup>
-                            <LayoutAnchorable Title="Output"
-                                              AutoHideMinHeight="300">
-                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
-                            </LayoutAnchorable>
-                            <LayoutAnchorable Title="Errors"
-                                              AutoHideMinHeight="300">
-                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
-                            </LayoutAnchorable>
-                        </LayoutAnchorGroup>
-                    </LayoutAnchorSide>
-                </LayoutRoot.BottomSide>
+            <DockingManager Grid.Row="1">
+                <DockingManager.Theme>
+                    <wpfui:WPFUITheme />
+                </DockingManager.Theme>
 
-                <LayoutPanel Orientation="Horizontal">
-                    <LayoutDocumentPaneGroup>
-                        <LayoutDocumentPane>
-                            <LayoutDocument Title="Document 1">
-                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
-                            </LayoutDocument>
-                            <LayoutDocument Title="Document 2">
-                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
-                            </LayoutDocument>
-                        </LayoutDocumentPane>
-                    </LayoutDocumentPaneGroup>
+                <LayoutRoot>
+                    <LayoutRoot.LeftSide>
+                        <LayoutAnchorSide>
+                            <LayoutAnchorGroup>
+                                <LayoutAnchorable Title="Toolbox"
+                                                  AutoHideMinWidth="200">
+                                    <Grid Background="{DynamicResource StripedBackgroundBrush}" />
+                                </LayoutAnchorable>
+                                <LayoutAnchorable Title="Properties"
+                                                  AutoHideMinWidth="200">
+                                    <Grid Background="{DynamicResource StripedBackgroundBrush}" />
+                                </LayoutAnchorable>
+                            </LayoutAnchorGroup>
+                        </LayoutAnchorSide>
+                    </LayoutRoot.LeftSide>
 
-                    <LayoutAnchorablePaneGroup DockWidth="400"
-                                               DockMinWidth="100">
-                        <LayoutAnchorablePane>
-                            <LayoutAnchorable Title="Solution Explorer">
-                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
-                            </LayoutAnchorable>
-                            <LayoutAnchorable Title="Git">
-                                <Grid Background="{DynamicResource StripedBackgroundBrush}" />
-                            </LayoutAnchorable>
-                        </LayoutAnchorablePane>
-                    </LayoutAnchorablePaneGroup>
-                </LayoutPanel>
-            </LayoutRoot>
-        </DockingManager>
+                    <LayoutRoot.BottomSide>
+                        <LayoutAnchorSide>
+                            <LayoutAnchorGroup>
+                                <LayoutAnchorable Title="Output"
+                                                  AutoHideMinHeight="300">
+                                    <Grid Background="{DynamicResource StripedBackgroundBrush}" />
+                                </LayoutAnchorable>
+                                <LayoutAnchorable Title="Errors"
+                                                  AutoHideMinHeight="300">
+                                    <Grid Background="{DynamicResource StripedBackgroundBrush}" />
+                                </LayoutAnchorable>
+                            </LayoutAnchorGroup>
+                        </LayoutAnchorSide>
+                    </LayoutRoot.BottomSide>
 
+                    <LayoutPanel Orientation="Horizontal">
+                        <LayoutDocumentPaneGroup>
+                            <LayoutDocumentPane>
+                                <LayoutDocument Title="Document 1">
+                                    <Grid Background="{DynamicResource StripedBackgroundBrush}" />
+                                </LayoutDocument>
+                                <LayoutDocument Title="Document 2">
+                                    <Grid Background="{DynamicResource StripedBackgroundBrush}" />
+                                </LayoutDocument>
+                            </LayoutDocumentPane>
+                        </LayoutDocumentPaneGroup>
+
+                        <LayoutAnchorablePaneGroup DockWidth="400"
+                                                   DockMinWidth="100">
+                            <LayoutAnchorablePane>
+                                <LayoutAnchorable Title="Solution Explorer">
+                                    <Grid Background="{DynamicResource StripedBackgroundBrush}" />
+                                </LayoutAnchorable>
+                                <LayoutAnchorable Title="Git">
+                                    <Grid Background="{DynamicResource StripedBackgroundBrush}" />
+                                </LayoutAnchorable>
+                            </LayoutAnchorablePane>
+                        </LayoutAnchorablePaneGroup>
+                    </LayoutPanel>
+                </LayoutRoot>
+            </DockingManager>
+        </Grid>
     </Grid>
 </ui:FluentWindow>
