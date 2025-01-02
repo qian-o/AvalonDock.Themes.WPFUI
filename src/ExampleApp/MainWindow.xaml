@@ -41,6 +41,25 @@
             </Grid.RowDefinitions>
 
             <fluent:Ribbon Grid.Row="0">
+                <fluent:Ribbon.Menu>
+                    <fluent:Backstage Header="File">
+                        <fluent:BackstageTabControl>
+                            <fluent:BackstageTabItem Header="Info">
+                                Info
+                            </fluent:BackstageTabItem>
+                            <fluent:BackstageTabItem Header="New">
+                                New
+                            </fluent:BackstageTabItem>
+                            <fluent:BackstageTabItem Header="Open">
+                                Open
+                            </fluent:BackstageTabItem>
+                            <fluent:BackstageTabItem Header="Save">
+                                Save
+                            </fluent:BackstageTabItem>
+                        </fluent:BackstageTabControl>
+                    </fluent:Backstage>
+                </fluent:Ribbon.Menu>
+
                 <fluent:RibbonTabItem Header="Themes">
                     <fluent:RibbonGroupBox Header="Group">
                         <fluent:ToggleButton IsChecked="{Binding IsLightTheme}"
