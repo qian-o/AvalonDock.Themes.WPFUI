@@ -49,6 +49,10 @@ xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WP
 - [AakStudio.Shell.UI.Themes.AvalonDock](https://github.com/Wenveo/AakStudio.Shell.UI.Themes.AvalonDock)
 
 ## Version History
+- 1.0.5
+  - Ajust the drag hit range of AnchorablePaneTitle.
+  - Add focus style.
+
 - 1.0.4
   - Ajust the display level of LayoutGridResizerControl, it can be dragged better.
 

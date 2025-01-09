@@ -80,12 +80,12 @@
                                             <Rectangle x:Name="ActiveRectangle"
                                                        Grid.Row="0"
                                                        Height="3"
-                                                       Margin="0,0,0,2"
+                                                       Margin="16,0,16,4"
                                                        Fill="{DynamicResource AccentFillColorDefaultBrush}"
                                                        Opacity="0.0"
                                                        RadiusX="2"
                                                        RadiusY="2" />
-                                            
+
                                             <ContentPresenter x:Name="ContentSite"
                                                               Grid.Row="1"
                                                               HorizontalAlignment="Center"
