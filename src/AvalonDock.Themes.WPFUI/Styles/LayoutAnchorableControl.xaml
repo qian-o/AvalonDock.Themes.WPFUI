@@ -22,7 +22,8 @@
                                               Content="{Binding LayoutItem.View, RelativeSource={RelativeSource TemplatedParent}}"
                                               ContentTemplate="{Binding LayoutItem.View.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
                                               ContentTemplateSelector="{Binding LayoutItem.View.ContentTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
-                                              FlowDirection="{TemplateBinding FlowDirection}" />
+                                              FlowDirection="{TemplateBinding FlowDirection}"
+                                              Margin="0,8,0,0" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>

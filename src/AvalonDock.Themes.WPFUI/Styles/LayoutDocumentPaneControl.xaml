@@ -112,17 +112,32 @@
                                             MinWidth="180"
                                             MinHeight="36"
                                             Margin="0"
-                                            Padding="6"
+                                            Padding="14,6,14,6"
                                             Background="{TemplateBinding Background}"
                                             BorderBrush="{TemplateBinding BorderBrush}"
                                             BorderThickness="1,1,1,0"
                                             CornerRadius="8,8,0,0">
-                                        <ContentPresenter x:Name="ContentSite"
-                                                          Margin="0"
-                                                          HorizontalAlignment="Stretch"
-                                                          VerticalAlignment="Center"
-                                                          ContentSource="Header"
-                                                          RecognizesAccessKey="True" />
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <ContentPresenter x:Name="ContentSite"
+                                                              Grid.Row="0"
+                                                              HorizontalAlignment="Stretch"
+                                                              VerticalAlignment="Center"
+                                                              ContentSource="Header"
+                                                              RecognizesAccessKey="True" />
+                                            
+                                            <Rectangle x:Name="ActiveRectangle"
+                                                       Grid.Row="1"
+                                                       Height="3"
+                                                       Margin="0,0,0,-2"
+                                                       Fill="{DynamicResource AccentFillColorDefaultBrush}"
+                                                       Opacity="0.0"
+                                                       RadiusX="2"
+                                                       RadiusY="2" />
+                                        </Grid>
                                     </Border>
 
                                     <VisualStateManager.VisualStateGroups>
@@ -160,6 +175,13 @@
                                         <Setter Property="Foreground"
                                                 Value="{DynamicResource TabViewItemForegroundSelected}" />
                                     </Trigger>
+
+                                    <DataTrigger Binding="{Binding IsActive}"
+                                                 Value="True">
+                                        <Setter TargetName="ActiveRectangle"
+                                                Property="Opacity"
+                                                Value="1.0" />
+                                    </DataTrigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>

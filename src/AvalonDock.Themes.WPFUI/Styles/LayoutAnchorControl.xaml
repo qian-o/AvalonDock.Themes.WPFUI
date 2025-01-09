@@ -6,12 +6,24 @@
 
     <ControlTemplate x:Key="AnchorTemplate"
                      TargetType="{x:Type avalonDockControls:LayoutAnchorControl}">
-        <ui:Card Margin="2"
+        <ui:Card x:Name="MainCard"
+                 Margin="2"
                  Padding="6">
             <ContentPresenter Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
                               ContentTemplate="{Binding AnchorableHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
                               ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
         </ui:Card>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver"
+                     Value="true">
+                <Setter TargetName="MainCard"
+                        Property="Background"
+                        Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+                <Setter TargetName="MainCard"
+                        Property="TextElement.Foreground"
+                        Value="{DynamicResource TextOnAccentFillColorSecondaryBrush}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
 </ResourceDictionary>
