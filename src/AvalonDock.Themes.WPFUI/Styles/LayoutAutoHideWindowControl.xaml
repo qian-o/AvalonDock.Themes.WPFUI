@@ -19,7 +19,7 @@
                                                      TextElement.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                                      KeyboardNavigation.TabNavigation="Cycle"
                                                      RenderTransform="{Binding Model, RelativeSource={RelativeSource TemplatedParent}, Converter={converters:ModelToTransformConverter}}">
-                                    <Grid Margin="8,4,8,4">
+                                    <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="*" />
