@@ -18,12 +18,14 @@
                                 <avalonDockControls:AnchorablePaneTitle Model="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}" />
                             </Border>
 
-                            <ContentPresenter Grid.Row="1"
-                                              Content="{Binding LayoutItem.View, RelativeSource={RelativeSource TemplatedParent}}"
-                                              ContentTemplate="{Binding LayoutItem.View.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
-                                              ContentTemplateSelector="{Binding LayoutItem.View.ContentTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
-                                              FlowDirection="{TemplateBinding FlowDirection}"
-                                              Margin="0,8,0,0" />
+                            <Border x:Name="Content"
+                                    Grid.Row="1"
+                                    Padding="14,0,14,16">
+                                <ContentPresenter Content="{Binding LayoutItem.View, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  ContentTemplate="{Binding LayoutItem.View.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  ContentTemplateSelector="{Binding LayoutItem.View.ContentTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  FlowDirection="{TemplateBinding FlowDirection}" />
+                            </Border>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -37,6 +39,9 @@
                             <Setter TargetName="Header"
                                     Property="Visibility"
                                     Value="Collapsed" />
+                            <Setter TargetName="Content"
+                                    Property="Padding"
+                                    Value="14,16,14,16" />
                         </MultiDataTrigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
