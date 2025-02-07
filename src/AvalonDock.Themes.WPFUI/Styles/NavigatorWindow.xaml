@@ -87,6 +87,8 @@
                                                 <Style TargetType="ListBoxItem">
                                                     <Setter Property="Cursor"
                                                             Value="Hand" />
+                                                    <Setter Property="AutomationProperties.Name"
+                                                            Value="{Binding LayoutElement.Title}" />
                                                 </Style>
                                             </ListBox.ItemContainerStyle>
                                             <ListBox.ItemTemplate>
@@ -129,6 +131,8 @@
                                                 <Style TargetType="ListBoxItem">
                                                     <Setter Property="Cursor"
                                                             Value="Hand" />
+                                                    <Setter Property="AutomationProperties.Name"
+                                                            Value="{Binding LayoutElement.Title}" />
                                                 </Style>
                                             </ListBox.ItemContainerStyle>
                                             <ListBox.ItemTemplate>
