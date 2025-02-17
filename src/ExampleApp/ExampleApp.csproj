@@ -8,7 +8,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-		<PackageReference Include="Fluent.Ribbon" Version="11.0.0-rc0264" />
+		<PackageReference Include="Fluent.Ribbon" Version="11.0.0-rc0292" />
 	</ItemGroup>
 
 	<ItemGroup>
