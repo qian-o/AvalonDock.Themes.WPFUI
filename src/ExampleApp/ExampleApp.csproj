@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net462;net472;net481;net6.0-windows;net8.0-windows;net9.0-windows</TargetFrameworks>
-		<UseWPF>true</UseWPF>
-	</PropertyGroup>
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFrameworks>net462;net472;net481;net6.0-windows;net8.0-windows;net9.0-windows</TargetFrameworks>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-		<PackageReference Include="Fluent.Ribbon" Version="11.0.0-rc0292" />
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+        <PackageReference Include="Fluent.Ribbon" Version="11.0.0-rc0292" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\AvalonDock.Themes.WPFUI\AvalonDock.Themes.WPFUI.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\AvalonDock.Themes.WPFUI\AvalonDock.Themes.WPFUI.csproj" />
+    </ItemGroup>
 
 </Project>

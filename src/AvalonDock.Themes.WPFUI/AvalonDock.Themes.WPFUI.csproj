@@ -1,42 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<UseWPF>true</UseWPF>
-		<TargetFrameworks>net462;net472;net481;net6.0-windows;net8.0-windows;net9.0-windows</TargetFrameworks>
-		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	</PropertyGroup>
+    <PropertyGroup>
+        <UseWPF>true</UseWPF>
+        <TargetFrameworks>net462;net472;net481;net6.0-windows;net8.0-windows;net9.0-windows</TargetFrameworks>
+        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    </PropertyGroup>
 
-	<PropertyGroup>
-		<Title>$(AssemblyName)</Title>
-		<Version>1.0.5</Version>
-		<Authors>qian-o</Authors>
-		<Copyright>MIT</Copyright>
-		<PackageTags>AvalonDock;WPFUI</PackageTags>
-		<Description>Based on WPFUI theme library for AvalonDock.</Description>
-		<RepositoryUrl>https://github.com/qian-o/AvalonDock.Themes.WPFUI</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/qian-o/AvalonDock.Themes.WPFUI</PackageProjectUrl>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-	</PropertyGroup>
+    <PropertyGroup>
+        <Title>$(AssemblyName)</Title>
+        <Version>1.0.6</Version>
+        <Authors>qian-o</Authors>
+        <Copyright>MIT</Copyright>
+        <PackageTags>AvalonDock;WPFUI</PackageTags>
+        <Description>Based on WPFUI theme library for AvalonDock.</Description>
+        <RepositoryUrl>https://github.com/qian-o/AvalonDock.Themes.WPFUI</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/qian-o/AvalonDock.Themes.WPFUI</PackageProjectUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Dirkster.AvalonDock" Version="4.72.1" />
-		<PackageReference Include="WPF-UI" Version="4.0.1" />
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Dirkster.AvalonDock" Version="4.72.1" />
+        <PackageReference Include="WPF-UI" Version="4.0.1" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<None Include="..\..\LICENSE">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-	</ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\LICENSE">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
 
-	<ItemGroup>
-		<None Include="..\..\README.md">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-	</ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\README.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
 
 </Project>

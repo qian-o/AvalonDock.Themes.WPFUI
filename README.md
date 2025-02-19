@@ -1,4 +1,4 @@
-# AvalonDock.Themes.WPFUI
+﻿# AvalonDock.Themes.WPFUI
 
 [![NuGet Version](https://img.shields.io/nuget/v/AvalonDock.Themes.WPFUI)](https://nuget.org/packages/AvalonDock.Themes.WPFUI)
 
@@ -49,6 +49,9 @@ xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WP
 - [AakStudio.Shell.UI.Themes.AvalonDock](https://github.com/Wenveo/AakStudio.Shell.UI.Themes.AvalonDock)
 
 ## Version History
+- 1.0.6
+  - Update WPF-UI version.
+
 - 1.0.5
   - Ajust the drag hit range of AnchorablePaneTitle.
   - Add focus style.
