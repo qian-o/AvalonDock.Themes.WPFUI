@@ -9,7 +9,7 @@
 
     <PropertyGroup>
         <Title>$(AssemblyName)</Title>
-        <Version>1.0.6</Version>
+        <Version>1.0.7</Version>
         <Authors>qian-o</Authors>
         <Copyright>MIT</Copyright>
         <PackageTags>AvalonDock;WPFUI</PackageTags>
