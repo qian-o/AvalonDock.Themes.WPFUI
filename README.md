@@ -49,6 +49,10 @@ xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WP
 - [AakStudio.Shell.UI.Themes.AvalonDock](https://github.com/Wenveo/AakStudio.Shell.UI.Themes.AvalonDock)
 
 ## Version History
+- 1.0.8
+  - Update WPF-UI version.
+  - Ajust the style of LayoutAnchorControl, more like Visual Studio.
+
 - 1.0.7
   - Fix the display range overlap issue of side bar.
 
