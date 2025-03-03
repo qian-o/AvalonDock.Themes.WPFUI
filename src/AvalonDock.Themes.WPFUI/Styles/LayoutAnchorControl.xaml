@@ -5,72 +5,75 @@
 
     <ControlTemplate x:Key="AnchorTemplate"
                      TargetType="{x:Type avalonDockControls:LayoutAnchorControl}">
-        <Border x:Name="MainCard"
-                Background="Transparent"
-                BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}">
-            <ContentPresenter Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
+        <Grid x:Name="Main"
+              Background="Transparent"
+              Margin="0,0,16,0"
+              SnapsToDevicePixels="True"
+              UseLayoutRounding="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border x:Name="Top"
+                    Grid.Row="0"
+                    Height="4"
+                    CornerRadius="2"
+                    Background="{DynamicResource ControlStrokeColorDefaultBrush}"
+                    Visibility="Collapsed" />
+
+            <ContentPresenter Grid.Row="1"
+                              Margin="0,4,0,4"
+                              Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
                               ContentTemplate="{Binding AnchorableHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
                               ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
-        </Border>
+
+            <Border x:Name="Bottom"
+                    Grid.Row="2"
+                    Height="4"
+                    CornerRadius="2"
+                    Background="{DynamicResource ControlStrokeColorDefaultBrush}"
+                    Visibility="Collapsed" />
+        </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="Side"
                      Value="Left">
-                <Setter TargetName="MainCard"
-                        Property="Padding"
-                        Value="0,6,0,4" />
-                <Setter TargetName="MainCard"
-                        Property="BorderThickness"
-                        Value="0,0,0,6" />
-                <Setter TargetName="MainCard"
-                        Property="Margin"
-                        Value="0,0,12,0" />
+                <Setter TargetName="Bottom"
+                        Property="Visibility"
+                        Value="Visible" />
             </Trigger>
 
             <Trigger Property="Side"
                      Value="Top">
-                <Setter TargetName="MainCard"
-                        Property="Padding"
-                        Value="0,4,0,6" />
-                <Setter TargetName="MainCard"
-                        Property="BorderThickness"
-                        Value="0,6,0,0" />
-                <Setter TargetName="MainCard"
-                        Property="Margin"
-                        Value="0,0,12,0" />
+                <Setter TargetName="Top"
+                        Property="Visibility"
+                        Value="Visible" />
             </Trigger>
 
             <Trigger Property="Side"
                      Value="Right">
-                <Setter TargetName="MainCard"
-                        Property="Padding"
-                        Value="0,4,0,6" />
-                <Setter TargetName="MainCard"
-                        Property="BorderThickness"
-                        Value="0,6,0,0" />
-                <Setter TargetName="MainCard"
-                        Property="Margin"
-                        Value="0,0,12,0" />
+                <Setter TargetName="Top"
+                        Property="Visibility"
+                        Value="Visible" />
             </Trigger>
 
             <Trigger Property="Side"
                      Value="Bottom">
-                <Setter TargetName="MainCard"
-                        Property="Padding"
-                        Value="0,6,0,4" />
-                <Setter TargetName="MainCard"
-                        Property="BorderThickness"
-                        Value="0,0,0,6" />
-                <Setter TargetName="MainCard"
-                        Property="Margin"
-                        Value="0,0,12,0" />
+                <Setter TargetName="Bottom"
+                        Property="Visibility"
+                        Value="Visible" />
             </Trigger>
 
             <Trigger Property="IsMouseOver"
                      Value="true">
-                <Setter TargetName="MainCard"
-                        Property="BorderBrush"
+                <Setter TargetName="Top"
+                        Property="Background"
                         Value="{DynamicResource AccentFillColorSecondaryBrush}" />
-                <Setter TargetName="MainCard"
+                <Setter TargetName="Bottom"
+                        Property="Background"
+                        Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+                <Setter TargetName="Main"
                         Property="TextElement.Foreground"
                         Value="{DynamicResource AccentFillColorSecondaryBrush}" />
             </Trigger>
