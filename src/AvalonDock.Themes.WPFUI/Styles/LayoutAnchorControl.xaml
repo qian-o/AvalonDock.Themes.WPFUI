@@ -1,27 +1,78 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
                     xmlns:avalonDock="clr-namespace:AvalonDock;assembly=AvalonDock">
 
     <ControlTemplate x:Key="AnchorTemplate"
                      TargetType="{x:Type avalonDockControls:LayoutAnchorControl}">
-        <ui:Card x:Name="MainCard"
-                 Margin="2"
-                 Padding="6">
+        <Border x:Name="MainCard"
+                Background="Transparent"
+                BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}">
             <ContentPresenter Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
                               ContentTemplate="{Binding AnchorableHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
                               ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
-        </ui:Card>
+        </Border>
         <ControlTemplate.Triggers>
+            <Trigger Property="Side"
+                     Value="Left">
+                <Setter TargetName="MainCard"
+                        Property="Padding"
+                        Value="0,6,0,4" />
+                <Setter TargetName="MainCard"
+                        Property="BorderThickness"
+                        Value="0,0,0,6" />
+                <Setter TargetName="MainCard"
+                        Property="Margin"
+                        Value="0,0,12,0" />
+            </Trigger>
+
+            <Trigger Property="Side"
+                     Value="Top">
+                <Setter TargetName="MainCard"
+                        Property="Padding"
+                        Value="0,4,0,6" />
+                <Setter TargetName="MainCard"
+                        Property="BorderThickness"
+                        Value="0,6,0,0" />
+                <Setter TargetName="MainCard"
+                        Property="Margin"
+                        Value="0,0,12,0" />
+            </Trigger>
+
+            <Trigger Property="Side"
+                     Value="Right">
+                <Setter TargetName="MainCard"
+                        Property="Padding"
+                        Value="0,4,0,6" />
+                <Setter TargetName="MainCard"
+                        Property="BorderThickness"
+                        Value="0,6,0,0" />
+                <Setter TargetName="MainCard"
+                        Property="Margin"
+                        Value="0,0,12,0" />
+            </Trigger>
+
+            <Trigger Property="Side"
+                     Value="Bottom">
+                <Setter TargetName="MainCard"
+                        Property="Padding"
+                        Value="0,6,0,4" />
+                <Setter TargetName="MainCard"
+                        Property="BorderThickness"
+                        Value="0,0,0,6" />
+                <Setter TargetName="MainCard"
+                        Property="Margin"
+                        Value="0,0,12,0" />
+            </Trigger>
+
             <Trigger Property="IsMouseOver"
                      Value="true">
                 <Setter TargetName="MainCard"
-                        Property="Background"
+                        Property="BorderBrush"
                         Value="{DynamicResource AccentFillColorSecondaryBrush}" />
                 <Setter TargetName="MainCard"
                         Property="TextElement.Foreground"
-                        Value="{DynamicResource TextOnAccentFillColorSecondaryBrush}" />
+                        Value="{DynamicResource AccentFillColorSecondaryBrush}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

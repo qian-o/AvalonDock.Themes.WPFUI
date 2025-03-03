@@ -162,6 +162,7 @@
                         </Grid>
                         <Grid x:Name="PART_DocumentPaneFullDropTargets">
                             <Path Width="184"
+                                  Height="184"
                                   Data="{DynamicResource Path_DockPaneLargeEmpty}"
                                   Fill="{DynamicResource ControlFillColorDefaultBrush}"
                                   Stretch="Uniform"
