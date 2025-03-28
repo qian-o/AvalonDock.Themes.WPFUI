@@ -29,10 +29,11 @@
         </Grid.RowDefinitions>
 
         <ui:TitleBar Title="Example App"
-                     Grid.Row="0">
-            <ui:TitleBar.Header>
+                     Grid.Row="0"
+                     HorizontalContentAlignment="Stretch">
+            <ui:TitleBar.TrailingContent>
                 <fluent:RibbonTitleBar x:Name="RibbonTitleBar" />
-            </ui:TitleBar.Header>
+            </ui:TitleBar.TrailingContent>
         </ui:TitleBar>
 
         <Grid Grid.Row="1">

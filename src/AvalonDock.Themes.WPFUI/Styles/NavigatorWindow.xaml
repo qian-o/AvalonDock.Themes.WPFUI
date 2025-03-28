@@ -8,7 +8,7 @@
     <Style TargetType="{x:Type avalonDockControls:NavigatorWindow}">
         <Setter Property="Background" Value="{DynamicResource WindowBackground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorTertiaryBrush}" />
-        <Setter Property="BorderThickness" Value="3" />
+        <Setter Property="BorderThickness" Value="2" />
         <Setter Property="ResizeMode" Value="NoResize" />
         <Setter Property="SizeToContent" Value="WidthAndHeight" />
         <Setter Property="Template">

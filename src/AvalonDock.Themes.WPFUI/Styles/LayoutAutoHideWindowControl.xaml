@@ -13,11 +13,10 @@
                             <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorableControl}">
                                 <ui:ClientAreaBorder Background="{TemplateBinding Background}"
                                                      BorderBrush="{DynamicResource AccentFillColorDefaultBrush}"
-                                                     BorderThickness="3"
+                                                     BorderThickness="2"
                                                      KeyboardNavigation.TabNavigation="Cycle"
-                                                     RenderTransform="{Binding Model, RelativeSource={RelativeSource TemplatedParent}, Converter={converters:ModelToTransformConverter}}"
                                                      TextElement.Foreground="{DynamicResource TextFillColorPrimaryBrush}">
-                                    <Grid>
+                                    <Grid RenderTransform="{Binding Model, RelativeSource={RelativeSource TemplatedParent}, Converter={converters:ModelToTransformConverter}}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="*" />
