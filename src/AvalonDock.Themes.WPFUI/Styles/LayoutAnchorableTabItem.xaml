@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
-                    xmlns:avalonDock="clr-namespace:AvalonDock;assembly=AvalonDock">
+                    xmlns:avalonDock="clr-namespace:AvalonDock;assembly=AvalonDock"
+                    xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock">
 
     <Style TargetType="{x:Type avalonDockControls:LayoutAnchorableTabItem}">
         <Setter Property="Template">

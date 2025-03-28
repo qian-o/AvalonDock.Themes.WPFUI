@@ -13,24 +13,21 @@
             <ItemsControl.Style>
                 <Style TargetType="{x:Type ItemsControl}">
                     <Style.Resources>
-                        <RotateTransform x:Key="LeftRightAnchorSideRotateTransform"
-                                         Angle="90" />
+                        <RotateTransform x:Key="LeftRightAnchorSideRotateTransform" Angle="90" />
                     </Style.Resources>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Path=Model.Parent.Side, RelativeSource={RelativeSource TemplatedParent}}"
                                      Value="Left">
-                            <Setter Property="LayoutTransform"
-                                    Value="{StaticResource LeftRightAnchorSideRotateTransform}" />
+                            <Setter Property="LayoutTransform" Value="{StaticResource LeftRightAnchorSideRotateTransform}" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Path=Model.Parent.Side, RelativeSource={RelativeSource TemplatedParent}}"
                                      Value="Right">
-                            <Setter Property="LayoutTransform"
-                                    Value="{StaticResource LeftRightAnchorSideRotateTransform}" />
+                            <Setter Property="LayoutTransform" Value="{StaticResource LeftRightAnchorSideRotateTransform}" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </ItemsControl.Style>
         </ItemsControl>
     </ControlTemplate>
-    
+
 </ResourceDictionary>

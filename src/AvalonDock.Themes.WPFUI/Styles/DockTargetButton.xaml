@@ -5,81 +5,50 @@
     <Style TargetType="{x:Type controls:DockTargetButton}">
         <Style.Resources>
             <Style TargetType="Canvas">
-                <Setter Property="SnapsToDevicePixels"
-                        Value="true" />
-                <Setter Property="UseLayoutRounding"
-                        Value="true" />
+                <Setter Property="SnapsToDevicePixels" Value="true" />
+                <Setter Property="UseLayoutRounding" Value="true" />
             </Style>
             <Style TargetType="Path">
-                <Setter Property="StrokeStartLineCap"
-                        Value="Square" />
-                <Setter Property="StrokeEndLineCap"
-                        Value="Square" />
-                <Setter Property="SnapsToDevicePixels"
-                        Value="true" />
-                <Setter Property="UseLayoutRounding"
-                        Value="true" />
-                <Setter Property="StrokeThickness"
-                        Value="1" />
+                <Setter Property="SnapsToDevicePixels" Value="true" />
+                <Setter Property="StrokeEndLineCap" Value="Square" />
+                <Setter Property="StrokeStartLineCap" Value="Square" />
+                <Setter Property="StrokeThickness" Value="1" />
+                <Setter Property="UseLayoutRounding" Value="true" />
             </Style>
             <Style TargetType="Line">
-                <Setter Property="StrokeStartLineCap"
-                        Value="Square" />
-                <Setter Property="StrokeEndLineCap"
-                        Value="Square" />
-                <Setter Property="SnapsToDevicePixels"
-                        Value="true" />
-                <Setter Property="UseLayoutRounding"
-                        Value="true" />
-                <Setter Property="StrokeThickness"
-                        Value="1" />
+                <Setter Property="SnapsToDevicePixels" Value="true" />
+                <Setter Property="StrokeEndLineCap" Value="Square" />
+                <Setter Property="StrokeStartLineCap" Value="Square" />
+                <Setter Property="StrokeThickness" Value="1" />
+                <Setter Property="UseLayoutRounding" Value="true" />
             </Style>
         </Style.Resources>
 
-        <Setter Property="Margin"
-                Value="2" />
-        <Setter Property="Padding"
-                Value="4" />
-        <Setter Property="Width"
-                Value="32" />
-        <Setter Property="Height"
-                Value="32" />
-        <Setter Property="BorderThickness"
-                Value="1" />
-        <Setter Property="Opacity"
-                Value="0.6" />
-        <Setter Property="CornerRadius"
-                Value="2" />
-        <Setter Property="SnapsToDevicePixels"
-                Value="true" />
-        <Setter Property="UseLayoutRounding"
-                Value="true" />
+        <Setter Property="Background" Value="{DynamicResource AccentAcrylicBackgroundFillColorBaseBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="GlyphArrowBrush" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
+        <Setter Property="GlyphBackground" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+        <Setter Property="GlyphBorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
+        <Setter Property="Height" Value="32" />
 
-        <Setter Property="Background"
-                Value="{DynamicResource AccentAcrylicBackgroundFillColorBaseBrush}" />
-        <Setter Property="BorderBrush"
-                Value="{DynamicResource CardStrokeColorDefaultBrush}" />
-        <Setter Property="GlyphBackground"
-                Value="{DynamicResource AccentFillColorDefaultBrush}" />
-        <Setter Property="GlyphBorderBrush"
-                Value="{DynamicResource CardStrokeColorDefaultBrush}" />
-        <Setter Property="GlyphArrowBrush"
-                Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
-        <Setter Property="OuterBackground"
-                Value="{DynamicResource AccentAcrylicBackgroundFillColorBaseBrush}" />
-        <Setter Property="OuterBorderBrush"
-                Value="{DynamicResource CardStrokeColorDefaultBrush}" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Opacity" Value="0.6" />
+        <Setter Property="OuterBackground" Value="{DynamicResource AccentAcrylicBackgroundFillColorBaseBrush}" />
+        <Setter Property="OuterBorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="UseLayoutRounding" Value="true" />
+        <Setter Property="Width" Value="32" />
 
         <Style.Triggers>
-            <Trigger Property="IsTargeted"
-                     Value="true">
-                <Setter Property="Opacity"
-                        Value="1" />
+            <Trigger Property="IsTargeted" Value="true">
+                <Setter Property="Opacity" Value="1" />
             </Trigger>
 
-            <!--Center-->
-            <Trigger Property="TargetDock"
-                     Value="Center">
+            <!--  Center  -->
+            <Trigger Property="TargetDock" Value="Center">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
@@ -104,9 +73,8 @@
                 </Setter>
             </Trigger>
 
-            <!--SplitLeft-->
-            <Trigger Property="TargetDock"
-                     Value="SplitLeft">
+            <!--  SplitLeft  -->
+            <Trigger Property="TargetDock" Value="SplitLeft">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
@@ -142,9 +110,8 @@
                 </Setter>
             </Trigger>
 
-            <!--SplitTop-->
-            <Trigger Property="TargetDock"
-                     Value="SplitTop">
+            <!--  SplitTop  -->
+            <Trigger Property="TargetDock" Value="SplitTop">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
@@ -180,9 +147,8 @@
                 </Setter>
             </Trigger>
 
-            <!--SplitRight-->
-            <Trigger Property="TargetDock"
-                     Value="SplitRight">
+            <!--  SplitRight  -->
+            <Trigger Property="TargetDock" Value="SplitRight">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
@@ -218,9 +184,8 @@
                 </Setter>
             </Trigger>
 
-            <!--SplitBottom-->
-            <Trigger Property="TargetDock"
-                     Value="SplitBottom">
+            <!--  SplitBottom  -->
+            <Trigger Property="TargetDock" Value="SplitBottom">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
@@ -256,9 +221,8 @@
                 </Setter>
             </Trigger>
 
-            <!--DockLeft-->
-            <Trigger Property="TargetDock"
-                     Value="DockLeft">
+            <!--  DockLeft  -->
+            <Trigger Property="TargetDock" Value="DockLeft">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
@@ -286,9 +250,8 @@
                 </Setter>
             </Trigger>
 
-            <!--DockTop-->
-            <Trigger Property="TargetDock"
-                     Value="DockTop">
+            <!--  DockTop  -->
+            <Trigger Property="TargetDock" Value="DockTop">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
@@ -316,9 +279,8 @@
                 </Setter>
             </Trigger>
 
-            <!--DockRight-->
-            <Trigger Property="TargetDock"
-                     Value="DockRight">
+            <!--  DockRight  -->
+            <Trigger Property="TargetDock" Value="DockRight">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
@@ -346,9 +308,8 @@
                 </Setter>
             </Trigger>
 
-            <!--DockBottom-->
-            <Trigger Property="TargetDock"
-                     Value="DockBottom">
+            <!--  DockBottom  -->
+            <Trigger Property="TargetDock" Value="DockBottom">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
@@ -378,17 +339,13 @@
 
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="TargetDock"
-                               Value="DockLeft" />
-                    <Condition Property="IsOuter"
-                               Value="true" />
+                    <Condition Property="TargetDock" Value="DockLeft" />
+                    <Condition Property="IsOuter" Value="true" />
                 </MultiTrigger.Conditions>
 
                 <MultiTrigger.Setters>
-                    <Setter Property="Height"
-                            Value="40" />
-                    <Setter Property="Width"
-                            Value="40" />
+                    <Setter Property="Height" Value="40" />
+                    <Setter Property="Width" Value="40" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
@@ -427,17 +384,13 @@
 
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="TargetDock"
-                               Value="DockTop" />
-                    <Condition Property="IsOuter"
-                               Value="true" />
+                    <Condition Property="TargetDock" Value="DockTop" />
+                    <Condition Property="IsOuter" Value="true" />
                 </MultiTrigger.Conditions>
 
                 <MultiTrigger.Setters>
-                    <Setter Property="Height"
-                            Value="40" />
-                    <Setter Property="Width"
-                            Value="40" />
+                    <Setter Property="Height" Value="40" />
+                    <Setter Property="Width" Value="40" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
@@ -476,17 +429,13 @@
 
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="TargetDock"
-                               Value="DockRight" />
-                    <Condition Property="IsOuter"
-                               Value="true" />
+                    <Condition Property="TargetDock" Value="DockRight" />
+                    <Condition Property="IsOuter" Value="true" />
                 </MultiTrigger.Conditions>
 
                 <MultiTrigger.Setters>
-                    <Setter Property="Height"
-                            Value="40" />
-                    <Setter Property="Width"
-                            Value="40" />
+                    <Setter Property="Height" Value="40" />
+                    <Setter Property="Width" Value="40" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">
@@ -525,17 +474,13 @@
 
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="TargetDock"
-                               Value="DockBottom" />
-                    <Condition Property="IsOuter"
-                               Value="true" />
+                    <Condition Property="TargetDock" Value="DockBottom" />
+                    <Condition Property="IsOuter" Value="true" />
                 </MultiTrigger.Conditions>
 
                 <MultiTrigger.Setters>
-                    <Setter Property="Height"
-                            Value="40" />
-                    <Setter Property="Width"
-                            Value="40" />
+                    <Setter Property="Height" Value="40" />
+                    <Setter Property="Width" Value="40" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type controls:DockTargetButton}">

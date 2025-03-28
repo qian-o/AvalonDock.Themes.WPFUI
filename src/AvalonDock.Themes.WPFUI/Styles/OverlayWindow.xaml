@@ -4,8 +4,7 @@
                     xmlns:controls="clr-namespace:AvalonDock.Themes.WPFUI.Controls">
 
     <Style TargetType="{x:Type avalonDockControls:OverlayWindow}">
-        <Setter Property="Background"
-                Value="Transparent" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:OverlayWindow}">

@@ -14,5 +14,5 @@
             </ItemsControl.ItemsPanel>
         </ItemsControl>
     </ControlTemplate>
-    
+
 </ResourceDictionary>

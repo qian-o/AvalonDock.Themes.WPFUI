@@ -1,21 +1,21 @@
 ﻿<ui:FluentWindow x:Class="ExampleApp.MainWindow"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WPFUI"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:exampleapp="clr-namespace:ExampleApp"
                  xmlns:fluent="urn:fluent-ribbon"
-                 mc:Ignorable="d"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:wpfui="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WPFUI"
+                 Title="MainWindow"
+                 Width="800"
+                 Height="450"
                  ExtendsContentIntoTitleBar="True"
+                 Loaded="FluentWindow_Loaded"
                  WindowBackdropType="Mica"
                  WindowCornerPreference="Round"
                  WindowStartupLocation="CenterScreen"
-                 Title="MainWindow"
-                 Height="450"
-                 Width="800"
-                 Loaded="FluentWindow_Loaded">
+                 mc:Ignorable="d">
 
     <ui:FluentWindow.DataContext>
         <exampleapp:MainViewModel />
@@ -27,8 +27,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ui:TitleBar Grid.Row="0"
-                     Title="Example App">
+        <ui:TitleBar Title="Example App"
+                     Grid.Row="0">
             <ui:TitleBar.Header>
                 <fluent:RibbonTitleBar x:Name="RibbonTitleBar" />
             </ui:TitleBar.Header>
@@ -62,8 +62,8 @@
 
                 <fluent:RibbonTabItem Header="Themes">
                     <fluent:RibbonGroupBox Header="Group">
-                        <fluent:ToggleButton IsChecked="{Binding IsLightTheme}"
-                                             Header="Light">
+                        <fluent:ToggleButton Header="Light"
+                                             IsChecked="{Binding IsLightTheme}">
                             <fluent:ToggleButton.Icon>
                                 <ui:FontIcon FontFamily="Segoe MDL2 Assets"
                                              Glyph="&#xE706;" />
@@ -121,8 +121,8 @@
                             </LayoutDocumentPane>
                         </LayoutDocumentPaneGroup>
 
-                        <LayoutAnchorablePaneGroup DockWidth="400"
-                                                   DockMinWidth="100">
+                        <LayoutAnchorablePaneGroup DockMinWidth="100"
+                                                   DockWidth="400">
                             <LayoutAnchorablePane>
                                 <LayoutAnchorable Title="Solution Explorer">
                                     <Grid Background="{DynamicResource StripedBackgroundBrush}" />
