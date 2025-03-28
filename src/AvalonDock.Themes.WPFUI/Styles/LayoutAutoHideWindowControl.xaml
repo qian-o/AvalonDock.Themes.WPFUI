@@ -14,7 +14,7 @@
                                 <ui:ClientAreaBorder Margin="{Binding Model, RelativeSource={RelativeSource TemplatedParent}, Converter={converters:ModelToMarginConverter}}"
                                                      Background="{TemplateBinding Background}"
                                                      BorderBrush="{DynamicResource AccentFillColorDefaultBrush}"
-                                                     BorderThickness="2"
+                                                     BorderThickness="1"
                                                      KeyboardNavigation.TabNavigation="Cycle"
                                                      TextElement.Foreground="{DynamicResource TextFillColorPrimaryBrush}">
                                     <Grid>
