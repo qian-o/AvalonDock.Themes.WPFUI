@@ -24,7 +24,6 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type TabItem}">
                                 <Grid x:Name="Root">
-
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup x:Name="SelectionStates">
                                             <VisualState x:Name="Unselected" />
@@ -68,6 +67,10 @@
                                         <Setter Property="Foreground" Value="{DynamicResource TabViewItemForegroundSelected}" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
                                     </Trigger>
+                                    <DataTrigger Binding="{Binding IsActive}"
+                                                 Value="True">
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                                    </DataTrigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>

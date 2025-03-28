@@ -65,6 +65,10 @@
                                         <Setter Property="Foreground" Value="{DynamicResource TabViewItemForegroundSelected}" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
                                     </Trigger>
+                                    <DataTrigger Binding="{Binding IsActive}"
+                                                 Value="True">
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                                    </DataTrigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>
