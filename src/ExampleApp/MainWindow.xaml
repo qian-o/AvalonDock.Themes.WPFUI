@@ -12,6 +12,7 @@
                  Height="450"
                  ExtendsContentIntoTitleBar="True"
                  Loaded="FluentWindow_Loaded"
+                 StateChanged="FluentWindow_StateChanged"
                  WindowBackdropType="Mica"
                  WindowCornerPreference="Round"
                  WindowStartupLocation="CenterScreen"
@@ -73,7 +74,8 @@
                 </fluent:RibbonTabItem>
             </fluent:Ribbon>
 
-            <DockingManager Grid.Row="1">
+            <DockingManager x:Name="Manager"
+                            Grid.Row="1">
                 <DockingManager.Theme>
                     <wpfui:WPFUITheme />
                 </DockingManager.Theme>

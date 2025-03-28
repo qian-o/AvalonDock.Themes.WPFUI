@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using Fluent;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
@@ -18,7 +19,12 @@ namespace ExampleApp
 
         private void FluentWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Maximized;
+            FluentWindow_StateChanged(sender, e);
+        }
+
+        private void FluentWindow_StateChanged(object sender, EventArgs e)
+        {
+            Manager.Margin = new Thickness(WindowState == WindowState.Normal ? 2 : 0);
         }
     }
 }
