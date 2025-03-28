@@ -167,6 +167,10 @@
                                      Value="0">
                             <Setter TargetName="MenuDropDownButton" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=SelectedItem.IsActive}"
+                                     Value="True">
+                            <Setter TargetName="ContentPanel" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

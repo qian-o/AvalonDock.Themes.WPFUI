@@ -139,6 +139,10 @@
                             <Setter TargetName="ContentPanel" Property="CornerRadius" Value="4" />
                             <Setter TargetName="ContentPanel" Property="Margin" Value="0" />
                         </DataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=SelectedItem.IsActive}"
+                                     Value="True">
+                            <Setter TargetName="ContentPanel" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
