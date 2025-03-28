@@ -28,7 +28,8 @@
 
                                 <Button x:Name="DocumentCloseButton"
                                         Grid.Column="2"
-                                        Margin="0,0,-10,0"
+                                        Height="24"
+                                        Margin="0,0,-14,0"
                                         Background="Transparent"
                                         Command="{Binding Path=LayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"

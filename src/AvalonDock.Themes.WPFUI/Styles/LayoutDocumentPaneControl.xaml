@@ -51,31 +51,14 @@
                                             Background="{TemplateBinding Background}"
                                             BorderBrush="{TemplateBinding BorderBrush}"
                                             BorderThickness="1,1,1,0"
-                                            CornerRadius="8,8,0,0">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
+                                            CornerRadius="4,4,0,0">
 
-                                            <Rectangle x:Name="ActiveRectangle"
-                                                       Grid.Column="0"
-                                                       Width="4"
-                                                       Height="18"
-                                                       Margin="0,0,4,0"
-                                                       VerticalAlignment="Center"
-                                                       Fill="{DynamicResource AccentFillColorDefaultBrush}"
-                                                       RadiusX="2"
-                                                       RadiusY="2"
-                                                       Visibility="Collapsed" />
-
-                                            <ContentPresenter x:Name="ContentSite"
-                                                              Grid.Column="1"
-                                                              HorizontalAlignment="Stretch"
-                                                              VerticalAlignment="Center"
-                                                              ContentSource="Header"
-                                                              RecognizesAccessKey="True" />
-                                        </Grid>
+                                        <ContentPresenter x:Name="ContentSite"
+                                                          Grid.Column="1"
+                                                          HorizontalAlignment="Stretch"
+                                                          VerticalAlignment="Center"
+                                                          ContentSource="Header"
+                                                          RecognizesAccessKey="True" />
                                     </Border>
                                 </Grid>
                                 <ControlTemplate.Triggers>
@@ -85,11 +68,6 @@
                                         <Setter Property="Foreground" Value="{DynamicResource TabViewItemForegroundSelected}" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
                                     </Trigger>
-
-                                    <DataTrigger Binding="{Binding IsActive}"
-                                                 Value="True">
-                                        <Setter TargetName="ActiveRectangle" Property="Visibility" Value="Visible" />
-                                    </DataTrigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>
@@ -160,22 +138,26 @@
                                 </ui:SymbolIcon>
                             </avalonDockControls:DropDownButton>
                         </Grid>
-                        <ui:Card x:Name="ContentPanel"
-                                 Grid.Row="1"
-                                 Grid.Column="0"
-                                 Padding="0"
-                                 HorizontalAlignment="Stretch"
-                                 VerticalAlignment="Stretch"
-                                 VerticalContentAlignment="Stretch"
-                                 BorderThickness="1,0,1,1"
-                                 KeyboardNavigation.DirectionalNavigation="Contained"
-                                 KeyboardNavigation.TabIndex="2"
-                                 KeyboardNavigation.TabNavigation="Cycle">
+
+                        <Border x:Name="ContentPanel"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="0,-1.5,0,0"
+                                Padding="0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="{DynamicResource TabViewItemHeaderBackgroundSelected}"
+                                BorderBrush="{DynamicResource TabViewSelectedItemBorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="0,0,4,4"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                KeyboardNavigation.TabIndex="2"
+                                KeyboardNavigation.TabNavigation="Cycle">
                             <ContentPresenter x:Name="PART_SelectedContentHost"
                                               Margin="{TemplateBinding Padding}"
                                               ContentSource="SelectedContent"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </ui:Card>
+                        </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.ChildrenCount}"
