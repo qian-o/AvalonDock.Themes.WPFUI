@@ -24,8 +24,8 @@
         <Setter Property="DocumentPaneControlStyle" Value="{StaticResource DocumentPaneControlStyle}" />
         <Setter Property="DocumentPaneMenuItemHeaderTemplate" Value="{StaticResource DocumentHeaderTemplate}" />
         <Setter Property="DocumentTitleTemplate" Value="{StaticResource DocumentTitleTemplate}" />
-        <Setter Property="GridSplitterHeight" Value="6" />
-        <Setter Property="GridSplitterWidth" Value="6" />
+        <Setter Property="GridSplitterHeight" Value="4" />
+        <Setter Property="GridSplitterWidth" Value="4" />
         <Setter Property="IconContentTemplate" Value="{StaticResource IconContentTemplate}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -49,15 +49,19 @@
                                               Content="{TemplateBinding LayoutRootPanel}" />
                             <ContentPresenter Grid.Row="1"
                                               Grid.Column="2"
+                                              Margin="0,4,0,4"
                                               Content="{TemplateBinding RightSidePanel}" />
                             <ContentPresenter Grid.Row="1"
                                               Grid.Column="0"
+                                              Margin="0,4,0,4"
                                               Content="{TemplateBinding LeftSidePanel}" />
                             <ContentPresenter Grid.Row="0"
                                               Grid.Column="1"
+                                              Margin="4,0,4,0"
                                               Content="{TemplateBinding TopSidePanel}" />
                             <ContentPresenter Grid.Row="2"
                                               Grid.Column="1"
+                                              Margin="4,0,4,0"
                                               Content="{TemplateBinding BottomSidePanel}" />
                             <ContentPresenter x:Name="PART_AutoHideArea"
                                               Grid.Row="1"

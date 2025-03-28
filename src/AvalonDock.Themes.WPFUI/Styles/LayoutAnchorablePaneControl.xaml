@@ -49,7 +49,7 @@
                                             Background="{TemplateBinding Background}"
                                             BorderBrush="{TemplateBinding BorderBrush}"
                                             BorderThickness="1,0,1,1"
-                                            CornerRadius="0,0,8,8">
+                                            CornerRadius="0,0,4,4">
 
                                         <ContentPresenter x:Name="ContentSite"
                                                           Grid.Column="1"
@@ -128,6 +128,14 @@
                                                 IsItemsHost="true"
                                                 KeyboardNavigation.TabIndex="1" />
                     </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Items.Count, FallbackValue=1}"
+                                     Value="1">
+                            <Setter TargetName="ContentPanel" Property="CornerRadius" Value="4" />
+                            <Setter TargetName="ContentPanel" Property="Margin" Value="0" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

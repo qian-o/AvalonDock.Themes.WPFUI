@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
-using System.Windows.Media;
 using AvalonDock.Layout;
 
 namespace AvalonDock.Themes.WPFUI.Converters
 {
-    [ValueConversion(typeof(LayoutAnchorable), typeof(Transform))]
-    public class ModelToTransformConverter : MarkupExtension, IValueConverter
+    [ValueConversion(typeof(LayoutAnchorable), typeof(Thickness))]
+    public class ModelToMarginConverter : MarkupExtension, IValueConverter
     {
-        private static ModelToTransformConverter converter = null;
+        private static ModelToMarginConverter converter = null;
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -18,31 +18,20 @@ namespace AvalonDock.Themes.WPFUI.Converters
             {
                 DockingManager manager = layoutAnchorable.Root.Manager;
 
-                double x = 0.0;
-                double y = 0.0;
-
                 switch (layoutAnchorSide.Side)
                 {
                     case AnchorSide.Left:
-                        x += manager.GridSplitterWidth / 2;
-                        break;
+                        return new Thickness(0, 0, -manager.GridSplitterWidth, 0);
                     case AnchorSide.Top:
-                        y += manager.GridSplitterHeight / 2;
-                        break;
+                        return new Thickness(0, 0, 0, -manager.GridSplitterHeight);
                     case AnchorSide.Right:
-                        x -= manager.GridSplitterWidth / 2;
-                        break;
+                        return new Thickness(-manager.GridSplitterWidth, 0, 0, 0);
                     case AnchorSide.Bottom:
-                        y -= manager.GridSplitterHeight / 2;
-                        break;
-                    default:
-                        break;
+                        return new Thickness(0, -manager.GridSplitterHeight, 0, 0);
                 }
-
-                return new TranslateTransform(x, y);
             }
 
-            return Transform.Identity;
+            return new Thickness();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -53,9 +42,9 @@ namespace AvalonDock.Themes.WPFUI.Converters
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
 #if NET6_0_OR_GREATER
-            converter ??= new ModelToTransformConverter();
+            converter ??= new ModelToMarginConverter();
 #else
-            converter = converter ?? new ModelToTransformConverter();
+            converter = converter ?? new ModelToMarginConverter();
 #endif
 
             return converter;
