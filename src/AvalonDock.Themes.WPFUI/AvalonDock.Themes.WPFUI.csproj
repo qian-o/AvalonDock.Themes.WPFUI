@@ -9,11 +9,11 @@
 
     <PropertyGroup>
         <Title>$(AssemblyName)</Title>
-        <Version>1.0.8</Version>
+        <Version>1.1.0</Version>
         <Authors>qian-o</Authors>
         <Copyright>MIT</Copyright>
         <PackageTags>AvalonDock;WPFUI</PackageTags>
-        <Description>Based on WPFUI theme library for AvalonDock.</Description>
+        <Description>Use WPF-UI to make AvalonDock themes.</Description>
         <RepositoryUrl>https://github.com/qian-o/AvalonDock.Themes.WPFUI</RepositoryUrl>
         <PackageProjectUrl>https://github.com/qian-o/AvalonDock.Themes.WPFUI</PackageProjectUrl>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
