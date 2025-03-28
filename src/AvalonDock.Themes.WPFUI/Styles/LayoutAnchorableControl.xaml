@@ -19,8 +19,7 @@
                             </Border>
 
                             <Border x:Name="Content"
-                                    Grid.Row="1"
-                                    Padding="14,0,14,16">
+                                    Grid.Row="1">
                                 <ContentPresenter Content="{Binding LayoutItem.View, RelativeSource={RelativeSource TemplatedParent}}"
                                                   ContentTemplate="{Binding LayoutItem.View.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
                                                   ContentTemplateSelector="{Binding LayoutItem.View.ContentTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
@@ -31,26 +30,16 @@
                     <ControlTemplate.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.IsFloating}"
-                                           Value="True" />
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.Parent.IsDirectlyHostedInFloatingWindow}"
-                                           Value="True" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.IsFloating}" Value="True" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.Parent.IsDirectlyHostedInFloatingWindow}" Value="True" />
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="Header"
-                                    Property="Visibility"
-                                    Value="Collapsed" />
-                            <Setter TargetName="Content"
-                                    Property="Padding"
-                                    Value="14,16,14,16" />
+                            <Setter TargetName="Header" Property="Visibility" Value="Collapsed" />
                         </MultiDataTrigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model}"
-                                           Value="{x:Null}" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model}" Value="{x:Null}" />
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="Header"
-                                    Property="Visibility"
-                                    Value="Collapsed" />
+                            <Setter TargetName="Header" Property="Visibility" Value="Collapsed" />
                         </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
