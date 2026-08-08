@@ -2,13 +2,13 @@
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFrameworks>net462;net472;net481;net6.0-windows;net8.0-windows;net9.0-windows</TargetFrameworks>
+        <TargetFrameworks>net472;net481;net8.0-windows;net10.0-windows</TargetFrameworks>
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-        <PackageReference Include="Fluent.Ribbon" Version="11.0.1" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+        <PackageReference Include="Fluent.Ribbon" Version="11.0.2" />
     </ItemGroup>
 
     <ItemGroup>
