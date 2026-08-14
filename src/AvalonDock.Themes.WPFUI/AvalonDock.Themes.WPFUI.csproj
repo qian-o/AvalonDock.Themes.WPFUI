@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <UseWPF>true</UseWPF>
-        <TargetFrameworks>net472;net481;net8.0-windows;net10.0-windows</TargetFrameworks>
+        <TargetFrameworks>net48;net10.0-windows</TargetFrameworks>
         <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     </PropertyGroup>
@@ -21,7 +21,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dirkster.AvalonDock" Version="4.74.1" />
+        <PackageReference Include="Dirkster.AvalonDock" Version="5.0.0" />
         <PackageReference Include="WPF-UI" Version="4.3.0" />
     </ItemGroup>
 
