@@ -10,14 +10,14 @@ namespace AvalonDock.Themes.WPFUI.Converters
     [ValueConversion(typeof(LayoutAnchorable), typeof(Thickness))]
     public class ModelToMarginConverter : MarkupExtension, IValueConverter
     {
-        private static ModelToMarginConverter converter = null;
+        private static readonly ModelToMarginConverter converter = new ModelToMarginConverter();
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is LayoutAnchorable layoutAnchorable && layoutAnchorable.FindParent<LayoutAnchorSide>() is LayoutAnchorSide layoutAnchorSide)
+            if (value is LayoutAnchorable layoutAnchorable
+                && layoutAnchorable.FindParent<LayoutAnchorSide>() is LayoutAnchorSide layoutAnchorSide
+                && layoutAnchorable.Root?.Manager is DockingManager manager)
             {
-                DockingManager manager = layoutAnchorable.Root.Manager;
-
                 switch (layoutAnchorSide.Side)
                 {
                     case AnchorSide.Left:
@@ -41,12 +41,6 @@ namespace AvalonDock.Themes.WPFUI.Converters
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-#if NET6_0_OR_GREATER
-            converter ??= new ModelToMarginConverter();
-#else
-            converter = converter ?? new ModelToMarginConverter();
-#endif
-
             return converter;
         }
     }

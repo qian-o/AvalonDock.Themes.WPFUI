@@ -12,8 +12,8 @@
 
     <DataTemplate x:Key="DocumentHeaderTemplate">
         <TextBlock HorizontalAlignment="Left"
-               TextAlignment="Left"
-               VerticalAlignment="Center"
+                 TextAlignment="Left"
+                 VerticalAlignment="Center"
                    Text="{Binding Title}"
                    TextTrimming="CharacterEllipsis" />
     </DataTemplate>
@@ -46,23 +46,18 @@
 
     <DataTemplate x:Key="DocumentTitleTemplate">
         <TextBlock HorizontalAlignment="Stretch"
-               TextAlignment="Center"
-               VerticalAlignment="Center"
-               Text="{Binding Title}"
-               TextTrimming="CharacterEllipsis" />
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Text="{Binding Title}"
+                 TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
     <DataTemplate x:Key="AnchorableTitleTemplate">
-        <TextBlock x:Name="ToolTitle" HorizontalAlignment="Stretch"
-               TextAlignment="Left"
-               VerticalAlignment="Center"
-               Text="{Binding Title}"
-               TextTrimming="CharacterEllipsis" />
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsAutoHidden}" Value="True">
-                <Setter TargetName="ToolTitle" Property="TextAlignment" Value="Left" />
-            </DataTrigger>
-        </DataTemplate.Triggers>
+        <TextBlock HorizontalAlignment="Stretch"
+                   TextAlignment="Left"
+                   VerticalAlignment="Center"
+                   Text="{Binding Title}"
+                   TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
     <DataTemplate x:Key="IconContentTemplate">

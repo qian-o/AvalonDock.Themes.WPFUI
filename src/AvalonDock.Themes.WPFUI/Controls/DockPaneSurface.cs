@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -114,67 +114,67 @@ namespace AvalonDock.Themes.WPFUI.Controls
             }
             body.Inflate(-0.5, -0.5);
             var radius = Math.Max(0, Math.Min(CornerRadius, Math.Min(body.Width, body.Height) / 2));
-            var pen = new Pen(Stroke, 1);
-            var tabLeft = tab.IsEmpty ? 0 : Math.Max(body.Left, tab.Left + 0.5);
-            var tabRight = tab.IsEmpty ? 0 : Math.Min(body.Right - radius * 2, tab.Right - 0.5);
-            var tabTop = tab.IsEmpty ? 0 : tab.Top + 0.5;
-            Geometry outline;
-
-            if (tab.IsEmpty || tabRight - tabLeft < radius * 2 || body.Top - tabTop < radius * 2)
-            {
-                outline = new RectangleGeometry(body, radius, radius);
-            }
-            else
-            {
-                var geometry = new StreamGeometry();
-                using (var context = geometry.Open())
-                {
-                    if (tabLeft - body.Left < radius * 2)
-                    {
-                        context.BeginFigure(new Point(tabLeft + radius, tabTop), true, true);
-                    }
-                    else
-                    {
-                        context.BeginFigure(new Point(body.Left + radius, body.Top), true, true);
-                        context.LineTo(new Point(tabLeft - radius, body.Top), true, false);
-                        context.QuadraticBezierTo(new Point(tabLeft, body.Top), new Point(tabLeft, body.Top - radius), true, false);
-                        context.LineTo(new Point(tabLeft, tabTop + radius), true, false);
-                        context.QuadraticBezierTo(new Point(tabLeft, tabTop), new Point(tabLeft + radius, tabTop), true, false);
-                    }
-                    context.LineTo(new Point(tabRight - radius, tabTop), true, false);
-                    context.QuadraticBezierTo(new Point(tabRight, tabTop), new Point(tabRight, tabTop + radius), true, false);
-                    context.LineTo(new Point(tabRight, body.Top - radius), true, false);
-                    context.QuadraticBezierTo(new Point(tabRight, body.Top), new Point(tabRight + radius, body.Top), true, false);
-                    context.LineTo(new Point(body.Right - radius, body.Top), true, false);
-                    context.QuadraticBezierTo(body.TopRight, new Point(body.Right, body.Top + radius), true, false);
-                    context.LineTo(new Point(body.Right, body.Bottom - radius), true, false);
-                    context.QuadraticBezierTo(body.BottomRight, new Point(body.Right - radius, body.Bottom), true, false);
-                    context.LineTo(new Point(body.Left + radius, body.Bottom), true, false);
-                    context.QuadraticBezierTo(body.BottomLeft, new Point(body.Left, body.Bottom - radius), true, false);
-                    if (tabLeft - body.Left < radius * 2)
-                    {
-                        var leftRadius = Math.Min(radius, tabLeft - body.Left);
-                        context.LineTo(new Point(body.Left, body.Top + leftRadius), true, false);
-                        context.QuadraticBezierTo(body.TopLeft, new Point(body.Left + leftRadius, body.Top), true, false);
-                        context.LineTo(new Point(tabLeft, body.Top), true, false);
-                        context.LineTo(new Point(tabLeft, tabTop + radius), true, false);
-                        context.QuadraticBezierTo(new Point(tabLeft, tabTop), new Point(tabLeft + radius, tabTop), true, false);
-                    }
-                    else
-                    {
-                        context.LineTo(new Point(body.Left, body.Top + radius), true, false);
-                        context.QuadraticBezierTo(body.TopLeft, new Point(body.Left + radius, body.Top), true, false);
-                    }
-                }
-                outline = geometry;
-            }
-
+            var outline = CreateOutline(body, tab, radius);
             if (bottomTab)
             {
                 outline.Transform = new MatrixTransform(1, 0, 0, -1, 0, ActualHeight);
             }
             outline.Freeze();
-            drawingContext.DrawGeometry(Fill, pen, outline);
+            drawingContext.DrawGeometry(Fill, new Pen(Stroke, 1), outline);
+        }
+
+        private static Geometry CreateOutline(Rect body, Rect tab, double radius)
+        {
+            var tabLeft = tab.IsEmpty ? 0 : Math.Max(body.Left, tab.Left + 0.5);
+            var tabRight = tab.IsEmpty ? 0 : Math.Min(body.Right - radius * 2, tab.Right - 0.5);
+            var tabTop = tab.IsEmpty ? 0 : tab.Top + 0.5;
+            if (tab.IsEmpty || tabRight - tabLeft < radius * 2 || body.Top - tabTop < radius * 2)
+            {
+                return new RectangleGeometry(body, radius, radius);
+            }
+
+            var touchesLeftEdge = tabLeft - body.Left < radius * 2;
+            var geometry = new StreamGeometry();
+            using (var context = geometry.Open())
+            {
+                if (touchesLeftEdge)
+                {
+                    context.BeginFigure(new Point(tabLeft + radius, tabTop), true, true);
+                }
+                else
+                {
+                    context.BeginFigure(new Point(body.Left + radius, body.Top), true, true);
+                    context.LineTo(new Point(tabLeft - radius, body.Top), true, false);
+                    context.QuadraticBezierTo(new Point(tabLeft, body.Top), new Point(tabLeft, body.Top - radius), true, false);
+                    context.LineTo(new Point(tabLeft, tabTop + radius), true, false);
+                    context.QuadraticBezierTo(new Point(tabLeft, tabTop), new Point(tabLeft + radius, tabTop), true, false);
+                }
+                context.LineTo(new Point(tabRight - radius, tabTop), true, false);
+                context.QuadraticBezierTo(new Point(tabRight, tabTop), new Point(tabRight, tabTop + radius), true, false);
+                context.LineTo(new Point(tabRight, body.Top - radius), true, false);
+                context.QuadraticBezierTo(new Point(tabRight, body.Top), new Point(tabRight + radius, body.Top), true, false);
+                context.LineTo(new Point(body.Right - radius, body.Top), true, false);
+                context.QuadraticBezierTo(body.TopRight, new Point(body.Right, body.Top + radius), true, false);
+                context.LineTo(new Point(body.Right, body.Bottom - radius), true, false);
+                context.QuadraticBezierTo(body.BottomRight, new Point(body.Right - radius, body.Bottom), true, false);
+                context.LineTo(new Point(body.Left + radius, body.Bottom), true, false);
+                context.QuadraticBezierTo(body.BottomLeft, new Point(body.Left, body.Bottom - radius), true, false);
+                if (touchesLeftEdge)
+                {
+                    var leftRadius = Math.Min(radius, tabLeft - body.Left);
+                    context.LineTo(new Point(body.Left, body.Top + leftRadius), true, false);
+                    context.QuadraticBezierTo(body.TopLeft, new Point(body.Left + leftRadius, body.Top), true, false);
+                    context.LineTo(new Point(tabLeft, body.Top), true, false);
+                    context.LineTo(new Point(tabLeft, tabTop + radius), true, false);
+                    context.QuadraticBezierTo(new Point(tabLeft, tabTop), new Point(tabLeft + radius, tabTop), true, false);
+                }
+                else
+                {
+                    context.LineTo(new Point(body.Left, body.Top + radius), true, false);
+                    context.QuadraticBezierTo(body.TopLeft, new Point(body.Left + radius, body.Top), true, false);
+                }
+            }
+            return geometry;
         }
     }
 }

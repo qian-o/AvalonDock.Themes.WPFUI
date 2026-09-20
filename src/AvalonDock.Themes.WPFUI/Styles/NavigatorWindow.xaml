@@ -7,6 +7,39 @@
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=AvalonDock"
                     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
 
+    <Style x:Key="DockNavigatorItemStyle" TargetType="ListBoxItem">
+        <Setter Property="Padding" Value="8,6" />
+        <Setter Property="Margin" Value="0,1" />
+        <Setter Property="Foreground" Value="{DynamicResource DockSecondaryTextBrush}" />
+        <Setter Property="AutomationProperties.Name" Value="{Binding LayoutElement.Title}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource DockHoverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{DynamicResource DockPressedBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <DataTemplate x:Key="DockNavigatorItemTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Image Source="{Binding LayoutElement.IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}"
+                   Stretch="None" />
+            <TextBlock Grid.Column="1"
+                       Margin="4,2,0,2"
+                       Text="{Binding LayoutElement.Title}"
+                       TextTrimming="CharacterEllipsis" />
+        </Grid>
+    </DataTemplate>
+
     <Style TargetType="{x:Type avalonDockControls:NavigatorWindow}">
         <Setter Property="Background" Value="{DynamicResource DockSurfaceBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource DockBorderBrush}" />
@@ -87,43 +120,9 @@
                                                  BorderThickness="0"
                                                  FocusVisualStyle="{x:Null}"
                                                  ItemsSource="{Binding Anchorables}"
-                                                 SelectedItem="{Binding SelectedAnchorable, Mode=TwoWay}">
-                                            <ListBox.ItemContainerStyle>
-                                                <Style TargetType="ListBoxItem">
-                                                    <Setter Property="Padding" Value="8,6" />
-                                                    <Setter Property="Margin" Value="0,1" />
-                                                    <Setter Property="Foreground" Value="{DynamicResource DockSecondaryTextBrush}" />
-                                                    <Setter Property="AutomationProperties.Name" Value="{Binding LayoutElement.Title}" />
-                                                    <Setter Property="Cursor" Value="Hand" />
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter Property="Background" Value="{DynamicResource DockHoverBrush}" />
-                                                            <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
-                                                        </Trigger>
-                                                        <Trigger Property="IsSelected" Value="True">
-                                                            <Setter Property="Background" Value="{DynamicResource DockPressedBrush}" />
-                                                            <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
-                                                        </Trigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </ListBox.ItemContainerStyle>
-                                            <ListBox.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Image Source="{Binding LayoutElement.IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}"
-                                                               Stretch="None" />
-                                                        <TextBlock Grid.Column="1"
-                                                                   Margin="4,2,0,2"
-                                                                   Text="{Binding LayoutElement.Title}"
-                                                                   TextTrimming="CharacterEllipsis" />
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </ListBox.ItemTemplate>
-                                        </ListBox>
+                                                 SelectedItem="{Binding SelectedAnchorable, Mode=TwoWay}"
+                                                 ItemContainerStyle="{StaticResource DockNavigatorItemStyle}"
+                                                 ItemTemplate="{StaticResource DockNavigatorItemTemplate}" />
                                     </Grid>
                                     <Grid Grid.Column="1"
                                           Margin="5">
@@ -142,42 +141,9 @@
                                                  BorderThickness="0"
                                                  FocusVisualStyle="{x:Null}"
                                                  ItemsSource="{Binding Documents}"
-                                                 SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">
-                                            <ListBox.ItemContainerStyle>
-                                                <Style TargetType="ListBoxItem">
-                                                    <Setter Property="Padding" Value="8,6" />
-                                                    <Setter Property="Margin" Value="0,1" />
-                                                    <Setter Property="Foreground" Value="{DynamicResource DockSecondaryTextBrush}" />
-                                                    <Setter Property="AutomationProperties.Name" Value="{Binding LayoutElement.Title}" />
-                                                    <Setter Property="Cursor" Value="Hand" />
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter Property="Background" Value="{DynamicResource DockHoverBrush}" />
-                                                            <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
-                                                        </Trigger>
-                                                        <Trigger Property="IsSelected" Value="True">
-                                                            <Setter Property="Background" Value="{DynamicResource DockPressedBrush}" />
-                                                            <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
-                                                        </Trigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </ListBox.ItemContainerStyle>
-                                            <ListBox.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Image Source="{Binding LayoutElement.IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}"
-                                                               Stretch="None" />
-                                                        <TextBlock Grid.Column="1"
-                                                                   Margin="4,2,0,2"
-                                                                   Text="{Binding LayoutElement.Title}"
-                                                                   TextTrimming="CharacterEllipsis" />
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </ListBox.ItemTemplate>
+                                                 SelectedItem="{Binding SelectedDocument, Mode=TwoWay}"
+                                                 ItemContainerStyle="{StaticResource DockNavigatorItemStyle}"
+                                                 ItemTemplate="{StaticResource DockNavigatorItemTemplate}">
                                             <ListBox.ItemsPanel>
                                                 <ItemsPanelTemplate>
                                                     <WrapPanel Orientation="Vertical" />

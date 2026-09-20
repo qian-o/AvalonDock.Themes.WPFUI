@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
@@ -26,13 +26,18 @@ namespace AvalonDock.Themes.WPFUI.Controls
 
         private static void OnUseFluentChromeChanged(DependencyObject element, DependencyPropertyChangedEventArgs args)
         {
-            if (!(element is Window window) || !(bool)args.NewValue)
+            if (!(element is Window window))
             {
                 return;
             }
 
             window.SourceInitialized -= OnWindowReady;
             window.Loaded -= OnWindowReady;
+            if (!(bool)args.NewValue)
+            {
+                return;
+            }
+
             window.SourceInitialized += OnWindowReady;
             window.Loaded += OnWindowReady;
             if (window.IsInitialized)
@@ -54,6 +59,11 @@ namespace AvalonDock.Themes.WPFUI.Controls
 
         private static void Apply(Window window)
         {
+            if (!GetUseFluentChrome(window))
+            {
+                return;
+            }
+
             var handle = new WindowInteropHelper(window).Handle;
             if (handle == IntPtr.Zero)
             {

@@ -1,0 +1,9 @@
+﻿<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="src/AvalonDock.Themes.WPFUI/AvalonDock.Themes.WPFUI.csproj" />
+  <Project Path="src/ExampleApp/ExampleApp.csproj" />
+</Solution>

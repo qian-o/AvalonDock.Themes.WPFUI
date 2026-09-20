@@ -112,11 +112,7 @@ namespace AvalonDock.Themes.WPFUI.Controls
                         continue;
                     }
 
-#if NET6_0_OR_GREATER
                     var rect = new Rect(0, 0, target.RenderSize.Width + 2, target.RenderSize.Height + 2);
-#else
-                    var rect = new Rect(0, 0, target.RenderSize.Width + 2, target.RenderSize.Height + 2);
-#endif
                     if (rect.Contains(target.PointFromScreen(mousePosition)))
                     {
                         currentTarget = target;
