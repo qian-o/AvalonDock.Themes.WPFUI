@@ -7,12 +7,13 @@
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=AvalonDock"
                     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
 
-    <Style x:Key="DockNavigatorItemStyle" TargetType="ListBoxItem">
-        <Setter Property="Padding" Value="8,6" />
-        <Setter Property="Margin" Value="0,1" />
-        <Setter Property="Foreground" Value="{DynamicResource DockSecondaryTextBrush}" />
+    <Style x:Key="DockNavigatorItemStyle"
+           TargetType="ListBoxItem">
         <Setter Property="AutomationProperties.Name" Value="{Binding LayoutElement.Title}" />
         <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Foreground" Value="{DynamicResource DockSecondaryTextBrush}" />
+        <Setter Property="Margin" Value="0,1" />
+        <Setter Property="Padding" Value="8,6" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource DockHoverBrush}" />
@@ -44,19 +45,8 @@
         <Setter Property="Background" Value="{DynamicResource DockSurfaceBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource DockBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
         <Setter Property="ResizeMode" Value="NoResize" />
         <Setter Property="SizeToContent" Value="WidthAndHeight" />
-        <Setter Property="controls:DockFloatingWindowAssist.UseFluentChrome" Value="True" />
-        <Setter Property="shell:WindowChrome.WindowChrome">
-            <Setter.Value>
-                <shell:WindowChrome CaptionHeight="16"
-                                    CornerRadius="0"
-                                    GlassFrameThickness="-1"
-                                    ResizeBorderThickness="0"
-                                    ShowSystemMenu="False" />
-            </Setter.Value>
-        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:NavigatorWindow}">
@@ -88,8 +78,8 @@
                                                    Grid.Column="1"
                                                    Margin="4,0,0,0"
                                                    VerticalAlignment="Center"
-                                                       FontSize="16"
-                                                       FontWeight="SemiBold"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
                                                    Text="{Binding SelectedDocument.LayoutElement.Title}"
                                                    TextTrimming="CharacterEllipsis" />
                                     </Grid>
@@ -110,7 +100,7 @@
                                             <RowDefinition />
                                         </Grid.RowDefinitions>
                                         <TextBlock Margin="0,3,0,4"
-                                                       FontWeight="SemiBold"
+                                                   FontWeight="SemiBold"
                                                    Text="{x:Static avalonDockProperties:Resources.Active_ToolWindows}" />
                                         <ListBox x:Name="PART_AnchorableListBox"
                                                  Grid.Row="1"
@@ -119,10 +109,10 @@
                                                  Background="{DynamicResource DockChromeBrush}"
                                                  BorderThickness="0"
                                                  FocusVisualStyle="{x:Null}"
-                                                 ItemsSource="{Binding Anchorables}"
-                                                 SelectedItem="{Binding SelectedAnchorable, Mode=TwoWay}"
                                                  ItemContainerStyle="{StaticResource DockNavigatorItemStyle}"
-                                                 ItemTemplate="{StaticResource DockNavigatorItemTemplate}" />
+                                                 ItemTemplate="{StaticResource DockNavigatorItemTemplate}"
+                                                 ItemsSource="{Binding Anchorables}"
+                                                 SelectedItem="{Binding SelectedAnchorable, Mode=TwoWay}" />
                                     </Grid>
                                     <Grid Grid.Column="1"
                                           Margin="5">
@@ -140,10 +130,10 @@
                                                  Background="{DynamicResource DockChromeBrush}"
                                                  BorderThickness="0"
                                                  FocusVisualStyle="{x:Null}"
-                                                 ItemsSource="{Binding Documents}"
-                                                 SelectedItem="{Binding SelectedDocument, Mode=TwoWay}"
                                                  ItemContainerStyle="{StaticResource DockNavigatorItemStyle}"
-                                                 ItemTemplate="{StaticResource DockNavigatorItemTemplate}">
+                                                 ItemTemplate="{StaticResource DockNavigatorItemTemplate}"
+                                                 ItemsSource="{Binding Documents}"
+                                                 SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">
                                             <ListBox.ItemsPanel>
                                                 <ItemsPanelTemplate>
                                                     <WrapPanel Orientation="Vertical" />
@@ -162,14 +152,25 @@
                     </AdornerDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="SelectedDocument" Value="{x:Null}">
-                            <Setter TargetName="selectedElementTitle" Property="Text" Value="{Binding SelectedAnchorable.LayoutElement.Title}" />
                             <Setter TargetName="selectedElementDescription" Property="Text" Value="{x:Null}" />
+                            <Setter TargetName="selectedElementTitle" Property="Text" Value="{Binding SelectedAnchorable.LayoutElement.Title}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
         <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="controls:DockFloatingWindowAssist.UseFluentChrome" Value="True" />
+        <Setter Property="shell:WindowChrome.WindowChrome">
+            <Setter.Value>
+                <shell:WindowChrome CaptionHeight="16"
+                                    CornerRadius="0"
+                                    GlassFrameThickness="-1"
+                                    ResizeBorderThickness="0"
+                                    ShowSystemMenu="False" />
+            </Setter.Value>
+        </Setter>
 
     </Style>
 </ResourceDictionary>

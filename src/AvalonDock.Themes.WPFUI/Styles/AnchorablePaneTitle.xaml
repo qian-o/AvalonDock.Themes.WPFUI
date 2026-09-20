@@ -7,9 +7,6 @@
 
     <Style TargetType="{x:Type avalonDockControls:AnchorablePaneTitle}">
         <Setter Property="Height" Value="36" />
-        <Setter Property="TextElement.FontFamily" Value="{DynamicResource DockFontFamily}" />
-        <Setter Property="TextElement.FontSize" Value="{DynamicResource DockFontSize}" />
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:AnchorablePaneTitle}">
@@ -25,8 +22,8 @@
                             <avalonDockControls:DropDownControlArea Grid.Column="0"
                                                                     Margin="4,0"
                                                                     HorizontalAlignment="Stretch"
-                                                                    HorizontalContentAlignment="Stretch"
                                                                     VerticalAlignment="Center"
+                                                                    HorizontalContentAlignment="Stretch"
                                                                     DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
                                                                     DropDownContextMenuDataContext="{Binding Path=LayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
                                 <ContentPresenter HorizontalAlignment="Stretch"
@@ -92,6 +89,9 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="TextElement.FontFamily" Value="{DynamicResource DockFontFamily}" />
+        <Setter Property="TextElement.FontSize" Value="{DynamicResource DockFontSize}" />
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
     </Style>
 
 </ResourceDictionary>

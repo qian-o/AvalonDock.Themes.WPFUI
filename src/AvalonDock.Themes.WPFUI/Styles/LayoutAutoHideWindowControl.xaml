@@ -10,10 +10,10 @@
     <Style TargetType="{x:Type avalonDockControls:LayoutAutoHideWindowControl}">
         <Setter Property="AnchorableStyle">
             <Setter.Value>
-                <Style TargetType="{x:Type avalonDockControls:LayoutAnchorableControl}"
-                       BasedOn="{StaticResource DockAnchorableContentStyle}">
-                    <Setter Property="Margin" Value="{Binding Model, RelativeSource={RelativeSource Self}, Converter={converters:ModelToMarginConverter}}" />
+                <Style BasedOn="{StaticResource DockAnchorableContentStyle}"
+                       TargetType="{x:Type avalonDockControls:LayoutAnchorableControl}">
                     <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="Margin" Value="{Binding Model, RelativeSource={RelativeSource Self}, Converter={converters:ModelToMarginConverter}}" />
                 </Style>
             </Setter.Value>
         </Setter>

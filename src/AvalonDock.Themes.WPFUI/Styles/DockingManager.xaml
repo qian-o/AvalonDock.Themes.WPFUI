@@ -12,14 +12,6 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type avalonDock:DockingManager}">
-        <Setter Property="Background" Value="{DynamicResource DockWorkspaceBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource DockBorderBrush}" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="TextElement.FontFamily" Value="{DynamicResource DockFontFamily}" />
-        <Setter Property="TextElement.FontSize" Value="{DynamicResource DockFontSize}" />
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="AnchorGroupTemplate" Value="{StaticResource AnchorGroupTemplate}" />
         <Setter Property="AnchorSideTemplate" Value="{StaticResource AnchorSideTemplate}" />
         <Setter Property="AnchorTemplate" Value="{StaticResource AnchorTemplate}" />
@@ -27,6 +19,9 @@
         <Setter Property="AnchorableHeaderTemplate" Value="{StaticResource AnchorableHeaderTemplate}" />
         <Setter Property="AnchorablePaneControlStyle" Value="{StaticResource AnchorablePaneControlStyle}" />
         <Setter Property="AnchorableTitleTemplate" Value="{StaticResource AnchorableTitleTemplate}" />
+        <Setter Property="Background" Value="{DynamicResource DockWorkspaceBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DockBorderBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="DocumentContextMenu" Value="{DynamicResource DocumentContextMenu}" />
         <Setter Property="DocumentHeaderTemplate" Value="{StaticResource DocumentHeaderTemplate}" />
         <Setter Property="DocumentPaneControlStyle" Value="{StaticResource DocumentPaneControlStyle}" />
@@ -35,6 +30,7 @@
         <Setter Property="GridSplitterHeight" Value="6" />
         <Setter Property="GridSplitterWidth" Value="6" />
         <Setter Property="IconContentTemplate" Value="{StaticResource IconContentTemplate}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDock:DockingManager}">
@@ -83,6 +79,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="TextElement.FontFamily" Value="{DynamicResource DockFontFamily}" />
+        <Setter Property="TextElement.FontSize" Value="{DynamicResource DockFontSize}" />
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
+        <Setter Property="UseLayoutRounding" Value="True" />
     </Style>
 
 </ResourceDictionary>

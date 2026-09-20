@@ -44,11 +44,11 @@
 
         <Style.Triggers>
             <Trigger Property="IsTargeted" Value="true">
-                <Setter Property="Opacity" Value="1" />
                 <Setter Property="Background" Value="{DynamicResource DockPressedBrush}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
                 <Setter Property="GlyphBackground" Value="{DynamicResource AccentFillColorDefaultBrush}" />
                 <Setter Property="GlyphBorderBrush" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+                <Setter Property="Opacity" Value="1" />
                 <Setter Property="OuterBorderBrush" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
             </Trigger>
 

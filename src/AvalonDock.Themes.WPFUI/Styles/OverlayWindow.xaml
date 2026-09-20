@@ -5,34 +5,33 @@
 
     <Style TargetType="{x:Type avalonDockControls:OverlayWindow}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="controls:DockOverlayWindowAssist.IsEnabled" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:OverlayWindow}">
                     <Canvas x:Name="PART_DropTargetsContainer"
                             Background="{x:Null}"
                             ClipToBounds="True"
+                            IsHitTestVisible="False"
                             SnapsToDevicePixels="True"
-                            UseLayoutRounding="True"
-                            IsHitTestVisible="False">
+                            UseLayoutRounding="True">
                         <Path x:Name="PART_PreviewBox"
                               Fill="{DynamicResource DockPreviewBrush}"
+                              IsHitTestVisible="False"
                               Stroke="{DynamicResource DockPreviewBorderBrush}"
-                            StrokeThickness="1"
-                            IsHitTestVisible="False"
-                            UseLayoutRounding="True"
-                            Visibility="Hidden" />
+                              StrokeThickness="1"
+                              UseLayoutRounding="True"
+                              Visibility="Hidden" />
 
                         <Grid x:Name="PART_DockingManagerDropTargets"
-                            Panel.ZIndex="1"
-                            Visibility="Hidden">
+                              Panel.ZIndex="1"
+                              Visibility="Hidden">
                             <controls:DockTargetButton x:Name="PART_DockingManagerDropTargetLeft"
                                                        HorizontalAlignment="Left"
                                                        VerticalAlignment="Center"
                                                        HorizontalContentAlignment="Stretch"
                                                        VerticalContentAlignment="Stretch"
-                                                       IsOuter="true"
                                                        IsHitTestVisible="True"
+                                                       IsOuter="true"
                                                        TargetDock="DockLeft" />
 
                             <controls:DockTargetButton x:Name="PART_DockingManagerDropTargetRight"
@@ -40,8 +39,8 @@
                                                        VerticalAlignment="Center"
                                                        HorizontalContentAlignment="Stretch"
                                                        VerticalContentAlignment="Stretch"
-                                                       IsOuter="true"
                                                        IsHitTestVisible="True"
+                                                       IsOuter="true"
                                                        TargetDock="DockRight" />
 
                             <controls:DockTargetButton x:Name="PART_DockingManagerDropTargetBottom"
@@ -49,8 +48,8 @@
                                                        VerticalAlignment="Bottom"
                                                        HorizontalContentAlignment="Stretch"
                                                        VerticalContentAlignment="Stretch"
-                                                       IsOuter="true"
                                                        IsHitTestVisible="True"
+                                                       IsOuter="true"
                                                        TargetDock="DockBottom" />
 
                             <controls:DockTargetButton x:Name="PART_DockingManagerDropTargetTop"
@@ -58,13 +57,13 @@
                                                        VerticalAlignment="Top"
                                                        HorizontalContentAlignment="Stretch"
                                                        VerticalContentAlignment="Stretch"
-                                                       IsOuter="true"
                                                        IsHitTestVisible="True"
+                                                       IsOuter="true"
                                                        TargetDock="DockTop" />
                         </Grid>
                         <Grid x:Name="PART_AnchorablePaneDropTargets"
-                            Panel.ZIndex="1"
-                            Visibility="Hidden">
+                              Panel.ZIndex="1"
+                              Visibility="Hidden">
                             <Path Height="112"
                                   Data="{DynamicResource Path_DockPaneEmpty}"
                                   Fill="{DynamicResource DockOverlayGlyphBrush}"
@@ -88,45 +87,45 @@
                                                            Grid.Column="1"
                                                            HorizontalContentAlignment="Stretch"
                                                            VerticalContentAlignment="Stretch"
-                                                           TargetDock="DockTop"
-                                                           IsHitTestVisible="True" />
+                                                           IsHitTestVisible="True"
+                                                           TargetDock="DockTop" />
 
                                 <controls:DockTargetButton x:Name="PART_AnchorablePaneDropTargetRight"
                                                            Grid.Row="1"
                                                            Grid.Column="2"
                                                            HorizontalContentAlignment="Stretch"
                                                            VerticalContentAlignment="Stretch"
-                                                           TargetDock="DockRight"
-                                                           IsHitTestVisible="True" />
+                                                           IsHitTestVisible="True"
+                                                           TargetDock="DockRight" />
 
                                 <controls:DockTargetButton x:Name="PART_AnchorablePaneDropTargetBottom"
                                                            Grid.Row="2"
                                                            Grid.Column="1"
                                                            HorizontalContentAlignment="Stretch"
                                                            VerticalContentAlignment="Stretch"
-                                                           TargetDock="DockBottom"
-                                                           IsHitTestVisible="True" />
+                                                           IsHitTestVisible="True"
+                                                           TargetDock="DockBottom" />
 
                                 <controls:DockTargetButton x:Name="PART_AnchorablePaneDropTargetLeft"
                                                            Grid.Row="1"
                                                            Grid.Column="0"
                                                            HorizontalContentAlignment="Stretch"
                                                            VerticalContentAlignment="Stretch"
-                                                           TargetDock="DockLeft"
-                                                           IsHitTestVisible="True" />
+                                                           IsHitTestVisible="True"
+                                                           TargetDock="DockLeft" />
 
                                 <controls:DockTargetButton x:Name="PART_AnchorablePaneDropTargetInto"
                                                            Grid.Row="1"
                                                            Grid.Column="1"
                                                            HorizontalContentAlignment="Stretch"
                                                            VerticalContentAlignment="Stretch"
-                                                           TargetDock="Center"
-                                                           IsHitTestVisible="True" />
+                                                           IsHitTestVisible="True"
+                                                           TargetDock="Center" />
                             </Grid>
                         </Grid>
                         <Grid x:Name="PART_DocumentPaneDropTargets"
-                            Panel.ZIndex="1"
-                            Visibility="Hidden">
+                              Panel.ZIndex="1"
+                              Visibility="Hidden">
                             <Path Height="112"
                                   Data="{DynamicResource Path_DockPaneEmpty}"
                                   Fill="{DynamicResource DockOverlayGlyphBrush}"
@@ -150,45 +149,45 @@
                                                            Grid.Column="1"
                                                            HorizontalContentAlignment="Stretch"
                                                            VerticalContentAlignment="Stretch"
-                                                           TargetDock="SplitTop"
-                                                           IsHitTestVisible="True" />
+                                                           IsHitTestVisible="True"
+                                                           TargetDock="SplitTop" />
 
                                 <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetRight"
                                                            Grid.Row="1"
                                                            Grid.Column="2"
                                                            HorizontalContentAlignment="Stretch"
                                                            VerticalContentAlignment="Stretch"
-                                                           TargetDock="SplitRight"
-                                                           IsHitTestVisible="True" />
+                                                           IsHitTestVisible="True"
+                                                           TargetDock="SplitRight" />
 
                                 <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetBottom"
                                                            Grid.Row="2"
                                                            Grid.Column="1"
                                                            HorizontalContentAlignment="Stretch"
                                                            VerticalContentAlignment="Stretch"
-                                                           TargetDock="SplitBottom"
-                                                           IsHitTestVisible="True" />
+                                                           IsHitTestVisible="True"
+                                                           TargetDock="SplitBottom" />
 
                                 <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetLeft"
                                                            Grid.Row="1"
                                                            Grid.Column="0"
                                                            HorizontalContentAlignment="Stretch"
                                                            VerticalContentAlignment="Stretch"
-                                                           TargetDock="SplitLeft"
-                                                           IsHitTestVisible="True" />
+                                                           IsHitTestVisible="True"
+                                                           TargetDock="SplitLeft" />
 
                                 <controls:DockTargetButton x:Name="PART_DocumentPaneDropTargetInto"
                                                            Grid.Row="1"
                                                            Grid.Column="1"
                                                            HorizontalContentAlignment="Stretch"
                                                            VerticalContentAlignment="Stretch"
-                                                           TargetDock="Center"
-                                                           IsHitTestVisible="True" />
+                                                           IsHitTestVisible="True"
+                                                           TargetDock="Center" />
                             </Grid>
                         </Grid>
                         <Grid x:Name="PART_DocumentPaneFullDropTargets"
-                            Panel.ZIndex="1"
-                            Visibility="Hidden">
+                              Panel.ZIndex="1"
+                              Visibility="Hidden">
                             <Path Width="184"
                                   Height="184"
                                   Data="{DynamicResource Path_DockPaneLargeEmpty}"
@@ -280,6 +279,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="controls:DockOverlayWindowAssist.IsEnabled" Value="True" />
     </Style>
 
 </ResourceDictionary>

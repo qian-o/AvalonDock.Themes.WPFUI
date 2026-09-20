@@ -11,50 +11,74 @@
     <CornerRadius x:Key="DockTopCornerRadius">4,4,0,0</CornerRadius>
     <CornerRadius x:Key="DockBottomCornerRadius">0,0,4,4</CornerRadius>
 
-    <SolidColorBrush x:Key="DockWorkspaceBrush" Color="{DynamicResource SolidBackgroundFillColorBase}" />
-    <SolidColorBrush x:Key="DockSurfaceBrush" Color="{DynamicResource SolidBackgroundFillColorTertiary}" />
-    <SolidColorBrush x:Key="DockChromeBrush" Color="{DynamicResource SolidBackgroundFillColorSecondary}" />
-    <SolidColorBrush x:Key="DockBorderBrush" Color="{DynamicResource CardStrokeColorDefault}" />
-    <SolidColorBrush x:Key="DockHoverBrush" Color="{DynamicResource SubtleFillColorSecondary}" />
-    <SolidColorBrush x:Key="DockPressedBrush" Color="{DynamicResource SubtleFillColorTertiary}" />
-    <SolidColorBrush x:Key="DockTextBrush" Color="{DynamicResource TextFillColorPrimary}" />
-    <SolidColorBrush x:Key="DockSecondaryTextBrush" Color="{DynamicResource TextFillColorSecondary}" />
-    <SolidColorBrush x:Key="DockDisabledTextBrush" Color="{DynamicResource TextFillColorDisabled}" />
-    <SolidColorBrush x:Key="DockPreviewBrush" Opacity="0.08" Color="{DynamicResource SystemAccentColorSecondary}" />
-    <SolidColorBrush x:Key="DockPreviewBorderBrush" Opacity="0.55" Color="{DynamicResource AccentFillColorDefault}" />
-    <SolidColorBrush x:Key="DockOverlayGlyphBrush" Opacity="0.22" Color="{DynamicResource SolidBackgroundFillColorSecondary}" />
-    <SolidColorBrush x:Key="DockOverlayBorderBrush" Opacity="0.45" Color="{DynamicResource AccentFillColorDefault}" />
-    <SolidColorBrush x:Key="DockTabStripBrush" Color="Transparent" />
-    <SolidColorBrush x:Key="DockTabIdleBrush" Color="Transparent" />
-    <SolidColorBrush x:Key="DockTabSelectedBrush" Color="{DynamicResource SolidBackgroundFillColorTertiary}" />
+    <SolidColorBrush x:Key="DockWorkspaceBrush"
+                     Color="{DynamicResource SolidBackgroundFillColorBase}" />
+    <SolidColorBrush x:Key="DockSurfaceBrush"
+                     Color="{DynamicResource SolidBackgroundFillColorTertiary}" />
+    <SolidColorBrush x:Key="DockChromeBrush"
+                     Color="{DynamicResource SolidBackgroundFillColorSecondary}" />
+    <SolidColorBrush x:Key="DockBorderBrush"
+                     Color="{DynamicResource CardStrokeColorDefault}" />
+    <SolidColorBrush x:Key="DockHoverBrush"
+                     Color="{DynamicResource SubtleFillColorSecondary}" />
+    <SolidColorBrush x:Key="DockPressedBrush"
+                     Color="{DynamicResource SubtleFillColorTertiary}" />
+    <SolidColorBrush x:Key="DockTextBrush"
+                     Color="{DynamicResource TextFillColorPrimary}" />
+    <SolidColorBrush x:Key="DockSecondaryTextBrush"
+                     Color="{DynamicResource TextFillColorSecondary}" />
+    <SolidColorBrush x:Key="DockDisabledTextBrush"
+                     Color="{DynamicResource TextFillColorDisabled}" />
+    <SolidColorBrush x:Key="DockPreviewBrush"
+                     Opacity="0.08"
+                     Color="{DynamicResource SystemAccentColorSecondary}" />
+    <SolidColorBrush x:Key="DockPreviewBorderBrush"
+                     Opacity="0.55"
+                     Color="{DynamicResource AccentFillColorDefault}" />
+    <SolidColorBrush x:Key="DockOverlayGlyphBrush"
+                     Opacity="0.22"
+                     Color="{DynamicResource SolidBackgroundFillColorSecondary}" />
+    <SolidColorBrush x:Key="DockOverlayBorderBrush"
+                     Opacity="0.45"
+                     Color="{DynamicResource AccentFillColorDefault}" />
+    <SolidColorBrush x:Key="DockTabStripBrush"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="DockTabIdleBrush"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="DockTabSelectedBrush"
+                     Color="{DynamicResource SolidBackgroundFillColorTertiary}" />
 
     <Style x:Key="DockFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border Margin="3" BorderBrush="{DynamicResource DockTextBrush}"
-                            BorderThickness="1" CornerRadius="3" IsHitTestVisible="False" />
+                    <Border Margin="3"
+                            BorderBrush="{DynamicResource DockTextBrush}"
+                            BorderThickness="1"
+                            CornerRadius="3"
+                            IsHitTestVisible="False" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="DockChromeButtonStyle" TargetType="ButtonBase">
-        <Setter Property="Width" Value="28" />
-        <Setter Property="Height" Value="28" />
-        <Setter Property="Padding" Value="0" />
+    <Style x:Key="DockChromeButtonStyle"
+           TargetType="ButtonBase">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource DockSecondaryTextBrush}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource DockFocusVisual}" />
+        <Setter Property="Foreground" Value="{DynamicResource DockSecondaryTextBrush}" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ButtonBase">
-                    <Border x:Name="Surface" Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                    <Border x:Name="Surface"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{DynamicResource DockControlCornerRadius}">
                         <ContentPresenter Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -63,8 +87,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Surface" Property="Background" Value="{DynamicResource DockHoverBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
+                            <Setter TargetName="Surface" Property="Background" Value="{DynamicResource DockHoverBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Surface" Property="Background" Value="{DynamicResource DockPressedBrush}" />
@@ -76,9 +100,13 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Width" Value="28" />
     </Style>
 
-    <Style x:Key="DockChromeToggleButtonStyle" TargetType="ToggleButton" BasedOn="{StaticResource DockChromeButtonStyle}">
+    <Style x:Key="DockChromeToggleButtonStyle"
+           BasedOn="{StaticResource DockChromeButtonStyle}"
+           TargetType="ToggleButton">
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="{DynamicResource DockPressedBrush}" />
@@ -87,56 +115,66 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="DockTabItemStyle" TargetType="TabItem">
-        <Setter Property="Height" Value="{DynamicResource DockTabHeight}" />
-        <Setter Property="MinHeight" Value="{DynamicResource DockTabHeight}" />
-        <Setter Property="MinWidth" Value="100" />
-        <Setter Property="MaxWidth" Value="240" />
-        <Setter Property="Margin" Value="0,0,1,0" />
-        <Setter Property="Padding" Value="8,0,4,0" />
+    <Style x:Key="DockTabItemStyle"
+           TargetType="TabItem">
+        <Setter Property="AutomationProperties.Name" Value="{Binding Title}" />
+        <Setter Property="Background" Value="{DynamicResource DockTabIdleBrush}" />
+        <Setter Property="DockPanel.Dock" Value="Top" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource DockFocusVisual}" />
         <Setter Property="FontFamily" Value="{DynamicResource DockFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource DockFontSize}" />
-        <Setter Property="Background" Value="{DynamicResource DockTabIdleBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource DockSecondaryTextBrush}" />
-        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
-        <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
-        <Setter Property="ToolTip" Value="{Binding Title}" />
-        <Setter Property="AutomationProperties.Name" Value="{Binding Title}" />
-        <Setter Property="FocusVisualStyle" Value="{StaticResource DockFocusVisual}" />
-        <Setter Property="DockPanel.Dock" Value="Top" />
+        <Setter Property="Height" Value="{DynamicResource DockTabHeight}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+        <Setter Property="Margin" Value="0,0,1,0" />
+        <Setter Property="MaxWidth" Value="240" />
+        <Setter Property="MinHeight" Value="{DynamicResource DockTabHeight}" />
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="Padding" Value="8,0,4,0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
-                    <Grid Height="{DynamicResource DockTabHeight}" Background="Transparent"
-                          SnapsToDevicePixels="True" UseLayoutRounding="True">
-                        <Border x:Name="Surface" Margin="0,0,0,3"
-                                Background="{TemplateBinding Background}" BorderBrush="Transparent"
-                                BorderThickness="0" CornerRadius="{DynamicResource DockControlCornerRadius}" />
-                        <Border x:Name="Separator" Width="1" Margin="0,8,0,8"
-                                HorizontalAlignment="Right" Background="{DynamicResource DockBorderBrush}"
+                    <Grid Height="{DynamicResource DockTabHeight}"
+                          Background="Transparent"
+                          SnapsToDevicePixels="True"
+                          UseLayoutRounding="True">
+                        <Border x:Name="Surface"
+                                Margin="0,0,0,3"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                CornerRadius="{DynamicResource DockControlCornerRadius}" />
+                        <Border x:Name="Separator"
+                                Width="1"
+                                Margin="0,8,0,8"
+                                HorizontalAlignment="Right"
+                                Background="{DynamicResource DockBorderBrush}"
                                 IsHitTestVisible="False" />
-                        <ContentPresenter x:Name="HeaderContent" Margin="{TemplateBinding Padding}"
-                                          ContentSource="Header" RecognizesAccessKey="True"
-                                          HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                        <ContentPresenter x:Name="HeaderContent"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Center"
+                                          ContentSource="Header"
+                                          RecognizesAccessKey="True" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="DockPanel.Dock" Value="Bottom">
-                            <Setter TargetName="Surface" Property="Margin" Value="0,3,0,0" />
                             <Setter TargetName="Separator" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Surface" Property="Margin" Value="0,3,0,0" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Surface" Property="Background" Value="{DynamicResource DockHoverBrush}" />
-                            <Setter TargetName="Separator" Property="Visibility" Value="Collapsed" />
                             <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
+                            <Setter TargetName="Separator" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Surface" Property="Background" Value="{DynamicResource DockHoverBrush}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
+                            <Setter Property="Panel.ZIndex" Value="1" />
+                            <Setter TargetName="Separator" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="Surface" Property="Background" Value="Transparent" />
                             <Setter TargetName="Surface" Property="Margin" Value="0" />
-                            <Setter TargetName="Separator" Property="Visibility" Value="Collapsed" />
-                            <Setter Property="Panel.ZIndex" Value="1" />
-                            <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="{DynamicResource DockDisabledTextBrush}" />
@@ -145,17 +183,23 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ToolTip" Value="{Binding Title}" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
     </Style>
 
-    <Style x:Key="DockDocumentTabItemStyle" TargetType="TabItem" BasedOn="{StaticResource DockTabItemStyle}">
+    <Style x:Key="DockDocumentTabItemStyle"
+           BasedOn="{StaticResource DockTabItemStyle}"
+           TargetType="TabItem">
         <Setter Property="Padding" Value="14,0,8,0" />
         <Setter Property="Visibility" Value="{Binding IsVisible, Converter={avalonDockConverters:BoolToVisibilityConverter}}" />
     </Style>
 
-    <Style x:Key="DockToolTabItemStyle" TargetType="TabItem" BasedOn="{StaticResource DockTabItemStyle}">
+    <Style x:Key="DockToolTabItemStyle"
+           BasedOn="{StaticResource DockTabItemStyle}"
+           TargetType="TabItem">
+        <Setter Property="DockPanel.Dock" Value="Bottom" />
         <Setter Property="MinWidth" Value="0" />
         <Setter Property="Padding" Value="12,0" />
-        <Setter Property="DockPanel.Dock" Value="Bottom" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Parent.ChildrenCount, FallbackValue=1}"
                          Value="1">

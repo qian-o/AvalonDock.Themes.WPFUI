@@ -12,9 +12,9 @@
 
     <DataTemplate x:Key="DocumentHeaderTemplate">
         <TextBlock HorizontalAlignment="Left"
-                 TextAlignment="Left"
-                 VerticalAlignment="Center"
+                   VerticalAlignment="Center"
                    Text="{Binding Title}"
+                   TextAlignment="Left"
                    TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
@@ -28,12 +28,12 @@
                    Source="{Binding IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}"
                    Stretch="Uniform" />
             <TextBlock x:Name="title"
-                       HorizontalAlignment="Stretch"
                        Grid.Column="1"
                        Margin="4,0,0,0"
-                       TextAlignment="Center"
+                       HorizontalAlignment="Stretch"
                        VerticalAlignment="Center"
                        Text="{Binding Title}"
+                       TextAlignment="Center"
                        TextTrimming="CharacterEllipsis" />
         </Grid>
         <DataTemplate.Triggers>
@@ -46,17 +46,17 @@
 
     <DataTemplate x:Key="DocumentTitleTemplate">
         <TextBlock HorizontalAlignment="Stretch"
-                 TextAlignment="Center"
-                 VerticalAlignment="Center"
-                 Text="{Binding Title}"
-                 TextTrimming="CharacterEllipsis" />
+                   VerticalAlignment="Center"
+                   Text="{Binding Title}"
+                   TextAlignment="Center"
+                   TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
     <DataTemplate x:Key="AnchorableTitleTemplate">
         <TextBlock HorizontalAlignment="Stretch"
-                   TextAlignment="Left"
                    VerticalAlignment="Center"
                    Text="{Binding Title}"
+                   TextAlignment="Left"
                    TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 

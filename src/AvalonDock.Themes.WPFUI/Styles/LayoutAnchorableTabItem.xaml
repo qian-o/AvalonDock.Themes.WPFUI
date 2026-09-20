@@ -5,7 +5,6 @@
 
     <Style TargetType="{x:Type avalonDockControls:LayoutAnchorableTabItem}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorableTabItem}">
@@ -14,7 +13,7 @@
                         <Border Background="Transparent"
                                 BorderBrush="Transparent"
                                 BorderThickness="0"
-                            ClipToBounds="True"
+                                ClipToBounds="True"
                                 CornerRadius="{DynamicResource DockControlCornerRadius}">
                             <Grid>
                                 <ContentPresenter HorizontalAlignment="Stretch"
@@ -31,6 +30,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
 </ResourceDictionary>

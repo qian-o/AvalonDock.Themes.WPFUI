@@ -5,17 +5,11 @@
                     xmlns:controls="clr-namespace:AvalonDock.Themes.WPFUI.Controls"
                     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
 
-    <Style x:Key="DocumentPaneControlStyle" TargetType="{x:Type avalonDockControls:LayoutDocumentPaneControl}">
+    <Style x:Key="DocumentPaneControlStyle"
+           TargetType="{x:Type avalonDockControls:LayoutDocumentPaneControl}">
         <Setter Property="Background" Value="{DynamicResource DockSurfaceBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource DockBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="UseLayoutRounding" Value="True" />
-        <Setter Property="ItemContainerStyle" Value="{DynamicResource DockDocumentTabItemStyle}" />
 
         <Setter Property="ContentTemplate">
             <Setter.Value>
@@ -24,6 +18,8 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="ItemContainerStyle" Value="{DynamicResource DockDocumentTabItemStyle}" />
 
         <Setter Property="ItemTemplate">
             <Setter.Value>
@@ -32,71 +28,90 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutDocumentPaneControl}">
-                        <Grid KeyboardNavigation.TabNavigation="Local" Background="{DynamicResource DockTabStripBrush}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <controls:DockPaneSurface x:Name="PaneBorder" Grid.RowSpan="2"
-                                                      Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}"
-                                                      ContentPanel="{Binding ElementName=ContentPanel}" />
-                                <Border x:Name="TabStrip" Background="{DynamicResource DockTabStripBrush}"
-                                    Padding="12,6,4,0"
-                                    Visibility="{Binding Model.ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <avalonDockControls:DocumentPaneTabPanel x:Name="HeaderPanel" IsItemsHost="True"
-                                                             KeyboardNavigation.TabIndex="1" />
-                                    <avalonDockControls:DropDownButton x:Name="MenuDropDownButton" Grid.Column="1"
-                                                                       Margin="4,0,0,0" VerticalAlignment="Center"
-                                                                       Style="{DynamicResource DockChromeToggleButtonStyle}">
-                                        <avalonDockControls:DropDownButton.DropDownContextMenu>
-                                            <avalonDockControls:ContextMenuEx ItemsSource="{Binding Model.ChildrenSorted, RelativeSource={RelativeSource TemplatedParent}}"
-                                                                              Style="{StaticResource UiContextMenu}">
-                                                <avalonDockControls:ContextMenuEx.ItemContainerStyle>
-                                                    <Style TargetType="{x:Type avalonDockControls:MenuItemEx}">
-                                                        <Setter Property="Command" Value="{Binding Path=., Converter={avalonDockConverters:ActivateCommandLayoutItemFromLayoutModelConverter}}" />
-                                                        <Setter Property="HeaderTemplate" Value="{Binding Root.Manager.DocumentPaneMenuItemHeaderTemplate}" />
-                                                        <Setter Property="HeaderTemplateSelector" Value="{Binding Root.Manager.DocumentPaneMenuItemHeaderTemplateSelector}" />
-                                                        <Setter Property="IconTemplate" Value="{Binding Root.Manager.IconContentTemplate}" />
-                                                        <Setter Property="IconTemplateSelector" Value="{Binding Root.Manager.IconContentTemplateSelector}" />
-                                                    </Style>
-                                                </avalonDockControls:ContextMenuEx.ItemContainerStyle>
-                                            </avalonDockControls:ContextMenuEx>
-                                        </avalonDockControls:DropDownButton.DropDownContextMenu>
-                                        <ui:SymbolIcon FontSize="14" Symbol="ChevronDown16" />
-                                    </avalonDockControls:DropDownButton>
-                                </Grid>
-                            </Border>
-                                <Border x:Name="ContentPanel" Grid.Row="1" Padding="{TemplateBinding Padding}"
-                                    BorderThickness="1" BorderBrush="Transparent"
-                                    KeyboardNavigation.DirectionalNavigation="Contained"
-                                    KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Cycle">
-                                <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent"
-                                                  HorizontalAlignment="Stretch"
-                                                  VerticalAlignment="Stretch"
-                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                            </Border>
-                        </Grid>
+                    <Grid Background="{DynamicResource DockTabStripBrush}"
+                          KeyboardNavigation.TabNavigation="Local">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <controls:DockPaneSurface x:Name="PaneBorder"
+                                                  Grid.RowSpan="2"
+                                                  ContentPanel="{Binding ElementName=ContentPanel}"
+                                                  Fill="{TemplateBinding Background}"
+                                                  Stroke="{TemplateBinding BorderBrush}" />
+                        <Border x:Name="TabStrip"
+                                Padding="12,6,4,0"
+                                Background="{DynamicResource DockTabStripBrush}"
+                                Visibility="{Binding Model.ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <avalonDockControls:DocumentPaneTabPanel x:Name="HeaderPanel"
+                                                                         IsItemsHost="True"
+                                                                         KeyboardNavigation.TabIndex="1" />
+                                <avalonDockControls:DropDownButton x:Name="MenuDropDownButton"
+                                                                   Grid.Column="1"
+                                                                   Margin="4,0,0,0"
+                                                                   VerticalAlignment="Center"
+                                                                   Style="{DynamicResource DockChromeToggleButtonStyle}">
+                                    <avalonDockControls:DropDownButton.DropDownContextMenu>
+                                        <avalonDockControls:ContextMenuEx ItemsSource="{Binding Model.ChildrenSorted, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                          Style="{StaticResource UiContextMenu}">
+                                            <avalonDockControls:ContextMenuEx.ItemContainerStyle>
+                                                <Style TargetType="{x:Type avalonDockControls:MenuItemEx}">
+                                                    <Setter Property="Command" Value="{Binding Path=., Converter={avalonDockConverters:ActivateCommandLayoutItemFromLayoutModelConverter}}" />
+                                                    <Setter Property="HeaderTemplate" Value="{Binding Root.Manager.DocumentPaneMenuItemHeaderTemplate}" />
+                                                    <Setter Property="HeaderTemplateSelector" Value="{Binding Root.Manager.DocumentPaneMenuItemHeaderTemplateSelector}" />
+                                                    <Setter Property="IconTemplate" Value="{Binding Root.Manager.IconContentTemplate}" />
+                                                    <Setter Property="IconTemplateSelector" Value="{Binding Root.Manager.IconContentTemplateSelector}" />
+                                                </Style>
+                                            </avalonDockControls:ContextMenuEx.ItemContainerStyle>
+                                        </avalonDockControls:ContextMenuEx>
+                                    </avalonDockControls:DropDownButton.DropDownContextMenu>
+                                    <ui:SymbolIcon FontSize="14"
+                                                   Symbol="ChevronDown16" />
+                                </avalonDockControls:DropDownButton>
+                            </Grid>
+                        </Border>
+                        <Border x:Name="ContentPanel"
+                                Grid.Row="1"
+                                Padding="{TemplateBinding Padding}"
+                                BorderBrush="Transparent"
+                                BorderThickness="1"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                KeyboardNavigation.TabIndex="2"
+                                KeyboardNavigation.TabNavigation="Cycle">
+                            <ContentPresenter x:Name="PART_SelectedContentHost"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch"
+                                              ContentSource="SelectedContent"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding SelectedItem.IsActive, RelativeSource={RelativeSource Self}}"
                                      Value="True">
                             <Setter TargetName="PaneBorder" Property="Stroke" Value="{DynamicResource AccentFillColorDefaultBrush}" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Model.ChildrenCount, RelativeSource={RelativeSource Self}}" Value="0">
+                        <DataTrigger Binding="{Binding Model.ChildrenCount, RelativeSource={RelativeSource Self}}"
+                                     Value="0">
                             <Setter TargetName="MenuDropDownButton" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
     </Style>
 
 </ResourceDictionary>

@@ -54,9 +54,9 @@
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter TargetName="Top" Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
                 <Setter TargetName="Bottom" Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
                 <Setter TargetName="Main" Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
+                <Setter TargetName="Top" Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

@@ -7,7 +7,6 @@
 
     <Style TargetType="{x:Type avalonDockControls:LayoutDocumentTabItem}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutDocumentTabItem}">
@@ -15,8 +14,8 @@
                                                             DropDownContextMenuDataContext="{Binding LayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
                         <Border Background="Transparent"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="0"
-                            CornerRadius="{DynamicResource DockControlCornerRadius}">
+                                BorderThickness="0"
+                                CornerRadius="{DynamicResource DockControlCornerRadius}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -37,7 +36,8 @@
                                         Command="{Binding Path=LayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                         Style="{DynamicResource DockChromeButtonStyle}"
                                         ToolTip="{x:Static avalonDockProperties:Resources.Document_Close}">
-                                    <ui:SymbolIcon FontSize="12" Symbol="Dismiss12" />
+                                    <ui:SymbolIcon FontSize="12"
+                                                   Symbol="Dismiss12" />
                                 </Button>
                             </Grid>
                         </Border>
@@ -62,6 +62,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
     </Style>
 
 </ResourceDictionary>
