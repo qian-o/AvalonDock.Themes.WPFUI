@@ -82,58 +82,11 @@ dotnet build AvalonDock.Themes.WPFUI.slnx
 dotnet run --project src/ExampleApp/ExampleApp.csproj --framework net10.0-windows
 ```
 
-## Screenshots
-
-| Light | Dark |
-| ----- | ---- |
-| ![Light theme, example 1](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/1L.png) | ![Dark theme, example 1](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/1D.png) |
-| ![Light theme, example 2](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/2L.png) | ![Dark theme, example 2](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/2D.png) |
-| ![Light theme, example 3](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/3L.png) | ![Dark theme, example 3](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/3D.png) |
-| ![Light theme, example 4](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/4L.png) | ![Dark theme, example 4](https://raw.githubusercontent.com/qian-o/AvalonDock.Themes.WPFUI/master/Screenshots/4D.png) |
-
 ## References
 
 - [AvalonDock](https://github.com/Dirkster99/AvalonDock)
 - [WPF-UI](https://github.com/lepoco/wpfui)
 - [AakStudio.Shell.UI.Themes.AvalonDock](https://github.com/Wenveo/AakStudio.Shell.UI.Themes.AvalonDock)
-
-## Version History
-
-- 1.1.0
-  - Refactored styles to support more customization.
-
-- 1.0.8
-  - Updated WPF-UI.
-  - Adjusted the auto-hide tab style to resemble Visual Studio.
-
-- 1.0.7
-  - Fixed overlapping sidebar display areas.
-
-- 1.0.6
-  - Updated WPF-UI.
-
-- 1.0.5
-  - Adjusted the tool pane title's drag hit area.
-  - Added a focus style.
-
-- 1.0.4
-  - Adjusted splitter stacking order to improve dragging.
-
-- 1.0.3
-  - Adjusted tool pane tab header layout and simplified its style dictionary.
-  - Completed document pane menu styles.
-  - Fixed styling issues.
-
-- 1.0.2
-  - Added support for more target frameworks.
-
-- 1.0.1
-  - Split the style dictionary.
-  - Improved navigator window styles.
-  - Fixed styling issues.
-
-- 1.0.0
-  - Initial release.
 
 ## License
 
