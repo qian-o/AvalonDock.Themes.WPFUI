@@ -4,16 +4,22 @@
                     xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock">
 
     <Style TargetType="{x:Type avalonDockControls:LayoutAnchorableTabItem}">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorableTabItem}">
                     <avalonDockControls:DropDownControlArea DropDownContextMenu="{Binding Root.Manager.AnchorableContextMenu}"
                                                             DropDownContextMenuDataContext="{Binding LayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border Background="Transparent"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                            ClipToBounds="True"
+                                CornerRadius="{DynamicResource DockControlCornerRadius}">
                             <Grid>
-                                <ContentPresenter Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
+                                <ContentPresenter HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Center"
+                                                  Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
                                                   ContentTemplate="{Binding AnchorableHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
                                                   ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
                                 <avalonDockControls:DropDownControlArea Grid.Column="0"

@@ -11,7 +11,9 @@
                   Figures="M 266.388,0.000223796L 277.612,0.000223796L 277.612,7.60856L 280.392,10.3883L 288,10.3883L 288,21.6122L 280.392,21.6122L 277.612,24.3919L 277.612,32.0002L 266.388,32.0002L 266.388,24.3919L 263.608,21.6122L 256,21.6122L 256,10.3883L 263.608,10.3883L 266.388,7.60856L 266.388,0.000223796 Z " />
 
     <DataTemplate x:Key="DocumentHeaderTemplate">
-        <TextBlock VerticalAlignment="Center"
+        <TextBlock HorizontalAlignment="Left"
+               TextAlignment="Left"
+               VerticalAlignment="Center"
                    Text="{Binding Title}"
                    TextTrimming="CharacterEllipsis" />
     </DataTemplate>
@@ -26,8 +28,11 @@
                    Source="{Binding IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}"
                    Stretch="Uniform" />
             <TextBlock x:Name="title"
+                       HorizontalAlignment="Stretch"
                        Grid.Column="1"
                        Margin="4,0,0,0"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
                        Text="{Binding Title}"
                        TextTrimming="CharacterEllipsis" />
         </Grid>
@@ -40,15 +45,24 @@
     </DataTemplate>
 
     <DataTemplate x:Key="DocumentTitleTemplate">
-        <ui:TextBlock VerticalAlignment="Center"
-                      Text="{Binding Title}"
-                      TextTrimming="CharacterEllipsis" />
+        <TextBlock HorizontalAlignment="Stretch"
+               TextAlignment="Center"
+               VerticalAlignment="Center"
+               Text="{Binding Title}"
+               TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
     <DataTemplate x:Key="AnchorableTitleTemplate">
-        <ui:TextBlock VerticalAlignment="Center"
-                      Text="{Binding Title}"
-                      TextTrimming="CharacterEllipsis" />
+        <TextBlock x:Name="ToolTitle" HorizontalAlignment="Stretch"
+               TextAlignment="Left"
+               VerticalAlignment="Center"
+               Text="{Binding Title}"
+               TextTrimming="CharacterEllipsis" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding IsAutoHidden}" Value="True">
+                <Setter TargetName="ToolTitle" Property="TextAlignment" Value="Left" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
     </DataTemplate>
 
     <DataTemplate x:Key="IconContentTemplate">

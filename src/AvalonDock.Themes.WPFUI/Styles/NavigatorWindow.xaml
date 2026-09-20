@@ -3,14 +3,27 @@
                     xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
                     xmlns:avalonDockConverters="clr-namespace:AvalonDock.Converters;assembly=AvalonDock"
                     xmlns:avalonDockProperties="clr-namespace:AvalonDock.Properties;assembly=AvalonDock"
+                    xmlns:controls="clr-namespace:AvalonDock.Themes.WPFUI.Controls"
+                    xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=AvalonDock"
                     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
 
     <Style TargetType="{x:Type avalonDockControls:NavigatorWindow}">
-        <Setter Property="Background" Value="{DynamicResource WindowBackground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorTertiaryBrush}" />
+        <Setter Property="Background" Value="{DynamicResource DockSurfaceBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DockBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
         <Setter Property="ResizeMode" Value="NoResize" />
         <Setter Property="SizeToContent" Value="WidthAndHeight" />
+        <Setter Property="controls:DockFloatingWindowAssist.UseFluentChrome" Value="True" />
+        <Setter Property="shell:WindowChrome.WindowChrome">
+            <Setter.Value>
+                <shell:WindowChrome CaptionHeight="16"
+                                    CornerRadius="0"
+                                    GlassFrameThickness="-1"
+                                    ResizeBorderThickness="0"
+                                    ShowSystemMenu="False" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:NavigatorWindow}">
@@ -19,7 +32,7 @@
                                              Background="{TemplateBinding Background}"
                                              BorderBrush="{TemplateBinding BorderBrush}"
                                              BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid Margin="8,4,8,4">
+                            <Grid Margin="12,10,12,12">
                                 <Grid.RowDefinitions>
                                     <RowDefinition MinHeight="54" />
                                     <RowDefinition Height="*" />
@@ -42,7 +55,8 @@
                                                    Grid.Column="1"
                                                    Margin="4,0,0,0"
                                                    VerticalAlignment="Center"
-                                                   FontWeight="Bold"
+                                                       FontSize="16"
+                                                       FontWeight="SemiBold"
                                                    Text="{Binding SelectedDocument.LayoutElement.Title}"
                                                    TextTrimming="CharacterEllipsis" />
                                     </Grid>
@@ -63,21 +77,34 @@
                                             <RowDefinition />
                                         </Grid.RowDefinitions>
                                         <TextBlock Margin="0,3,0,4"
-                                                   FontWeight="Bold"
+                                                       FontWeight="SemiBold"
                                                    Text="{x:Static avalonDockProperties:Resources.Active_ToolWindows}" />
                                         <ListBox x:Name="PART_AnchorableListBox"
                                                  Grid.Row="1"
                                                  MaxHeight="400"
                                                  AutomationProperties.Name="{x:Static avalonDockProperties:Resources.Active_ToolWindows}"
-                                                 Background="Transparent"
+                                                 Background="{DynamicResource DockChromeBrush}"
                                                  BorderThickness="0"
                                                  FocusVisualStyle="{x:Null}"
                                                  ItemsSource="{Binding Anchorables}"
                                                  SelectedItem="{Binding SelectedAnchorable, Mode=TwoWay}">
                                             <ListBox.ItemContainerStyle>
                                                 <Style TargetType="ListBoxItem">
+                                                    <Setter Property="Padding" Value="8,6" />
+                                                    <Setter Property="Margin" Value="0,1" />
+                                                    <Setter Property="Foreground" Value="{DynamicResource DockSecondaryTextBrush}" />
                                                     <Setter Property="AutomationProperties.Name" Value="{Binding LayoutElement.Title}" />
                                                     <Setter Property="Cursor" Value="Hand" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="{DynamicResource DockHoverBrush}" />
+                                                            <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
+                                                        </Trigger>
+                                                        <Trigger Property="IsSelected" Value="True">
+                                                            <Setter Property="Background" Value="{DynamicResource DockPressedBrush}" />
+                                                            <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
                                                 </Style>
                                             </ListBox.ItemContainerStyle>
                                             <ListBox.ItemTemplate>
@@ -111,15 +138,28 @@
                                                  Grid.Row="1"
                                                  MaxHeight="400"
                                                  AutomationProperties.Name="{x:Static avalonDockProperties:Resources.Active_Files}"
-                                                 Background="Transparent"
+                                                 Background="{DynamicResource DockChromeBrush}"
                                                  BorderThickness="0"
                                                  FocusVisualStyle="{x:Null}"
                                                  ItemsSource="{Binding Documents}"
                                                  SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">
                                             <ListBox.ItemContainerStyle>
                                                 <Style TargetType="ListBoxItem">
+                                                    <Setter Property="Padding" Value="8,6" />
+                                                    <Setter Property="Margin" Value="0,1" />
+                                                    <Setter Property="Foreground" Value="{DynamicResource DockSecondaryTextBrush}" />
                                                     <Setter Property="AutomationProperties.Name" Value="{Binding LayoutElement.Title}" />
                                                     <Setter Property="Cursor" Value="Hand" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="{DynamicResource DockHoverBrush}" />
+                                                            <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
+                                                        </Trigger>
+                                                        <Trigger Property="IsSelected" Value="True">
+                                                            <Setter Property="Background" Value="{DynamicResource DockPressedBrush}" />
+                                                            <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
                                                 </Style>
                                             </ListBox.ItemContainerStyle>
                                             <ListBox.ItemTemplate>
@@ -163,7 +203,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
         <Setter Property="WindowStyle" Value="None" />
 
     </Style>

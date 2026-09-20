@@ -24,19 +24,19 @@
             </Style>
         </Style.Resources>
 
-        <Setter Property="Background" Value="{DynamicResource AccentAcrylicBackgroundFillColorBaseBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
+        <Setter Property="Background" Value="{DynamicResource DockChromeBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DockBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="2" />
         <Setter Property="GlyphArrowBrush" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
-        <Setter Property="GlyphBackground" Value="{DynamicResource AccentFillColorDefaultBrush}" />
-        <Setter Property="GlyphBorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
+        <Setter Property="GlyphBackground" Value="{DynamicResource DockHoverBrush}" />
+        <Setter Property="GlyphBorderBrush" Value="{DynamicResource DockBorderBrush}" />
         <Setter Property="Height" Value="32" />
 
         <Setter Property="Margin" Value="2" />
-        <Setter Property="Opacity" Value="0.6" />
-        <Setter Property="OuterBackground" Value="{DynamicResource AccentAcrylicBackgroundFillColorBaseBrush}" />
-        <Setter Property="OuterBorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
+        <Setter Property="Opacity" Value="0.82" />
+        <Setter Property="OuterBackground" Value="Transparent" />
+        <Setter Property="OuterBorderBrush" Value="{DynamicResource DockBorderBrush}" />
         <Setter Property="Padding" Value="4" />
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="UseLayoutRounding" Value="true" />
@@ -45,6 +45,11 @@
         <Style.Triggers>
             <Trigger Property="IsTargeted" Value="true">
                 <Setter Property="Opacity" Value="1" />
+                <Setter Property="Background" Value="{DynamicResource DockPressedBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+                <Setter Property="GlyphBackground" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                <Setter Property="GlyphBorderBrush" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+                <Setter Property="OuterBorderBrush" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
             </Trigger>
 
             <!--  Center  -->

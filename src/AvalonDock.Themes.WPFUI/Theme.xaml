@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/FluentResources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/AnchorablePaneTitle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/DockingManager.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/DockTargetButton.xaml" />

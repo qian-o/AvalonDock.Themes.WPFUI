@@ -49,16 +49,92 @@ namespace AvalonDock.Themes.WPFUI.Controls
         public static readonly DependencyProperty IsTargetedProperty;
         public static readonly DependencyProperty IsOuterProperty;
 
-#if NET8_0_OR_GREATER
-        private static readonly List<DockTargetButton> dockTargets = [];
-#elif NET6_0_OR_GREATER
-        private static readonly List<DockTargetButton> dockTargets = new();
-#else
-        private static readonly List<DockTargetButton> dockTargets = new List<DockTargetButton>();
-#endif
+        private static readonly Dictionary<OverlayWindow, OverlayState> overlayStates = new Dictionary<OverlayWindow, OverlayState>();
 
-        private static Path previewBox;
-        private static DockTargetButton current;
+        private OverlayWindow overlayWindow;
+
+        private sealed class OverlayState
+        {
+            private readonly Path previewBox;
+            private readonly List<DockTargetButton> targets = new List<DockTargetButton>();
+            private DockTargetButton currentTarget;
+
+            public OverlayState(Path previewBox)
+            {
+                this.previewBox = previewBox;
+                previewBox.IsVisibleChanged += OnPreviewBoxVisibleChanged;
+            }
+
+            public void Add(DockTargetButton target)
+            {
+                targets.Add(target);
+            }
+
+            public void Remove(DockTargetButton target)
+            {
+                if (currentTarget == target)
+                {
+                    ClearCurrentTarget();
+                }
+
+                targets.Remove(target);
+            }
+
+            public bool IsEmpty => targets.Count == 0;
+
+            public void Dispose()
+            {
+                ClearCurrentTarget();
+                previewBox.IsVisibleChanged -= OnPreviewBoxVisibleChanged;
+            }
+
+            private void OnPreviewBoxVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+            {
+                if ((bool)e.NewValue)
+                {
+                    UpdateCurrentTarget();
+                }
+                else
+                {
+                    ClearCurrentTarget();
+                }
+            }
+
+            private void UpdateCurrentTarget()
+            {
+                ClearCurrentTarget();
+                var mousePosition = GetMousePosition();
+
+                foreach (var target in targets)
+                {
+                    if (!target.IsVisible || !target.IsEnabled)
+                    {
+                        continue;
+                    }
+
+#if NET6_0_OR_GREATER
+                    var rect = new Rect(0, 0, target.RenderSize.Width + 2, target.RenderSize.Height + 2);
+#else
+                    var rect = new Rect(0, 0, target.RenderSize.Width + 2, target.RenderSize.Height + 2);
+#endif
+                    if (rect.Contains(target.PointFromScreen(mousePosition)))
+                    {
+                        currentTarget = target;
+                        currentTarget.IsTargeted = true;
+                        return;
+                    }
+                }
+            }
+
+            private void ClearCurrentTarget()
+            {
+                if (currentTarget != null)
+                {
+                    currentTarget.IsTargeted = false;
+                    currentTarget = null;
+                }
+            }
+        }
 
         static DockTargetButton()
         {
@@ -172,71 +248,37 @@ namespace AvalonDock.Themes.WPFUI.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            if (previewBox is null)
+            overlayWindow = TemplatedParent as OverlayWindow;
+            if (overlayWindow == null || !(overlayWindow.Template.FindName("PART_PreviewBox", overlayWindow) is Path previewBox))
             {
-                if (sender is DockTargetButton dockTargetButton && dockTargetButton.TemplatedParent is OverlayWindow overlayWindow)
-                {
-                    if (overlayWindow.Template.FindName("PART_PreviewBox", overlayWindow) is Path element)
-                    {
-                        previewBox = element;
-                        previewBox.IsVisibleChanged += OnIsVisibleChanged;
-                    }
-                }
+                return;
             }
 
-            dockTargets.Add(this);
+            if (!overlayStates.TryGetValue(overlayWindow, out var state))
+            {
+                state = new OverlayState(previewBox);
+                overlayStates.Add(overlayWindow, state);
+            }
+
+            state.Add(this);
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            if (previewBox != null)
+            if (overlayWindow == null || !overlayStates.TryGetValue(overlayWindow, out var state))
             {
-                previewBox.IsVisibleChanged -= OnIsVisibleChanged;
-                previewBox = null;
+                overlayWindow = null;
+                return;
             }
 
-            dockTargets.Remove(this);
-        }
-
-        private static void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if ((bool)e.NewValue)
+            state.Remove(this);
+            if (state.IsEmpty)
             {
-                foreach (DockTargetButton item in dockTargets)
-                {
-#if NET6_0_OR_GREATER
-                    Rect rect = new(0,
-                                    0,
-                                    item.RenderSize.Width + 2,
-                                    item.RenderSize.Height + 2);
-#else
-                    Rect rect = new Rect(0,
-                                         0,
-                                         item.RenderSize.Width + 2,
-                                         item.RenderSize.Height + 2);
-#endif
-
-                    Point point = item.PointFromScreen(GetMousePosition());
-
-                    if (rect.Contains(point))
-                    {
-                        current = item;
-
-                        current.IsTargeted = true;
-
-                        return;
-                    }
-                }
+                state.Dispose();
+                overlayStates.Remove(overlayWindow);
             }
-            else
-            {
-                if (current != null)
-                {
-                    current.IsTargeted = false;
 
-                    current = null;
-                }
-            }
+            overlayWindow = null;
         }
 
         private static Point GetMousePosition()

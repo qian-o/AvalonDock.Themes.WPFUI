@@ -6,7 +6,7 @@
     <ControlTemplate x:Key="AnchorTemplate"
                      TargetType="{x:Type avalonDockControls:LayoutAnchorControl}">
         <Grid x:Name="Main"
-              Margin="0,0,16,0"
+              Margin="0,0,12,0"
               Background="Transparent"
               SnapsToDevicePixels="True"
               UseLayoutRounding="True">
@@ -18,22 +18,22 @@
 
             <Border x:Name="Top"
                     Grid.Row="0"
-                    Height="4"
-                    Background="{DynamicResource ControlStrokeColorDefaultBrush}"
-                    CornerRadius="2"
+                    Height="3"
+                    Background="{DynamicResource DockBorderBrush}"
+                    CornerRadius="1.5"
                     Visibility="Collapsed" />
 
             <ContentPresenter Grid.Row="1"
-                              Margin="0,4,0,4"
+                              Margin="0,6,0,6"
                               Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
                               ContentTemplate="{Binding AnchorableHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
                               ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
 
             <Border x:Name="Bottom"
                     Grid.Row="2"
-                    Height="4"
-                    Background="{DynamicResource ControlStrokeColorDefaultBrush}"
-                    CornerRadius="2"
+                    Height="3"
+                    Background="{DynamicResource DockBorderBrush}"
+                    CornerRadius="1.5"
                     Visibility="Collapsed" />
         </Grid>
         <ControlTemplate.Triggers>
@@ -54,9 +54,9 @@
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter TargetName="Top" Property="Background" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
-                <Setter TargetName="Bottom" Property="Background" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
-                <Setter TargetName="Main" Property="TextElement.Foreground" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+                <Setter TargetName="Top" Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                <Setter TargetName="Bottom" Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                <Setter TargetName="Main" Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

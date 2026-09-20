@@ -3,13 +3,25 @@
                     xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
                     xmlns:avalonDockConverters="clr-namespace:AvalonDock.Converters;assembly=AvalonDock"
                     xmlns:avalonDockProperties="clr-namespace:AvalonDock.Properties;assembly=AvalonDock"
+                    xmlns:controls="clr-namespace:AvalonDock.Themes.WPFUI.Controls"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=AvalonDock"
                     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
 
     <Style TargetType="{x:Type avalonDockControls:LayoutAnchorableFloatingWindowControl}">
-        <Setter Property="Background" Value="{DynamicResource WindowBackground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorTertiaryBrush}" />
+        <Setter Property="Background" Value="{DynamicResource DockSurfaceBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DockBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
+        <Setter Property="controls:DockFloatingWindowAssist.UseFluentChrome" Value="True" />
+        <Setter Property="shell:WindowChrome.WindowChrome">
+            <Setter.Value>
+                <shell:WindowChrome CaptionHeight="36"
+                                    CornerRadius="0"
+                                    GlassFrameThickness="-1"
+                                    ResizeBorderThickness="6"
+                                    ShowSystemMenu="False" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorableFloatingWindowControl}">
@@ -18,12 +30,15 @@
                                              Background="{TemplateBinding Background}"
                                              BorderBrush="{TemplateBinding BorderBrush}"
                                              BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid Margin="8,4,8,4">
+                            <Grid Margin="0">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"
-                                                   MinHeight="16" />
+                                    <RowDefinition Height="Auto" MinHeight="36" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
+                                <Border Background="{DynamicResource DockTabStripBrush}"
+                                    BorderBrush="{DynamicResource DockBorderBrush}"
+                                    BorderThickness="0,0,0,1"
+                                    Padding="8,2">
                                 <Grid UseLayoutRounding="True">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -32,7 +47,9 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Border Visibility="{Binding Path=Model.IsSinglePane, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
+                                        <Border Padding="0"
+                                            Background="Transparent"
+                                            Visibility="{Binding Path=Model.IsSinglePane, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
                                         <avalonDockControls:DropDownControlArea DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
                                                                                 DropDownContextMenuDataContext="{Binding Path=SingleContentLayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
                                             <ContentPresenter Content="{Binding Model.SinglePane.SelectedContent, RelativeSource={RelativeSource TemplatedParent}}"
@@ -47,7 +64,7 @@
                                                                        DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
                                                                        DropDownContextMenuDataContext="{Binding Path=SingleContentLayoutItem, RelativeSource={RelativeSource TemplatedParent}}"
                                                                        Focusable="False"
-                                                                       Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}"
+                                                                       Style="{DynamicResource DockChromeToggleButtonStyle}"
                                                                        ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_CxMenu_Hint}"
                                                                        Visibility="{Binding Path=Model.IsSinglePane, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
                                         <ui:SymbolIcon Filled="True"
@@ -59,10 +76,10 @@
                                             Command="{x:Static shell:SystemCommands.MaximizeWindowCommand}"
                                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                             Focusable="False"
-                                            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                            Style="{DynamicResource DockChromeButtonStyle}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Window_Maximize}"
                                             Visibility="{Binding IsMaximized, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:InverseBoolToVisibilityConverter}}">
-                                        <ui:SymbolIcon Symbol="FullScreenMaximize16" />
+                                        <ui:SymbolIcon FontSize="14" Symbol="FullScreenMaximize16" />
                                     </Button>
 
                                     <Button Grid.Column="2"
@@ -70,10 +87,10 @@
                                             Command="{x:Static shell:SystemCommands.RestoreWindowCommand}"
                                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                             Focusable="False"
-                                            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                            Style="{DynamicResource DockChromeButtonStyle}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Window_Restore}"
                                             Visibility="{Binding IsMaximized, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                        <ui:SymbolIcon Symbol="FullScreenMinimize16" />
+                                        <ui:SymbolIcon FontSize="14" Symbol="FullScreenMinimize16" />
                                     </Button>
 
                                     <Button x:Name="CloseButton"
@@ -81,13 +98,16 @@
                                             shell:WindowChrome.IsHitTestVisibleInChrome="True"
                                             Command="{Binding HideWindowCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                             Focusable="False"
-                                            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                            Style="{DynamicResource DockChromeButtonStyle}"
                                             ToolTip="{x:Static avalonDockProperties:Resources.Document_Close}"
                                             Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                        <ui:SymbolIcon Symbol="Dismiss12" />
+                                        <ui:SymbolIcon FontSize="12" Symbol="Dismiss12" />
                                     </Button>
                                 </Grid>
+                                </Border>
                                 <ContentPresenter Grid.Row="1"
+                                                  HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Stretch"
                                                   Content="{TemplateBinding Content}" />
                             </Grid>
                         </ui:ClientAreaBorder>
@@ -96,10 +116,6 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="WindowBorder" Property="Padding" Value="3" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.IsActive, RelativeSource={RelativeSource Self}}"
-                                     Value="True">
-                            <Setter TargetName="WindowBorder" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
-                        </DataTrigger>
                         <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.CanClose, RelativeSource={RelativeSource Mode=Self}}"
                                      Value="True">
                             <Setter TargetName="CloseButton" Property="Command" Value="{Binding CloseWindowCommand, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -110,7 +126,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
     </Style>
 
 </ResourceDictionary>

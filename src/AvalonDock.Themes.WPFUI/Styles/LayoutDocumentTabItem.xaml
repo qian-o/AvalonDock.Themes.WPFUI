@@ -6,41 +6,47 @@
                     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
 
     <Style TargetType="{x:Type avalonDockControls:LayoutDocumentTabItem}">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutDocumentTabItem}">
                     <avalonDockControls:DropDownControlArea DropDownContextMenu="{Binding Root.Manager.DocumentContextMenu}"
                                                             DropDownContextMenuDataContext="{Binding LayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
-                        <Border Background="{TemplateBinding Background}"
+                        <Border Background="Transparent"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
+                            BorderThickness="0"
+                            CornerRadius="{DynamicResource DockControlCornerRadius}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Border Grid.ColumnSpan="3"
-                                        Background="Transparent" />
-                                <ContentPresenter Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
+                                <ContentPresenter HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Center"
+                                                  Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
                                                   ContentTemplate="{Binding DocumentHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
                                                   ContentTemplateSelector="{Binding DocumentHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
 
                                 <Button x:Name="DocumentCloseButton"
-                                        Grid.Column="2"
+                                        Grid.Column="1"
+                                        Width="24"
                                         Height="24"
-                                        Margin="0,0,-14,0"
-                                        Background="Transparent"
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center"
                                         Command="{Binding Path=LayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                        Style="{DynamicResource DockChromeButtonStyle}"
                                         ToolTip="{x:Static avalonDockProperties:Resources.Document_Close}"
-                                        Visibility="Hidden">
-                                    <ui:SymbolIcon Symbol="Dismiss12" />
+                                        Visibility="Visible">
+                                    <ui:SymbolIcon FontSize="12" Symbol="Dismiss12" />
                                 </Button>
                             </Grid>
                         </Border>
                     </avalonDockControls:DropDownControlArea>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Visible" />
+                        </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Path=IsSelected}" Value="True" />
