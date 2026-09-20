@@ -67,7 +67,7 @@
                         <Border x:Name="TabStrip" Grid.Row="1" Background="{DynamicResource DockTabStripBrush}"
                                 CornerRadius="{DynamicResource DockBottomCornerRadius}">
                             <Grid>
-                                <AnchorablePaneTabPanel x:Name="HeaderPanel" Margin="12,0,4,6"
+                                <AnchorablePaneTabPanel x:Name="HeaderPanel" Margin="12,0,4,6" Background="Transparent"
                                                         IsItemsHost="True" KeyboardNavigation.TabIndex="1" />
                             </Grid>
                         </Border>
