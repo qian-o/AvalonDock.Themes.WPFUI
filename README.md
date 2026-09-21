@@ -6,6 +6,28 @@ Fluent-style themes for [AvalonDock](https://github.com/Dirkster99/AvalonDock), 
 
 The theme styles document tabs, tool panes, auto-hide tabs, floating windows, and docking guides using WPF UI's light and dark palettes. Docking and layout management remain provided by AvalonDock.
 
+## Screenshots
+
+Captured from the example application with illustrative content. The code, file-tree, and Git views are demonstration content, not controls included with the theme. Select an image to view it at full size.
+
+### Docked Layout
+
+| Light | Dark |
+| :---: | :---: |
+| [![Light theme with document tabs, a docked tool pane, and auto-hide tabs](Screenshots/docked-light.png)](Screenshots/docked-light.png) | [![Dark theme with document tabs, a docked tool pane, and auto-hide tabs](Screenshots/docked-dark.png)](Screenshots/docked-dark.png) |
+
+### Floating Windows
+
+| Light | Dark |
+| :---: | :---: |
+| [![Light theme with floating document and tool windows](Screenshots/floating-light.png)](Screenshots/floating-light.png) | [![Dark theme with floating document and tool windows](Screenshots/floating-dark.png)](Screenshots/floating-dark.png) |
+
+### Docking Preview
+
+| Light | Dark |
+| :---: | :---: |
+| [![Light theme with docking guides and a translucent placement preview](Screenshots/docking-preview-light.png)](Screenshots/docking-preview-light.png) | [![Dark theme with docking guides and a translucent placement preview](Screenshots/docking-preview-dark.png)](Screenshots/docking-preview-dark.png) |
+
 ## Requirements
 
 The current source targets Windows WPF applications using:
