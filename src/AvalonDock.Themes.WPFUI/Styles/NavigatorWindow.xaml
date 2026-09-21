@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
                     xmlns:avalonDockConverters="clr-namespace:AvalonDock.Converters;assembly=AvalonDock"
-                    xmlns:avalonDockProperties="clr-namespace:AvalonDock.Properties;assembly=AvalonDock"
                     xmlns:controls="clr-namespace:AvalonDock.Themes.WPFUI.Controls"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=AvalonDock"
                     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
@@ -51,104 +50,107 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:NavigatorWindow}">
                     <AdornerDecorator>
-                        <ui:ClientAreaBorder x:Name="WindowBorder"
-                                             Background="{TemplateBinding Background}"
-                                             BorderBrush="{TemplateBinding BorderBrush}"
-                                             BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid Margin="12,10,12,12">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition MinHeight="54" />
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition MinHeight="42" />
-                                </Grid.RowDefinitions>
-
-                                <Grid>
+                        <Grid Background="{TemplateBinding Background}">
+                            <ui:ClientAreaBorder x:Name="WindowBorder"
+                                                 Background="{TemplateBinding Background}"
+                                                 BorderBrush="{TemplateBinding BorderBrush}"
+                                                 BorderThickness="{TemplateBinding BorderThickness}">
+                                <Grid Margin="12,10,12,12">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
+                                        <RowDefinition MinHeight="54" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition MinHeight="42" />
                                     </Grid.RowDefinitions>
+
                                     <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Image Source="{Binding SelectedDocument.LayoutElement.IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}"
+                                                   Stretch="None" />
+                                            <TextBlock x:Name="selectedElementTitle"
+                                                       Grid.Column="1"
+                                                       Margin="4,0,0,0"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="16"
+                                                       FontWeight="SemiBold"
+                                                       Text="{Binding SelectedDocument.LayoutElement.Title}"
+                                                       TextTrimming="CharacterEllipsis" />
+                                        </Grid>
+                                        <TextBlock x:Name="selectedElementDescription"
+                                                   Grid.Row="1"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding SelectedDocument.LayoutElement.Description}"
+                                                   TextTrimming="CharacterEllipsis" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="1">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
-                                        <Image Source="{Binding SelectedDocument.LayoutElement.IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}"
-                                               Stretch="None" />
-                                        <TextBlock x:Name="selectedElementTitle"
-                                                   Grid.Column="1"
-                                                   Margin="4,0,0,0"
-                                                   VerticalAlignment="Center"
-                                                   FontSize="16"
-                                                   FontWeight="SemiBold"
-                                                   Text="{Binding SelectedDocument.LayoutElement.Title}"
-                                                   TextTrimming="CharacterEllipsis" />
+                                        <Grid Margin="5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Margin="0,3,0,4"
+                                                       FontWeight="SemiBold"
+                                                       Text="{Binding AnchorablesLabel, RelativeSource={RelativeSource TemplatedParent}}" />
+                                            <ListBox x:Name="PART_AnchorableListBox"
+                                                     Grid.Row="1"
+                                                     MaxHeight="400"
+                                                     AutomationProperties.Name="{Binding AnchorablesLabel, RelativeSource={RelativeSource TemplatedParent}}"
+                                                     Background="{DynamicResource DockChromeBrush}"
+                                                     BorderThickness="0"
+                                                     FocusVisualStyle="{x:Null}"
+                                                     ItemContainerStyle="{StaticResource DockNavigatorItemStyle}"
+                                                     ItemTemplate="{StaticResource DockNavigatorItemTemplate}"
+                                                     ItemsSource="{Binding Anchorables}"
+                                                     SelectedItem="{Binding SelectedAnchorable, Mode=TwoWay}" />
+                                        </Grid>
+                                        <Grid Grid.Column="1"
+                                              Margin="5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Margin="0,3,0,4"
+                                                       FontWeight="Bold"
+                                                       Text="{Binding DocumentsLabel, RelativeSource={RelativeSource TemplatedParent}}" />
+                                            <ListBox x:Name="PART_DocumentListBox"
+                                                     Grid.Row="1"
+                                                     MaxHeight="400"
+                                                     AutomationProperties.Name="{Binding DocumentsLabel, RelativeSource={RelativeSource TemplatedParent}}"
+                                                     Background="{DynamicResource DockChromeBrush}"
+                                                     BorderThickness="0"
+                                                     FocusVisualStyle="{x:Null}"
+                                                     ItemContainerStyle="{StaticResource DockNavigatorItemStyle}"
+                                                     ItemTemplate="{StaticResource DockNavigatorItemTemplate}"
+                                                     ItemsSource="{Binding Documents}"
+                                                     SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">
+                                                <ListBox.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <WrapPanel Orientation="Vertical" />
+                                                    </ItemsPanelTemplate>
+                                                </ListBox.ItemsPanel>
+                                            </ListBox>
+                                        </Grid>
                                     </Grid>
-                                    <TextBlock x:Name="selectedElementDescription"
-                                               VerticalAlignment="Center"
-                                               Text="{Binding SelectedDocument.LayoutElement.Description}"
-                                               TextTrimming="CharacterEllipsis" />
-                                </Grid>
 
-                                <Grid Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Margin="5">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition />
-                                        </Grid.RowDefinitions>
-                                        <TextBlock Margin="0,3,0,4"
-                                                   FontWeight="SemiBold"
-                                                   Text="{x:Static avalonDockProperties:Resources.Active_ToolWindows}" />
-                                        <ListBox x:Name="PART_AnchorableListBox"
-                                                 Grid.Row="1"
-                                                 MaxHeight="400"
-                                                 AutomationProperties.Name="{x:Static avalonDockProperties:Resources.Active_ToolWindows}"
-                                                 Background="{DynamicResource DockChromeBrush}"
-                                                 BorderThickness="0"
-                                                 FocusVisualStyle="{x:Null}"
-                                                 ItemContainerStyle="{StaticResource DockNavigatorItemStyle}"
-                                                 ItemTemplate="{StaticResource DockNavigatorItemTemplate}"
-                                                 ItemsSource="{Binding Anchorables}"
-                                                 SelectedItem="{Binding SelectedAnchorable, Mode=TwoWay}" />
-                                    </Grid>
-                                    <Grid Grid.Column="1"
-                                          Margin="5">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition />
-                                        </Grid.RowDefinitions>
-                                        <TextBlock Margin="0,3,0,4"
-                                                   FontWeight="Bold"
-                                                   Text="{x:Static avalonDockProperties:Resources.Active_Files}" />
-                                        <ListBox x:Name="PART_DocumentListBox"
-                                                 Grid.Row="1"
-                                                 MaxHeight="400"
-                                                 AutomationProperties.Name="{x:Static avalonDockProperties:Resources.Active_Files}"
-                                                 Background="{DynamicResource DockChromeBrush}"
-                                                 BorderThickness="0"
-                                                 FocusVisualStyle="{x:Null}"
-                                                 ItemContainerStyle="{StaticResource DockNavigatorItemStyle}"
-                                                 ItemTemplate="{StaticResource DockNavigatorItemTemplate}"
-                                                 ItemsSource="{Binding Documents}"
-                                                 SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">
-                                            <ListBox.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <WrapPanel Orientation="Vertical" />
-                                                </ItemsPanelTemplate>
-                                            </ListBox.ItemsPanel>
-                                        </ListBox>
+                                    <Grid Grid.Row="2">
+                                        <TextBlock VerticalAlignment="Center"
+                                                   Text="{Binding SelectedDocument.LayoutElement.ToolTip}" />
                                     </Grid>
                                 </Grid>
-
-                                <Grid Grid.Row="2">
-                                    <TextBlock VerticalAlignment="Center"
-                                               Text="{Binding SelectedDocument.LayoutElement.ToolTip}" />
-                                </Grid>
-                            </Grid>
-                        </ui:ClientAreaBorder>
+                            </ui:ClientAreaBorder>
+                        </Grid>
                     </AdornerDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="SelectedDocument" Value="{x:Null}">
