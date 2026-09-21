@@ -100,7 +100,6 @@
         </Setter>
         <Setter Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
         <Setter Property="WindowStyle" Value="None" />
-        <Setter Property="controls:DockFloatingWindowAssist.MinimumSize" Value="280,180" />
         <Setter Property="controls:DockFloatingWindowAssist.UseFluentChrome" Value="True" />
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
