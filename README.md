@@ -71,6 +71,21 @@ Set `DockingManager.Theme` to `WPFUITheme`. This minimal example creates a singl
 </dock:DockingManager>
 ```
 
+## Floating Window Minimum Size
+
+Floating windows have a minimum outer size of 280 x 180 DIPs for documents and 200 x 140 DIPs for tools. This keeps the title bar and window controls usable when no floating size has been configured or a saved size is too small. Larger window and layout-model minimums are preserved; docked pane constraints and larger floating sizes are unchanged.
+
+The `DockFloatingWindowAssist.MinimumSize` attached property can override this floor on a floating window or in a derived floating-window style. For an existing floating window:
+
+```csharp
+using System.Windows;
+using AvalonDock.Themes.WPFUI.Controls;
+
+DockFloatingWindowAssist.SetMinimumSize(floatingWindow, new Size(320, 220));
+```
+
+Set it to `new Size(0, 0)` to disable the theme's floor for that window while retaining its underlying window or layout-model minimums.
+
 ## Example Application
 
 [ExampleApp](src/ExampleApp/ExampleApp.csproj) demonstrates document tabs, tool panes, floating windows, auto-hide, and theme switching.
