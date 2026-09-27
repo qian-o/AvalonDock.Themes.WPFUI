@@ -5,7 +5,8 @@ namespace ExampleApp
 {
     public class MainViewModel : ObservableRecipient
     {
-        private bool isLightTheme;
+        private ApplicationTheme theme;
+        private bool showToggleDocking;
 
         public MainViewModel()
         {
@@ -15,20 +16,33 @@ namespace ExampleApp
 
             void Update()
             {
-                IsLightTheme = ApplicationThemeManager.GetAppTheme() != ApplicationTheme.Dark;
+                Theme = ApplicationThemeManager.GetAppTheme();
+            }
+        }
+
+        public ApplicationTheme Theme
+        {
+            get => theme;
+            set
+            {
+                if (SetProperty(ref theme, value))
+                {
+                    OnPropertyChanged(nameof(IsLightTheme));
+                    ApplicationThemeManager.Apply(value);
+                }
             }
         }
 
         public bool IsLightTheme
         {
-            get => isLightTheme;
-            set
-            {
-                if (SetProperty(ref isLightTheme, value))
-                {
-                    ApplicationThemeManager.Apply(value ? ApplicationTheme.Light : ApplicationTheme.Dark);
-                }
-            }
+            get => Theme == ApplicationTheme.Light;
+            set => Theme = value ? ApplicationTheme.Light : ApplicationTheme.Dark;
+        }
+
+        public bool ShowToggleDocking
+        {
+            get => showToggleDocking;
+            set => SetProperty(ref showToggleDocking, value);
         }
     }
 }
