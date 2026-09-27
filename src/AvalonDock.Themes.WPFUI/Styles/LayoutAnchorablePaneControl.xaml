@@ -92,10 +92,8 @@
                         </DataTrigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Model.IsDirectlyHostedInFloatingWindow, RelativeSource={RelativeSource Self}}"
-                                           Value="True" />
-                                <Condition Binding="{Binding Items.Count, RelativeSource={RelativeSource Self}}"
-                                           Value="1" />
+                                <Condition Binding="{Binding Model.IsDirectlyHostedInFloatingWindow, RelativeSource={RelativeSource Self}}" Value="True" />
+                                <Condition Binding="{Binding Items.Count, RelativeSource={RelativeSource Self}}" Value="1" />
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PaneBorder" Property="CornerRadius" Value="0" />
                             <Setter TargetName="PaneBorder" Property="Stroke" Value="Transparent" />
