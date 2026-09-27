@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
                     xmlns:avalonDockConverters="clr-namespace:AvalonDock.Converters;assembly=AvalonDock"
+                    xmlns:avalonDockProperties="clr-namespace:AvalonDock.Properties;assembly=AvalonDock"
                     xmlns:controls="clr-namespace:AvalonDock.Themes.WPFUI.Controls"
                     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
 
@@ -61,7 +62,8 @@
                                                                    Grid.Column="1"
                                                                    Margin="4,0,0,0"
                                                                    VerticalAlignment="Center"
-                                                                   Style="{DynamicResource DockChromeToggleButtonStyle}">
+                                                                   Style="{DynamicResource DockChromeToggleButtonStyle}"
+                                                                   ToolTip="{x:Static avalonDockProperties:Resources.Active_Files}">
                                     <avalonDockControls:DropDownButton.DropDownContextMenu>
                                         <avalonDockControls:ContextMenuEx ItemsSource="{Binding Model.ChildrenSorted, RelativeSource={RelativeSource TemplatedParent}}"
                                                                           Style="{StaticResource UiContextMenu}">

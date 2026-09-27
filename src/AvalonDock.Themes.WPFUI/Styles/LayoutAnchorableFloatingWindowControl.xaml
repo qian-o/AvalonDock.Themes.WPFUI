@@ -114,8 +114,6 @@
                         <DataTrigger Binding="{Binding Model.SinglePane.SelectedContent.CanClose, RelativeSource={RelativeSource Mode=Self}}"
                                      Value="True">
                             <Setter TargetName="CloseButton" Property="Command" Value="{Binding CloseWindowCommand, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="CloseButton" Property="ToolTip" Value="{x:Static avalonDockProperties:Resources.Document_Close}" />
-
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

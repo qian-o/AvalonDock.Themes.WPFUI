@@ -15,16 +15,11 @@
                                 BorderThickness="0"
                                 ClipToBounds="True"
                                 CornerRadius="{DynamicResource DockControlCornerRadius}">
-                            <Grid>
-                                <ContentPresenter HorizontalAlignment="Stretch"
-                                                  VerticalAlignment="Center"
-                                                  Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
-                                                  ContentTemplate="{Binding AnchorableHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
-                                                  ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
-                                <avalonDockControls:DropDownControlArea Grid.Column="0"
-                                                                        DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
-                                                                        DropDownContextMenuDataContext="{Binding Path=Model, RelativeSource={RelativeSource TemplatedParent}}" />
-                            </Grid>
+                            <ContentPresenter HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Center"
+                                              Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
+                                              ContentTemplate="{Binding AnchorableHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}"
+                                              ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager}, Mode=FindAncestor}}" />
                         </Border>
                     </avalonDockControls:DropDownControlArea>
                 </ControlTemplate>
