@@ -7,7 +7,6 @@ namespace ExampleApp.Views
         public ToggleDockingPage()
         {
             InitializeComponent();
-            SampleWorkspace.Populate(Manager, true);
         }
     }
 }

@@ -7,7 +7,6 @@ namespace ExampleApp.Views
         public DockingPage()
         {
             InitializeComponent();
-            SampleWorkspace.Populate(Manager, false);
         }
     }
 }

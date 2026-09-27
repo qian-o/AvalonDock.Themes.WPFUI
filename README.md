@@ -8,7 +8,7 @@ The theme supports both `DockingManager` and `ToggleDockingManager`, styling doc
 
 ## Screenshots
 
-Captured from the example application with illustrative content. The code, file-tree, and Git views are demonstration content, not controls included with the theme. Select an image to view it at full size.
+Theme previews with illustrative content that may differ from the minimal example application. The code, file-tree, and Git views are demonstration content, not controls included with the theme. Select an image to view it at full size.
 
 ### Docked Layout
 
@@ -116,7 +116,7 @@ With the application resources above, apply the same `WPFUITheme` to `ToggleDock
 </dock:ToggleDockingManager>
 ```
 
-Use AvalonDock's existing layout models, `IToolbox` state, and `ToggleDock.Icon` / `ToggleDock.IconTemplate` properties to configure panels and sidebar icons. The theme supports image icons, custom icon content, text-only buttons, and the manager's header button visibility settings. See [ToggleDockingPage.xaml](src/ExampleApp/Views/ToggleDockingPage.xaml) and [SampleWorkspace.cs](src/ExampleApp/SampleWorkspace.cs) for a complete layout.
+Define panels with AvalonDock's layout models and use `ToggleDock.Icon` / `ToggleDock.IconTemplate` to configure sidebar icons. The theme supports image icons, custom icon content, text-only buttons, and the manager's header button visibility settings. See [ToggleDockingPage.xaml](src/ExampleApp/Views/ToggleDockingPage.xaml) for a XAML-only layout.
 
 ### Tabbed Hosts
 
@@ -128,12 +128,12 @@ Floating windows have a minimum outer size of 280 x 180 DIPs for documents and 2
 
 ## Example Application
 
-[ExampleApp](src/ExampleApp/ExampleApp.csproj) has two tabs with independent layouts:
+[ExampleApp](src/ExampleApp/ExampleApp.csproj) is a minimal UI showcase with two tabs:
 
-- **Docking:** a Visual Studio-style workspace with document tabs, Solution Explorer, Output, and auto-hide tools.
-- **ToggleDocking:** a VS Code-style workspace with activity icons, Explorer, Search, Source Control, and a bottom terminal panel.
+- **Docking:** document tabs, docked tool panes, and auto-hide tabs.
+- **ToggleDocking:** document tabs, icon sidebars, and toggleable tool panes.
 
-Both pages support light/dark switching, floating windows, and redocking. Switching pages preserves each layout and temporarily hides its floating windows. Double-click a file to open it; the ToggleDocking search panel searches the editable in-memory example files. Source Control and Run and Debug display sample content; the terminal and build output are read-only examples and do not execute commands. The sample uses WPF UI without Fluent.Ribbon.
+All document and tool content is declared directly in XAML using static text, lists, and trees. The example demonstrates light/dark themes and AvalonDock's built-in docking, floating, and auto-hide interactions; it does not implement file editing, search, Git, or terminal functionality. Floating-window visibility during page changes is handled by AvalonDock's page loading and unloading lifecycle.
 
 To build the solution, use Windows with the .NET 10 SDK and .NET Framework 4.8 targeting pack. Run the following commands from the repository root:
 

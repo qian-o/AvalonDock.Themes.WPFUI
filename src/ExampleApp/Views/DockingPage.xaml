@@ -10,8 +10,16 @@
             <layout:LayoutRoot.LeftSide>
                 <layout:LayoutAnchorSide>
                     <layout:LayoutAnchorGroup>
-                        <layout:LayoutAnchorable Title="Toolbox" ContentId="classic-toolbox" AutoHideMinWidth="220" />
-                        <layout:LayoutAnchorable Title="Properties" ContentId="classic-properties" AutoHideMinWidth="220" />
+                        <layout:LayoutAnchorable Title="Toolbox" ContentId="classic-toolbox" AutoHideMinWidth="220">
+                            <ListBox Margin="8" BorderThickness="0" Background="Transparent">
+                                <ListBoxItem Content="Button" />
+                                <ListBoxItem Content="TextBlock" />
+                                <ListBoxItem Content="TreeView" />
+                            </ListBox>
+                        </layout:LayoutAnchorable>
+                        <layout:LayoutAnchorable Title="Properties" ContentId="classic-properties" AutoHideMinWidth="220">
+                            <TextBlock Margin="16" Text="Name: Document 1" />
+                        </layout:LayoutAnchorable>
                     </layout:LayoutAnchorGroup>
                 </layout:LayoutAnchorSide>
             </layout:LayoutRoot.LeftSide>
@@ -19,18 +27,35 @@
                 <layout:LayoutPanel Orientation="Vertical">
                     <layout:LayoutDocumentPaneGroup>
                         <layout:LayoutDocumentPane>
-                            <layout:LayoutDocument Title="Workspace.xaml" ContentId="classic-workspace" />
-                            <layout:LayoutDocument Title="App.xaml" ContentId="classic-app" />
+                            <layout:LayoutDocument Title="Document 1" ContentId="classic-document-1">
+                                <TextBlock Margin="24" Text="Document 1" />
+                            </layout:LayoutDocument>
+                            <layout:LayoutDocument Title="Document 2" ContentId="classic-document-2">
+                                <TextBlock Margin="24" Text="Document 2" />
+                            </layout:LayoutDocument>
                         </layout:LayoutDocumentPane>
                     </layout:LayoutDocumentPaneGroup>
                     <layout:LayoutAnchorablePane DockHeight="160" DockMinHeight="80">
-                        <layout:LayoutAnchorable Title="Output" ContentId="classic-output" />
-                        <layout:LayoutAnchorable Title="Errors" ContentId="classic-errors" />
+                        <layout:LayoutAnchorable Title="Output" ContentId="classic-output">
+                            <TextBlock Margin="16" Text="Build succeeded." />
+                        </layout:LayoutAnchorable>
+                        <layout:LayoutAnchorable Title="Errors" ContentId="classic-errors">
+                            <TextBlock Margin="16" Text="No errors." />
+                        </layout:LayoutAnchorable>
                     </layout:LayoutAnchorablePane>
                 </layout:LayoutPanel>
                 <layout:LayoutAnchorablePane DockWidth="300" DockMinWidth="180">
-                    <layout:LayoutAnchorable Title="Solution Explorer" ContentId="classic-explorer" />
-                    <layout:LayoutAnchorable Title="Git" ContentId="classic-git" />
+                    <layout:LayoutAnchorable Title="Solution Explorer" ContentId="classic-explorer">
+                        <TreeView Padding="8" BorderThickness="0" Background="Transparent">
+                            <TreeViewItem Header="ExampleApp" IsExpanded="True">
+                                <TreeViewItem Header="App.xaml" />
+                                <TreeViewItem Header="MainWindow.xaml" />
+                            </TreeViewItem>
+                        </TreeView>
+                    </layout:LayoutAnchorable>
+                    <layout:LayoutAnchorable Title="Git" ContentId="classic-git">
+                        <TextBlock Margin="16" Text="No changes." />
+                    </layout:LayoutAnchorable>
                 </layout:LayoutAnchorablePane>
             </layout:LayoutPanel>
         </layout:LayoutRoot>

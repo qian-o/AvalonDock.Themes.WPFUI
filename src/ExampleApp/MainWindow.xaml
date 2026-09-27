@@ -2,16 +2,14 @@
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:exampleapp="clr-namespace:ExampleApp"
-                 xmlns:views="clr-namespace:ExampleApp.Views"
                  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:views="clr-namespace:ExampleApp.Views"
                  Title="AvalonDock WPF UI"
                  Width="1280"
                  Height="800"
                  MinWidth="800"
                  MinHeight="500"
                  ExtendsContentIntoTitleBar="True"
-                 Loaded="OnLoaded"
-                 Closed="OnClosed"
                  WindowBackdropType="Mica"
                  WindowCornerPreference="Round"
                  WindowStartupLocation="CenterScreen">
@@ -19,6 +17,11 @@
     <ui:FluentWindow.DataContext>
         <exampleapp:MainViewModel />
     </ui:FluentWindow.DataContext>
+
+    <ui:FluentWindow.Resources>
+        <views:DockingPage x:Key="DockingPage" />
+        <views:ToggleDockingPage x:Key="ToggleDockingPage" />
+    </ui:FluentWindow.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -28,48 +31,44 @@
         </Grid.RowDefinitions>
 
         <ui:TitleBar Title="AvalonDock WPF UI" />
-        <Grid Grid.Row="1" Margin="8,0,8,0">
+        <Grid Grid.Row="1"
+              Margin="8,0,8,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TabControl x:Name="Pages" SelectionChanged="OnPageChanged">
+            <TabControl x:Name="Pages">
                 <TabControl.Template>
                     <ControlTemplate TargetType="{x:Type TabControl}">
-                        <TabPanel IsItemsHost="True" KeyboardNavigation.TabIndex="1" />
+                        <TabPanel IsItemsHost="True"
+                                  KeyboardNavigation.TabIndex="1" />
                     </ControlTemplate>
                 </TabControl.Template>
                 <TabItem Header="Docking" />
                 <TabItem Header="ToggleDocking" />
             </TabControl>
-            <CheckBox Grid.Column="1" Margin="12,0" VerticalAlignment="Center"
-                      Content="Light theme" IsChecked="{Binding IsLightTheme}" />
+            <CheckBox Grid.Column="1"
+                      Margin="12,0"
+                      VerticalAlignment="Center"
+                      Content="Light theme"
+                      IsChecked="{Binding IsLightTheme}" />
         </Grid>
-        <Grid Grid.Row="2" Margin="8,0,8,8">
-            <views:DockingPage x:Name="DockingView">
-                <views:DockingPage.Style>
-                    <Style TargetType="{x:Type views:DockingPage}">
-                        <Setter Property="Visibility" Value="Collapsed" />
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding SelectedIndex, ElementName=Pages}" Value="0">
-                                <Setter Property="Visibility" Value="Visible" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </views:DockingPage.Style>
-            </views:DockingPage>
-            <views:ToggleDockingPage x:Name="ToggleView">
-                <views:ToggleDockingPage.Style>
-                    <Style TargetType="{x:Type views:ToggleDockingPage}">
-                        <Setter Property="Visibility" Value="Collapsed" />
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding SelectedIndex, ElementName=Pages}" Value="1">
-                                <Setter Property="Visibility" Value="Visible" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </views:ToggleDockingPage.Style>
-            </views:ToggleDockingPage>
-        </Grid>
+        <ContentControl x:Name="PageHost"
+                        Grid.Row="2"
+                        Margin="8,0,8,8"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content" Value="{StaticResource DockingPage}" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedIndex, ElementName=Pages}"
+                                     Value="1">
+                            <Setter Property="Content" Value="{StaticResource ToggleDockingPage}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
     </Grid>
 </ui:FluentWindow>

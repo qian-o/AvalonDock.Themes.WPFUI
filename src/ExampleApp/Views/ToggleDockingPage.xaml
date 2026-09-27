@@ -2,14 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:dock="clr-namespace:AvalonDock;assembly=AvalonDock"
+             xmlns:controls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
              xmlns:layout="clr-namespace:AvalonDock.Layout;assembly=AvalonDock"
-             xmlns:local="clr-namespace:ExampleApp"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:theme="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WPFUI">
-    <UserControl.Resources>
-        <DataTemplate DataType="{x:Type local:ExampleTool}">
-            <ContentPresenter Content="{Binding View}" />
-        </DataTemplate>
-    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -22,33 +18,72 @@
                 <layout:LayoutRoot.LeftSide>
                     <layout:LayoutAnchorSide>
                         <layout:LayoutAnchorGroup>
-                            <layout:LayoutAnchorable Title="Explorer" ContentId="toggle-explorer" />
-                            <layout:LayoutAnchorable Title="Search" ContentId="toggle-search" />
-                            <layout:LayoutAnchorable Title="Source Control" ContentId="toggle-git" />
-                            <layout:LayoutAnchorable Title="Run and Debug" ContentId="toggle-debug" />
+                            <layout:LayoutAnchorable Title="Explorer" ContentId="toggle-explorer">
+                                <controls:ToggleDock.Icon>
+                                    <ui:SymbolIcon Symbol="Folder20" FontSize="20" />
+                                </controls:ToggleDock.Icon>
+                                <TreeView Padding="8" BorderThickness="0" Background="Transparent">
+                                    <TreeViewItem Header="ExampleApp" IsExpanded="True">
+                                        <TreeViewItem Header="App.xaml" />
+                                        <TreeViewItem Header="MainWindow.xaml" />
+                                    </TreeViewItem>
+                                </TreeView>
+                            </layout:LayoutAnchorable>
+                            <layout:LayoutAnchorable Title="Search" ContentId="toggle-search">
+                                <controls:ToggleDock.Icon>
+                                    <ui:SymbolIcon Symbol="Search20" FontSize="20" />
+                                </controls:ToggleDock.Icon>
+                                <TextBlock Margin="16" Text="No results." />
+                            </layout:LayoutAnchorable>
+                            <layout:LayoutAnchorable Title="Source Control" ContentId="toggle-git">
+                                <controls:ToggleDock.Icon>
+                                    <ui:SymbolIcon Symbol="Branch20" FontSize="20" />
+                                </controls:ToggleDock.Icon>
+                                <TextBlock Margin="16" Text="No changes." />
+                            </layout:LayoutAnchorable>
+                            <layout:LayoutAnchorable Title="Run and Debug" ContentId="toggle-debug">
+                                <controls:ToggleDock.Icon>
+                                    <ui:SymbolIcon Symbol="Play20" FontSize="20" />
+                                </controls:ToggleDock.Icon>
+                                <TextBlock Margin="16" Text="No active session." />
+                            </layout:LayoutAnchorable>
                         </layout:LayoutAnchorGroup>
                     </layout:LayoutAnchorSide>
                 </layout:LayoutRoot.LeftSide>
                 <layout:LayoutRoot.BottomSide>
                     <layout:LayoutAnchorSide>
                         <layout:LayoutAnchorGroup>
-                            <layout:LayoutAnchorable Title="Terminal" ContentId="toggle-terminal" />
-                            <layout:LayoutAnchorable Title="Problems" ContentId="toggle-problems" />
+                            <layout:LayoutAnchorable Title="Terminal" ContentId="toggle-terminal">
+                                <controls:ToggleDock.Icon>
+                                    <ui:SymbolIcon Symbol="Code20" FontSize="20" />
+                                </controls:ToggleDock.Icon>
+                                <TextBlock Margin="16" FontFamily="Consolas" Text="PS &gt;" />
+                            </layout:LayoutAnchorable>
+                            <layout:LayoutAnchorable Title="Problems" ContentId="toggle-problems">
+                                <controls:ToggleDock.Icon>
+                                    <ui:SymbolIcon Symbol="Warning20" FontSize="20" />
+                                </controls:ToggleDock.Icon>
+                                <TextBlock Margin="16" Text="No problems." />
+                            </layout:LayoutAnchorable>
                         </layout:LayoutAnchorGroup>
                     </layout:LayoutAnchorSide>
                 </layout:LayoutRoot.BottomSide>
                 <layout:LayoutPanel>
                     <layout:LayoutDocumentPane>
-                        <layout:LayoutDocument Title="Workspace.xaml" ContentId="toggle-workspace" />
-                        <layout:LayoutDocument Title="App.xaml" ContentId="toggle-app" />
+                        <layout:LayoutDocument Title="Document 1" ContentId="toggle-document-1">
+                            <TextBlock Margin="24" Text="Document 1" />
+                        </layout:LayoutDocument>
+                        <layout:LayoutDocument Title="Document 2" ContentId="toggle-document-2">
+                            <TextBlock Margin="24" Text="Document 2" />
+                        </layout:LayoutDocument>
                     </layout:LayoutDocumentPane>
                 </layout:LayoutPanel>
             </layout:LayoutRoot>
         </dock:ToggleDockingManager>
         <Border Grid.Row="1" Background="{DynamicResource AccentFillColorDefaultBrush}" Padding="12,0">
             <DockPanel TextElement.Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}">
-                <TextBlock DockPanel.Dock="Right" Text="UTF-8    XAML" VerticalAlignment="Center" />
-                <TextBlock Text="main    |    Example workspace" VerticalAlignment="Center" />
+                <TextBlock DockPanel.Dock="Right" Text="UTF-8" VerticalAlignment="Center" />
+                <TextBlock Text="Ready" VerticalAlignment="Center" />
             </DockPanel>
         </Border>
     </Grid>
