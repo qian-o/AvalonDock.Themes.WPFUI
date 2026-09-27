@@ -8,18 +8,18 @@
                 <Setter Property="SnapsToDevicePixels" Value="True" />
                 <Setter Property="UseLayoutRounding" Value="True" />
             </Style>
-                 <Style x:Key="GlyphStrokeStyle"
-                     TargetType="Shape">
+            <Style x:Key="GlyphStrokeStyle"
+                   TargetType="Shape">
                 <Setter Property="SnapsToDevicePixels" Value="True" />
                 <Setter Property="StrokeEndLineCap" Value="Square" />
                 <Setter Property="StrokeStartLineCap" Value="Square" />
                 <Setter Property="StrokeThickness" Value="1" />
                 <Setter Property="UseLayoutRounding" Value="True" />
             </Style>
-                 <Style BasedOn="{StaticResource GlyphStrokeStyle}"
-                     TargetType="Path" />
-                 <Style BasedOn="{StaticResource GlyphStrokeStyle}"
-                     TargetType="Line" />
+            <Style BasedOn="{StaticResource GlyphStrokeStyle}"
+                   TargetType="Path" />
+            <Style BasedOn="{StaticResource GlyphStrokeStyle}"
+                   TargetType="Line" />
         </Style.Resources>
 
         <Setter Property="Background" Value="{DynamicResource DockChromeBrush}" />
