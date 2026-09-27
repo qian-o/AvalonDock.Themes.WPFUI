@@ -190,7 +190,7 @@
     <Style x:Key="DockDocumentTabItemStyle"
            BasedOn="{StaticResource DockTabItemStyle}"
            TargetType="TabItem">
-        <Setter Property="Padding" Value="14,0,8,0" />
+        <Setter Property="Padding" Value="14,0,4,0" />
         <Setter Property="Visibility" Value="{Binding IsVisible, Converter={avalonDockConverters:BoolToVisibilityConverter}}" />
     </Style>
 

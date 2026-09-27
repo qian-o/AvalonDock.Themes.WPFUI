@@ -29,8 +29,8 @@
 
                                 <Button x:Name="DocumentCloseButton"
                                         Grid.Column="1"
-                                        Width="24"
-                                        Height="24"
+                                        Width="20"
+                                        Height="20"
                                         Margin="4,0,0,0"
                                         VerticalAlignment="Center"
                                         Command="{Binding Path=LayoutItem.CloseCommand, RelativeSource={RelativeSource TemplatedParent}}"
