@@ -1,8 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:avalonDockConverters="clr-namespace:AvalonDock.Converters;assembly=AvalonDock"
-                    xmlns:avalonDockProperties="clr-namespace:AvalonDock.Properties;assembly=AvalonDock"
-                    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
+                    xmlns:avalonDockProperties="clr-namespace:AvalonDock.Properties;assembly=AvalonDock">
 
     <PathGeometry x:Key="Path_DockPaneLargeEmpty"
                   Figures="M 192,19.4161L 192,12.5843L 202.892,12.5843L 204.584,10.8924L 204.584,0.000223796L 211.416,0.000223796L 211.416,10.8924L 213.108,12.5843L 224,12.5843L 224,19.4161L 213.108,19.4161L 211.416,21.108L 211.416,32.0002L 204.584,32.0002L 204.584,21.108L 202.892,19.4161L 192,19.4161 Z " />

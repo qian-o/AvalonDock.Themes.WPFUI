@@ -14,6 +14,15 @@
     <SolidColorBrush x:Key="{x:Static avalonDockControls:ToggleDockButton.ForegroundBrushKey}"
                      Color="{DynamicResource TextFillColorSecondary}" />
 
+        <Style x:Key="TogglePaneFrameStyle"
+            TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource DockSurfaceBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DockBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+
     <Style TargetType="{x:Type avalonDockControls:ToggleDockButton}">
         <Setter Property="AutomationProperties.Name" Value="{Binding Anchorable.Title, RelativeSource={RelativeSource Self}}" />
         <Setter Property="Background" Value="Transparent" />
@@ -33,10 +42,12 @@
                 <ControlTemplate TargetType="{x:Type avalonDockControls:ToggleDockButton}">
                     <Grid Background="Transparent">
                         <Border x:Name="Surface"
+                                Margin="2"
                                 Padding="{TemplateBinding Padding}"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="{DynamicResource DockControlCornerRadius}">
-                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Grid HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
                                 <ContentPresenter x:Name="Label"
                                                   Content="{Binding Anchorable, RelativeSource={RelativeSource TemplatedParent}}"
                                                   ContentTemplate="{Binding Anchorable.Root.Manager.AnchorableHeaderTemplate, RelativeSource={RelativeSource TemplatedParent}}"
@@ -45,17 +56,28 @@
                                         <RotateTransform Angle="-90" />
                                     </ContentPresenter.LayoutTransform>
                                 </ContentPresenter>
-                                <Image x:Name="Icon" Width="20" Height="20"
-                                       Source="{TemplateBinding IconSource}" Stretch="Uniform" Visibility="Collapsed" />
-                                <ContentPresenter x:Name="IconContent" Width="20" Height="20"
+                                    <Image x:Name="Icon"
+                                        Width="20"
+                                        Height="20"
+                                        Source="{TemplateBinding IconSource}"
+                                        Stretch="Uniform"
+                                        Visibility="Collapsed" />
+                                    <ContentPresenter x:Name="IconContent"
+                                             Width="20"
+                                             Height="20"
                                                   Content="{TemplateBinding IconContent}"
                                                   ContentTemplate="{TemplateBinding IconTemplate}"
                                                   Visibility="Collapsed" />
                             </Grid>
                         </Border>
-                        <Border x:Name="Indicator" Width="2" Margin="0,6"
-                                HorizontalAlignment="Left" Background="{DynamicResource DockSecondaryTextBrush}"
-                                CornerRadius="1" IsHitTestVisible="False" Visibility="Collapsed" />
+                        <Border x:Name="Indicator"
+                            Width="2"
+                            Margin="0,10"
+                            HorizontalAlignment="Left"
+                            Background="{DynamicResource DockSecondaryTextBrush}"
+                            CornerRadius="1"
+                            IsHitTestVisible="False"
+                            Visibility="Collapsed" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Zone" Value="RightTop">
@@ -67,12 +89,14 @@
                         <Trigger Property="Zone" Value="BottomRight">
                             <Setter TargetName="Indicator" Property="HorizontalAlignment" Value="Right" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding IconSource, RelativeSource={RelativeSource Self}, Converter={x:Static avalonDockControls:NullToFalseConverter.Instance}}" Value="True">
+                        <DataTrigger Binding="{Binding IconSource, RelativeSource={RelativeSource Self}, Converter={x:Static avalonDockControls:NullToFalseConverter.Instance}}"
+                                     Value="True">
                             <Setter Property="Padding" Value="0" />
                             <Setter TargetName="Icon" Property="Visibility" Value="Visible" />
                             <Setter TargetName="Label" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding IconContent, RelativeSource={RelativeSource Self}, Converter={x:Static avalonDockControls:NullToFalseConverter.Instance}}" Value="True">
+                        <DataTrigger Binding="{Binding IconContent, RelativeSource={RelativeSource Self}, Converter={x:Static avalonDockControls:NullToFalseConverter.Instance}}"
+                                     Value="True">
                             <Setter Property="Padding" Value="0" />
                             <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="IconContent" Property="Visibility" Value="Visible" />
@@ -80,7 +104,7 @@
                         </DataTrigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
-                            <Setter TargetName="Surface" Property="Background" Value="{DynamicResource DockPressedBrush}" />
+                            <Setter TargetName="Surface" Property="Background" Value="{DynamicResource DockHoverBrush}" />
                             <Setter TargetName="Indicator" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -89,7 +113,7 @@
                         </Trigger>
                         <Trigger Property="IsAnchorableFocused" Value="True">
                             <Setter Property="Foreground" Value="{DynamicResource DockTextBrush}" />
-                            <Setter TargetName="Indicator" Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                            <Setter TargetName="Indicator" Property="Background" Value="{DynamicResource DockTextBrush}" />
                             <Setter TargetName="Indicator" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
@@ -106,7 +130,7 @@
     </Style>
 
     <Style TargetType="{x:Type avalonDockControls:ToggleAnchorablePaneTitle}">
-        <Setter Property="Height" Value="36" />
+        <Setter Property="Height" Value="32" />
         <Setter Property="ShowOptionsButton" Value="{Binding Model.Root.Manager.ShowHeaderOptionsButton, RelativeSource={RelativeSource Self}, FallbackValue=True}" />
         <Setter Property="ShowMinimizeButton" Value="{Binding Model.Root.Manager.ShowHeaderMinimizeButton, RelativeSource={RelativeSource Self}, FallbackValue=True}" />
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource DockFontFamily}" />
@@ -115,29 +139,37 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:ToggleAnchorablePaneTitle}">
-                    <Border Padding="8,4,4,4" Background="Transparent">
+                        <Border Padding="12,2,4,2"
+                            Background="Transparent">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <ContentPresenter Margin="0,0,8,0" VerticalAlignment="Center"
+                            <ContentPresenter Margin="0,0,8,0"
+                                              VerticalAlignment="Center"
                                               Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
                                               ContentTemplate="{Binding Model.Root.Manager.AnchorableTitleTemplate, RelativeSource={RelativeSource TemplatedParent}}"
                                               ContentTemplateSelector="{Binding Model.Root.Manager.AnchorableTitleTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Button x:Name="PART_OptionsButton" Grid.Column="1" Focusable="False"
+                                <Button x:Name="PART_OptionsButton"
+                                    Grid.Column="1"
+                                    Focusable="False"
                                     Style="{DynamicResource DockChromeButtonStyle}"
                                     ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_CxMenu_Hint}"
                                     Visibility="{Binding ShowOptionsButton, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                <ui:SymbolIcon FontSize="16" Symbol="MoreHorizontal16" />
+                                <ui:SymbolIcon FontSize="16"
+                                               Symbol="MoreHorizontal16" />
                             </Button>
-                            <Button x:Name="PART_MinimizeButton" Grid.Column="2" Focusable="False"
+                                <Button x:Name="PART_MinimizeButton"
+                                    Grid.Column="2"
+                                    Focusable="False"
                                     Command="{Binding LayoutItem.AutoHideCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                     Style="{DynamicResource DockChromeButtonStyle}"
                                     ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_BtnAutoHide_Hint}"
                                     Visibility="{Binding ShowMinimizeButton, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                <ui:SymbolIcon FontSize="16" Symbol="Subtract16" />
+                                <ui:SymbolIcon FontSize="16"
+                                               Symbol="Subtract16" />
                             </Button>
                         </Grid>
                     </Border>
@@ -149,28 +181,89 @@
     <Style x:Key="ToggleAnchorablePaneControlStyle"
            TargetType="{x:Type avalonDockControls:LayoutAnchorablePaneControl}"
            BasedOn="{StaticResource AnchorablePaneControlStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorablePaneControl}">
+                        <Border x:Name="PaneFrame"
+                            Style="{StaticResource TogglePaneFrameStyle}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            KeyboardNavigation.TabNavigation="Local">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter x:Name="PART_SelectedContentHost"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch"
+                                              ContentSource="SelectedContent"
+                                              KeyboardNavigation.DirectionalNavigation="Contained"
+                                              KeyboardNavigation.TabIndex="2"
+                                              KeyboardNavigation.TabNavigation="Cycle"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <Border x:Name="TabStrip"
+                                    Grid.Row="1"
+                                    Padding="4,0"
+                                    Background="{DynamicResource DockChromeBrush}"
+                                    BorderBrush="{DynamicResource DockBorderBrush}"
+                                    BorderThickness="0,1,0,0"
+                                    CornerRadius="0,0,5,5">
+                                <avalonDockControls:AnchorablePaneTabPanel x:Name="HeaderPanel"
+                                                                           Background="Transparent"
+                                                                           IsItemsHost="True"
+                                                                           KeyboardNavigation.TabIndex="1" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasItems" Value="False">
+                            <Setter TargetName="PaneFrame" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Items.Count, RelativeSource={RelativeSource Self}}"
+                                     Value="1">
+                            <Setter TargetName="TabStrip" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Model.IsDirectlyHostedInFloatingWindow, RelativeSource={RelativeSource Self}}"
+                                     Value="True">
+                            <Setter TargetName="PaneFrame" Property="CornerRadius" Value="0" />
+                            <Setter TargetName="PaneFrame" Property="BorderBrush" Value="Transparent" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
                     <avalonDockControls:LayoutAnchorableControl Model="{Binding}"
-                                                               Style="{StaticResource DockAnchorableContentStyle}">
+                                                               Style="{StaticResource DockAnchorableContentStyle}"
+                                                               Background="Transparent">
                         <avalonDockControls:LayoutAnchorableControl.Template>
                             <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutAnchorableControl}">
                                 <Border x:Name="ContentBorder"
                                         Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="{DynamicResource DockPaneCornerRadius}"
+                                        CornerRadius="5"
                                         KeyboardNavigation.TabNavigation="Cycle">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
-                                        <Border x:Name="Header" BorderBrush="{DynamicResource DockBorderBrush}" BorderThickness="0,0,0,1">
+                                        <Border x:Name="Header"
+                                            Background="{DynamicResource DockChromeBrush}"
+                                            BorderBrush="{DynamicResource DockBorderBrush}"
+                                            BorderThickness="0,0,0,1"
+                                            CornerRadius="5,5,0,0">
                                             <avalonDockControls:ToggleAnchorablePaneTitle Model="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}" />
                                         </Border>
-                                        <ContentPresenter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                        <ContentPresenter Grid.Row="1"
+                                                          HorizontalAlignment="Stretch"
+                                                          VerticalAlignment="Stretch"
                                                           Content="{Binding LayoutItem.View, RelativeSource={RelativeSource TemplatedParent}}"
                                                           ContentTemplate="{Binding LayoutItem.View.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
                                                           ContentTemplateSelector="{Binding LayoutItem.View.ContentTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
@@ -186,7 +279,8 @@
                                         <Setter TargetName="Header" Property="Visibility" Value="Collapsed" />
                                         <Setter TargetName="ContentBorder" Property="CornerRadius" Value="0" />
                                     </MultiDataTrigger>
-                                    <DataTrigger Binding="{Binding Model, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                    <DataTrigger Binding="{Binding Model, RelativeSource={RelativeSource Self}}"
+                                                 Value="{x:Null}">
                                         <Setter TargetName="Header" Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                 </ControlTemplate.Triggers>
@@ -201,5 +295,8 @@
     <Style TargetType="{x:Type avalonDock:ToggleDockingManager}"
            BasedOn="{StaticResource {x:Type avalonDock:DockingManager}}">
         <Setter Property="AnchorablePaneControlStyle" Value="{StaticResource ToggleAnchorablePaneControlStyle}" />
+        <Setter Property="GridSplitterHeight" Value="8" />
+        <Setter Property="GridSplitterWidth" Value="8" />
+        <Setter Property="Padding" Value="4,0" />
     </Style>
 </ResourceDictionary>
