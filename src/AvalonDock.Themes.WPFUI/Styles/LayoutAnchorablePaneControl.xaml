@@ -40,10 +40,14 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
+                        <controls:DockPaneSurface Grid.RowSpan="2"
+                                                  ContentPanel="{Binding ElementName=ContentPanel}"
+                                                  CornerRadius="{Binding CornerRadius, ElementName=PaneBorder}"
+                                                  Fill="{TemplateBinding Background}" />
                         <controls:DockPaneSurface x:Name="PaneBorder"
                                                   Grid.RowSpan="2"
+                                                  Panel.ZIndex="1"
                                                   ContentPanel="{Binding ElementName=ContentPanel}"
-                                                  Fill="{TemplateBinding Background}"
                                                   Stroke="{TemplateBinding BorderBrush}" />
                         <Border x:Name="ContentPanel"
                                 Grid.Row="0"
@@ -86,11 +90,16 @@
                                      Value="1">
                             <Setter TargetName="TabStrip" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Model.IsDirectlyHostedInFloatingWindow, RelativeSource={RelativeSource Self}}"
-                                     Value="True">
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Model.IsDirectlyHostedInFloatingWindow, RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding Items.Count, RelativeSource={RelativeSource Self}}"
+                                           Value="1" />
+                            </MultiDataTrigger.Conditions>
                             <Setter TargetName="PaneBorder" Property="CornerRadius" Value="0" />
                             <Setter TargetName="PaneBorder" Property="Stroke" Value="Transparent" />
-                        </DataTrigger>
+                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
