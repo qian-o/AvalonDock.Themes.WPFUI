@@ -22,7 +22,7 @@
         <exampleapp:MainViewModel />
     </ui:FluentWindow.DataContext>
 
-    <Grid>
+    <Grid Background="{DynamicResource SolidBackgroundFillColorBaseBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
