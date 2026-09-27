@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Threading;
 using Wpf.Ui.Appearance;
@@ -21,6 +22,11 @@ namespace AvalonDock.Themes.WPFUI.Controls
 
         static DockOverlayWindowAssist()
         {
+            EventManager.RegisterClassHandler(typeof(Window), FrameworkElement.SizeChangedEvent,
+                new SizeChangedEventHandler(DockToggleDragOverlay.OnInputSizeChanged), true);
+            EventManager.RegisterClassHandler(typeof(Window), Mouse.GotMouseCaptureEvent,
+                new MouseEventHandler(DockToggleDragOverlay.OnMouseCaptured), true);
+
             ApplicationThemeManager.Changed += (theme, accent) =>
             {
                 if (Application.Current == null)
@@ -46,6 +52,15 @@ namespace AvalonDock.Themes.WPFUI.Controls
 
         private static void OnIsEnabledChanged(DependencyObject element, DependencyPropertyChangedEventArgs args)
         {
+            if (element is ToggleDockingManager manager)
+            {
+                if (!(bool)args.NewValue)
+                {
+                    DockToggleDragOverlay.CloseForManager(manager);
+                }
+                return;
+            }
+
             if (!(element is Window window))
             {
                 return;

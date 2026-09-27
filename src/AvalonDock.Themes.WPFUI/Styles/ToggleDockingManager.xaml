@@ -4,6 +4,7 @@
                     xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
                     xmlns:avalonDockConverters="clr-namespace:AvalonDock.Converters;assembly=AvalonDock"
                     xmlns:avalonDockProperties="clr-namespace:AvalonDock.Properties;assembly=AvalonDock"
+                    xmlns:controls="clr-namespace:AvalonDock.Themes.WPFUI.Controls"
                     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
 
     <ResourceDictionary.MergedDictionaries>
@@ -301,6 +302,7 @@
 
     <Style BasedOn="{StaticResource {x:Type avalonDock:DockingManager}}"
            TargetType="{x:Type avalonDock:ToggleDockingManager}">
+        <Setter Property="controls:DockOverlayWindowAssist.IsEnabled" Value="True" />
         <Setter Property="AnchorablePaneControlStyle" Value="{StaticResource ToggleAnchorablePaneControlStyle}" />
         <Setter Property="GridSplitterHeight" Value="8" />
         <Setter Property="GridSplitterWidth" Value="8" />
