@@ -116,7 +116,7 @@ With the application resources above, apply the same `WPFUITheme` to `ToggleDock
 </dock:ToggleDockingManager>
 ```
 
-Define panels with AvalonDock's layout models and use `ToggleDock.Icon` / `ToggleDock.IconTemplate` to configure sidebar icons. The theme supports image icons, custom icon content, text-only buttons, and the manager's header button visibility settings. See [ToggleDockingPage.xaml](src/ExampleApp/Views/ToggleDockingPage.xaml) for a XAML-only layout.
+Define panels with AvalonDock's layout models and use `ToggleDock.Icon` / `ToggleDock.IconTemplate` to configure sidebar icons. The theme supports image icons, custom icon content, text-only buttons, and the manager's header button visibility settings. See [MainWindow.xaml](src/ExampleApp/MainWindow.xaml) for both XAML-only layouts.
 
 ### Tabbed Hosts
 
