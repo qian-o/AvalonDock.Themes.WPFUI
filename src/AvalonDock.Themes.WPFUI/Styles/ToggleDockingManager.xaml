@@ -148,24 +148,33 @@
                                               VerticalAlignment="Center"
                                               Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
                                               ContentTemplate="{Binding Model.Root.Manager.AnchorableTitleTemplate, RelativeSource={RelativeSource TemplatedParent}}"
-                                              ContentTemplateSelector="{Binding Model.Root.Manager.AnchorableTitleTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}" />
+                                              ContentTemplateSelector="{Binding Model.Root.Manager.AnchorableTitleTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
+                                              TextElement.FontWeight="SemiBold" />
                             <Button x:Name="PART_OptionsButton"
                                     Grid.Column="1"
+                                    Width="24"
+                                    Height="24"
+                                    Margin="2,0"
+                                    VerticalAlignment="Center"
                                     Focusable="False"
                                     Style="{DynamicResource DockChromeButtonStyle}"
                                     ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_CxMenu_Hint}"
                                     Visibility="{Binding ShowOptionsButton, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                <ui:SymbolIcon FontSize="16"
+                                <ui:SymbolIcon FontSize="14"
                                                Symbol="MoreHorizontal16" />
                             </Button>
                             <Button x:Name="PART_MinimizeButton"
                                     Grid.Column="2"
+                                    Width="24"
+                                    Height="24"
+                                    Margin="2,0"
+                                    VerticalAlignment="Center"
                                     Command="{Binding LayoutItem.AutoHideCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                     Focusable="False"
                                     Style="{DynamicResource DockChromeButtonStyle}"
                                     ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_BtnAutoHide_Hint}"
                                     Visibility="{Binding ShowMinimizeButton, RelativeSource={RelativeSource TemplatedParent}, Converter={avalonDockConverters:BoolToVisibilityConverter}}">
-                                <ui:SymbolIcon FontSize="16"
+                                <ui:SymbolIcon FontSize="14"
                                                Symbol="Subtract16" />
                             </Button>
                         </Grid>
@@ -201,7 +210,7 @@
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
                                         <Border x:Name="Header"
-                                                Background="{DynamicResource DockChromeBrush}"
+                                            Background="Transparent"
                                                 BorderBrush="{DynamicResource DockBorderBrush}"
                                                 BorderThickness="0,0,0,1"
                                                 CornerRadius="5,5,0,0">
