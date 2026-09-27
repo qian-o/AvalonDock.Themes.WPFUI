@@ -1,21 +1,21 @@
-﻿using System.Windows;
+﻿using System;
 using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
-using ControlzEx.Theming;
 using Wpf.Ui.Appearance;
 
 namespace ExampleApp
 {
-    public class MainViewModel : ObservableRecipient
+    public class MainViewModel : ObservableRecipient, IDisposable
     {
-        private bool isLightTheme = true;
+        private bool isLightTheme;
 
         public MainViewModel()
         {
+            isLightTheme = ApplicationThemeManager.GetAppTheme() != ApplicationTheme.Dark;
             ApplicationThemeManager.Changed += ApplicationThemeManager_Changed;
         }
 
-        ~MainViewModel()
+        public void Dispose()
         {
             ApplicationThemeManager.Changed -= ApplicationThemeManager_Changed;
         }
@@ -25,22 +25,16 @@ namespace ExampleApp
             get => isLightTheme;
             set
             {
-                if (IsLightTheme != value)
+                if (SetProperty(ref isLightTheme, value))
                 {
-                    SetProperty(ref isLightTheme, value);
-
                     ApplicationThemeManager.Apply(value ? ApplicationTheme.Light : ApplicationTheme.Dark);
-
-                    ThemeManager.Current.ChangeThemeBaseColor(Application.Current, value ? "Light" : "Dark");
                 }
             }
         }
 
         private void ApplicationThemeManager_Changed(ApplicationTheme currentApplicationTheme, Color systemAccent)
         {
-            IsLightTheme = currentApplicationTheme == ApplicationTheme.Light;
-
-            ThemeManager.Current.SyncTheme(ThemeSyncMode.SyncAll);
+            SetProperty(ref isLightTheme, currentApplicationTheme != ApplicationTheme.Dark, nameof(IsLightTheme));
         }
     }
 }

@@ -1,0 +1,38 @@
+<UserControl x:Class="ExampleApp.Views.DockingPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dock="clr-namespace:AvalonDock;assembly=AvalonDock"
+             xmlns:layout="clr-namespace:AvalonDock.Layout;assembly=AvalonDock"
+             xmlns:theme="clr-namespace:AvalonDock.Themes.WPFUI;assembly=AvalonDock.Themes.WPFUI">
+    <dock:DockingManager x:Name="Manager">
+        <dock:DockingManager.Theme><theme:WPFUITheme /></dock:DockingManager.Theme>
+        <layout:LayoutRoot>
+            <layout:LayoutRoot.LeftSide>
+                <layout:LayoutAnchorSide>
+                    <layout:LayoutAnchorGroup>
+                        <layout:LayoutAnchorable Title="Toolbox" ContentId="classic-toolbox" AutoHideMinWidth="220" />
+                        <layout:LayoutAnchorable Title="Properties" ContentId="classic-properties" AutoHideMinWidth="220" />
+                    </layout:LayoutAnchorGroup>
+                </layout:LayoutAnchorSide>
+            </layout:LayoutRoot.LeftSide>
+            <layout:LayoutPanel Orientation="Horizontal">
+                <layout:LayoutPanel Orientation="Vertical">
+                    <layout:LayoutDocumentPaneGroup>
+                        <layout:LayoutDocumentPane>
+                            <layout:LayoutDocument Title="Workspace.xaml" ContentId="classic-workspace" />
+                            <layout:LayoutDocument Title="App.xaml" ContentId="classic-app" />
+                        </layout:LayoutDocumentPane>
+                    </layout:LayoutDocumentPaneGroup>
+                    <layout:LayoutAnchorablePane DockHeight="160" DockMinHeight="80">
+                        <layout:LayoutAnchorable Title="Output" ContentId="classic-output" />
+                        <layout:LayoutAnchorable Title="Errors" ContentId="classic-errors" />
+                    </layout:LayoutAnchorablePane>
+                </layout:LayoutPanel>
+                <layout:LayoutAnchorablePane DockWidth="300" DockMinWidth="180">
+                    <layout:LayoutAnchorable Title="Solution Explorer" ContentId="classic-explorer" />
+                    <layout:LayoutAnchorable Title="Git" ContentId="classic-git" />
+                </layout:LayoutAnchorablePane>
+            </layout:LayoutPanel>
+        </layout:LayoutRoot>
+    </dock:DockingManager>
+</UserControl>

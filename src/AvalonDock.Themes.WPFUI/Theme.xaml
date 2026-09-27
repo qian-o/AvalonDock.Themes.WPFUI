@@ -3,7 +3,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/FluentResources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/AnchorablePaneTitle.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/DockingManager.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/ToggleDockingManager.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/DockTargetButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/LayoutAnchorableControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AvalonDock.Themes.WPFUI;component/Styles/LayoutAnchorableFloatingWindowControl.xaml" />
