@@ -5,23 +5,21 @@
     <Style TargetType="{x:Type controls:DockTargetButton}">
         <Style.Resources>
             <Style TargetType="Canvas">
-                <Setter Property="SnapsToDevicePixels" Value="true" />
-                <Setter Property="UseLayoutRounding" Value="true" />
+                <Setter Property="SnapsToDevicePixels" Value="True" />
+                <Setter Property="UseLayoutRounding" Value="True" />
             </Style>
-            <Style TargetType="Path">
-                <Setter Property="SnapsToDevicePixels" Value="true" />
+                 <Style x:Key="GlyphStrokeStyle"
+                     TargetType="Shape">
+                <Setter Property="SnapsToDevicePixels" Value="True" />
                 <Setter Property="StrokeEndLineCap" Value="Square" />
                 <Setter Property="StrokeStartLineCap" Value="Square" />
                 <Setter Property="StrokeThickness" Value="1" />
-                <Setter Property="UseLayoutRounding" Value="true" />
+                <Setter Property="UseLayoutRounding" Value="True" />
             </Style>
-            <Style TargetType="Line">
-                <Setter Property="SnapsToDevicePixels" Value="true" />
-                <Setter Property="StrokeEndLineCap" Value="Square" />
-                <Setter Property="StrokeStartLineCap" Value="Square" />
-                <Setter Property="StrokeThickness" Value="1" />
-                <Setter Property="UseLayoutRounding" Value="true" />
-            </Style>
+                 <Style BasedOn="{StaticResource GlyphStrokeStyle}"
+                     TargetType="Path" />
+                 <Style BasedOn="{StaticResource GlyphStrokeStyle}"
+                     TargetType="Line" />
         </Style.Resources>
 
         <Setter Property="Background" Value="{DynamicResource DockChromeBrush}" />
@@ -38,12 +36,12 @@
         <Setter Property="OuterBackground" Value="Transparent" />
         <Setter Property="OuterBorderBrush" Value="{DynamicResource DockBorderBrush}" />
         <Setter Property="Padding" Value="4" />
-        <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="UseLayoutRounding" Value="true" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="Width" Value="32" />
 
         <Style.Triggers>
-            <Trigger Property="IsTargeted" Value="true">
+            <Trigger Property="IsTargeted" Value="True">
                 <Setter Property="Background" Value="{DynamicResource DockPressedBrush}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
                 <Setter Property="GlyphBackground" Value="{DynamicResource AccentFillColorDefaultBrush}" />
@@ -345,7 +343,7 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="TargetDock" Value="DockLeft" />
-                    <Condition Property="IsOuter" Value="true" />
+                    <Condition Property="IsOuter" Value="True" />
                 </MultiTrigger.Conditions>
 
                 <MultiTrigger.Setters>
@@ -390,7 +388,7 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="TargetDock" Value="DockTop" />
-                    <Condition Property="IsOuter" Value="true" />
+                    <Condition Property="IsOuter" Value="True" />
                 </MultiTrigger.Conditions>
 
                 <MultiTrigger.Setters>
@@ -435,7 +433,7 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="TargetDock" Value="DockRight" />
-                    <Condition Property="IsOuter" Value="true" />
+                    <Condition Property="IsOuter" Value="True" />
                 </MultiTrigger.Conditions>
 
                 <MultiTrigger.Setters>
@@ -480,7 +478,7 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="TargetDock" Value="DockBottom" />
-                    <Condition Property="IsOuter" Value="true" />
+                    <Condition Property="IsOuter" Value="True" />
                 </MultiTrigger.Conditions>
 
                 <MultiTrigger.Setters>

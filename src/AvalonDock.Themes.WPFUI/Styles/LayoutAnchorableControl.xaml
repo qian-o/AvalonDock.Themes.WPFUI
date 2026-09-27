@@ -58,10 +58,9 @@
                             <Setter TargetName="ContentBorder" Property="CornerRadius" Value="0" />
                             <Setter TargetName="Header" Property="Visibility" Value="Collapsed" />
                         </MultiDataTrigger>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model}"
-                                     Value="{x:Null}">
+                        <Trigger Property="Model" Value="{x:Null}">
                             <Setter TargetName="Header" Property="Visibility" Value="Collapsed" />
-                        </DataTrigger>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

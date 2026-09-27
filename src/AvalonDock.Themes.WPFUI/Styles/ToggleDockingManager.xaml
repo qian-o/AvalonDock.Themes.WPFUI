@@ -40,7 +40,6 @@
                 <ControlTemplate TargetType="{x:Type avalonDockControls:ToggleDockButton}">
                     <Grid Background="Transparent">
                         <Border x:Name="Surface"
-                                Margin="2"
                                 Padding="{TemplateBinding Padding}"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="{DynamicResource DockControlCornerRadius}">
@@ -210,7 +209,7 @@
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
                                         <Border x:Name="Header"
-                                            Background="Transparent"
+                                                Background="Transparent"
                                                 BorderBrush="{DynamicResource DockBorderBrush}"
                                                 BorderThickness="0,0,0,1"
                                                 CornerRadius="5,5,0,0">
@@ -234,10 +233,9 @@
                                         <Setter TargetName="ContentBorder" Property="CornerRadius" Value="0" />
                                         <Setter TargetName="Header" Property="Visibility" Value="Collapsed" />
                                     </MultiDataTrigger>
-                                    <DataTrigger Binding="{Binding Model, RelativeSource={RelativeSource Self}}"
-                                                 Value="{x:Null}">
+                                    <Trigger Property="Model" Value="{x:Null}">
                                         <Setter TargetName="Header" Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
+                                    </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </avalonDockControls:LayoutAnchorableControl.Template>
@@ -306,6 +304,87 @@
         <Setter Property="AnchorablePaneControlStyle" Value="{StaticResource ToggleAnchorablePaneControlStyle}" />
         <Setter Property="GridSplitterHeight" Value="8" />
         <Setter Property="GridSplitterWidth" Value="8" />
-        <Setter Property="Padding" Value="4,0" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type avalonDock:ToggleDockingManager}">
+                    <Border Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid x:Name="NavigationGrid"
+                              FlowDirection="LeftToRight">
+                            <Grid.Resources>
+                                <Style TargetType="{x:Type DockPanel}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Parent.Name, RelativeSource={RelativeSource Self}}"
+                                                     Value="NavigationGrid">
+                                            <Setter Property="Margin" Value="4" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Canvas x:Name="LeftNavigationSurface"
+                                    Grid.RowSpan="3"
+                                    ClipToBounds="True"
+                                    IsHitTestVisible="False">
+                                <Border Width="{Binding ActualWidth, ElementName=LeftNavigationSurface}"
+                                        Height="{Binding ActualHeight, ElementName=LeftNavigationSurface}"
+                                        Style="{StaticResource TogglePaneFrameStyle}" />
+                            </Canvas>
+                            <Canvas x:Name="RightNavigationSurface"
+                                    Grid.RowSpan="3"
+                                    Grid.Column="2"
+                                    ClipToBounds="True"
+                                    IsHitTestVisible="False">
+                                <Border x:Name="RightNavigationFrame"
+                                        Width="{Binding ActualWidth, ElementName=RightNavigationSurface}"
+                                        Height="{Binding ActualHeight, ElementName=RightNavigationSurface}"
+                                        Style="{StaticResource TogglePaneFrameStyle}" />
+                            </Canvas>
+                            <ContentPresenter x:Name="LayoutContent"
+                                              Grid.Row="1"
+                                              Grid.Column="1"
+                                              Margin="4,0"
+                                              Content="{TemplateBinding LayoutRootPanel}" />
+                            <ContentPresenter Grid.Row="1"
+                                              Grid.Column="2"
+                                              Content="{TemplateBinding RightSidePanel}" />
+                            <ContentPresenter Grid.Row="1"
+                                              Content="{TemplateBinding LeftSidePanel}" />
+                            <ContentPresenter Grid.Column="1"
+                                              Content="{TemplateBinding TopSidePanel}" />
+                            <ContentPresenter Grid.Row="2"
+                                              Grid.Column="1"
+                                              Content="{TemplateBinding BottomSidePanel}" />
+                            <ContentPresenter x:Name="PART_AutoHideArea"
+                                              Grid.Row="1"
+                                              Grid.Column="1"
+                                              HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                              Content="{TemplateBinding AutoHideWindow}" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ActualWidth, ElementName=RightNavigationSurface}"
+                                     Value="16">
+                            <Setter TargetName="LayoutContent" Property="Grid.ColumnSpan" Value="2" />
+                            <Setter TargetName="LayoutContent" Property="Margin" Value="4,0,0,0" />
+                            <Setter TargetName="RightNavigationFrame" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

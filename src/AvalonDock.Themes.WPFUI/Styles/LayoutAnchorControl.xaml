@@ -53,7 +53,7 @@
                 <Setter TargetName="Bottom" Property="Visibility" Value="Visible" />
             </Trigger>
 
-            <Trigger Property="IsMouseOver" Value="true">
+            <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="Bottom" Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
                 <Setter TargetName="Main" Property="TextElement.Foreground" Value="{DynamicResource DockTextBrush}" />
                 <Setter TargetName="Top" Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />

@@ -31,7 +31,7 @@
                                                        HorizontalContentAlignment="Stretch"
                                                        VerticalContentAlignment="Stretch"
                                                        IsHitTestVisible="True"
-                                                       IsOuter="true"
+                                                       IsOuter="True"
                                                        TargetDock="DockLeft" />
 
                             <controls:DockTargetButton x:Name="PART_DockingManagerDropTargetRight"
@@ -40,7 +40,7 @@
                                                        HorizontalContentAlignment="Stretch"
                                                        VerticalContentAlignment="Stretch"
                                                        IsHitTestVisible="True"
-                                                       IsOuter="true"
+                                                       IsOuter="True"
                                                        TargetDock="DockRight" />
 
                             <controls:DockTargetButton x:Name="PART_DockingManagerDropTargetBottom"
@@ -49,7 +49,7 @@
                                                        HorizontalContentAlignment="Stretch"
                                                        VerticalContentAlignment="Stretch"
                                                        IsHitTestVisible="True"
-                                                       IsOuter="true"
+                                                       IsOuter="True"
                                                        TargetDock="DockBottom" />
 
                             <controls:DockTargetButton x:Name="PART_DockingManagerDropTargetTop"
@@ -58,7 +58,7 @@
                                                        HorizontalContentAlignment="Stretch"
                                                        VerticalContentAlignment="Stretch"
                                                        IsHitTestVisible="True"
-                                                       IsOuter="true"
+                                                       IsOuter="True"
                                                        TargetDock="DockTop" />
                         </Grid>
                         <Grid x:Name="PART_AnchorablePaneDropTargets"

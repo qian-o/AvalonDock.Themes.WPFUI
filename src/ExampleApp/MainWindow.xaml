@@ -24,251 +24,201 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ui:TitleBar Title="AvalonDock WPF UI" />
-        <Grid Grid.Row="1"
-              Margin="8,0,8,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <TabControl x:Name="Pages">
-                <TabControl.Template>
-                    <ControlTemplate TargetType="{x:Type TabControl}">
-                        <TabPanel IsItemsHost="True"
-                                  KeyboardNavigation.TabIndex="1" />
-                    </ControlTemplate>
-                </TabControl.Template>
-                <TabItem Header="Docking" />
-                <TabItem Header="ToggleDocking" />
-            </TabControl>
-            <CheckBox Grid.Column="1"
-                      Margin="12,0"
-                      VerticalAlignment="Center"
-                      Content="Light theme"
-                      IsChecked="{Binding IsLightTheme}" />
-        </Grid>
-        <ContentControl x:Name="PageHost"
-                        Grid.Row="2"
-                        Margin="8,0,8,8"
-                        HorizontalContentAlignment="Stretch"
-                        VerticalContentAlignment="Stretch">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <dock:DockingManager>
-                                <dock:DockingManager.Theme>
-                                    <theme:WPFUITheme />
-                                </dock:DockingManager.Theme>
-                                <layout:LayoutRoot>
-                                    <layout:LayoutRoot.LeftSide>
-                                        <layout:LayoutAnchorSide>
-                                            <layout:LayoutAnchorGroup>
-                                                <layout:LayoutAnchorable Title="Toolbox"
-                                                                         AutoHideMinWidth="220"
-                                                                         ContentId="classic-toolbox">
-                                                    <ListBox Margin="8"
-                                                             Background="Transparent"
-                                                             BorderThickness="0">
-                                                        <ListBoxItem Content="Button" />
-                                                        <ListBoxItem Content="TextBlock" />
-                                                        <ListBoxItem Content="TreeView" />
-                                                    </ListBox>
-                                                </layout:LayoutAnchorable>
-                                                <layout:LayoutAnchorable Title="Properties"
-                                                                         AutoHideMinWidth="220"
-                                                                         ContentId="classic-properties">
-                                                    <TextBlock Margin="16"
-                                                               Text="Name: Document 1" />
-                                                </layout:LayoutAnchorable>
-                                            </layout:LayoutAnchorGroup>
-                                        </layout:LayoutAnchorSide>
-                                    </layout:LayoutRoot.LeftSide>
-                                    <layout:LayoutPanel Orientation="Horizontal">
-                                        <layout:LayoutPanel Orientation="Vertical">
-                                            <layout:LayoutDocumentPaneGroup>
-                                                <layout:LayoutDocumentPane>
-                                                    <layout:LayoutDocument Title="Document 1"
-                                                                           ContentId="classic-document-1">
-                                                        <TextBlock Margin="24"
-                                                                   Text="Document 1" />
-                                                    </layout:LayoutDocument>
-                                                    <layout:LayoutDocument Title="Document 2"
-                                                                           ContentId="classic-document-2">
-                                                        <TextBlock Margin="24"
-                                                                   Text="Document 2" />
-                                                    </layout:LayoutDocument>
-                                                </layout:LayoutDocumentPane>
-                                            </layout:LayoutDocumentPaneGroup>
-                                            <layout:LayoutAnchorablePane DockHeight="160"
-                                                                         DockMinHeight="80">
-                                                <layout:LayoutAnchorable Title="Output"
-                                                                         ContentId="classic-output">
-                                                    <TextBlock Margin="16"
-                                                               Text="Build succeeded." />
-                                                </layout:LayoutAnchorable>
-                                                <layout:LayoutAnchorable Title="Errors"
-                                                                         ContentId="classic-errors">
-                                                    <TextBlock Margin="16"
-                                                               Text="No errors." />
-                                                </layout:LayoutAnchorable>
-                                            </layout:LayoutAnchorablePane>
-                                        </layout:LayoutPanel>
-                                        <layout:LayoutAnchorablePane DockMinWidth="180"
-                                                                     DockWidth="300">
-                                            <layout:LayoutAnchorable Title="Solution Explorer"
-                                                                     ContentId="classic-explorer">
-                                                <TreeView Padding="8"
-                                                          Background="Transparent"
-                                                          BorderThickness="0">
-                                                    <TreeViewItem Header="ExampleApp"
-                                                                  IsExpanded="True">
-                                                        <TreeViewItem Header="App.xaml" />
-                                                        <TreeViewItem Header="MainWindow.xaml" />
-                                                    </TreeViewItem>
-                                                </TreeView>
-                                            </layout:LayoutAnchorable>
-                                            <layout:LayoutAnchorable Title="Git"
-                                                                     ContentId="classic-git">
-                                                <TextBlock Margin="16"
-                                                           Text="No changes." />
-                                            </layout:LayoutAnchorable>
-                                        </layout:LayoutAnchorablePane>
-                                    </layout:LayoutPanel>
-                                </layout:LayoutRoot>
-                            </dock:DockingManager>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding SelectedIndex, ElementName=Pages}"
-                                     Value="1">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*" />
-                                            <RowDefinition Height="26" />
-                                        </Grid.RowDefinitions>
-                                        <dock:ToggleDockingManager ButtonSize="40"
-                                                                   DefaultDockHeight="180"
-                                                                   DefaultDockWidth="280"
-                                                                   LayoutPriority="BottomFullWidth">
-                                            <dock:ToggleDockingManager.Theme>
-                                                <theme:WPFUITheme />
-                                            </dock:ToggleDockingManager.Theme>
-                                            <layout:LayoutRoot>
-                                                <layout:LayoutRoot.LeftSide>
-                                                    <layout:LayoutAnchorSide>
-                                                        <layout:LayoutAnchorGroup>
-                                                            <layout:LayoutAnchorable Title="Explorer"
-                                                                                     ContentId="toggle-explorer">
-                                                                <controls:ToggleDock.Icon>
-                                                                    <ui:SymbolIcon FontSize="20"
-                                                                                   Symbol="Folder20" />
-                                                                </controls:ToggleDock.Icon>
-                                                                <TreeView Padding="8"
-                                                                          Background="Transparent"
-                                                                          BorderThickness="0">
-                                                                    <TreeViewItem Header="ExampleApp"
-                                                                                  IsExpanded="True">
-                                                                        <TreeViewItem Header="App.xaml" />
-                                                                        <TreeViewItem Header="MainWindow.xaml" />
-                                                                    </TreeViewItem>
-                                                                </TreeView>
-                                                            </layout:LayoutAnchorable>
-                                                            <layout:LayoutAnchorable Title="Search"
-                                                                                     ContentId="toggle-search">
-                                                                <controls:ToggleDock.Icon>
-                                                                    <ui:SymbolIcon FontSize="20"
-                                                                                   Symbol="Search20" />
-                                                                </controls:ToggleDock.Icon>
-                                                                <TextBlock Margin="16"
-                                                                           Text="No results." />
-                                                            </layout:LayoutAnchorable>
-                                                            <layout:LayoutAnchorable Title="Source Control"
-                                                                                     ContentId="toggle-git">
-                                                                <controls:ToggleDock.Icon>
-                                                                    <ui:SymbolIcon FontSize="20"
-                                                                                   Symbol="Branch20" />
-                                                                </controls:ToggleDock.Icon>
-                                                                <TextBlock Margin="16"
-                                                                           Text="No changes." />
-                                                            </layout:LayoutAnchorable>
-                                                            <layout:LayoutAnchorable Title="Run and Debug"
-                                                                                     ContentId="toggle-debug">
-                                                                <controls:ToggleDock.Icon>
-                                                                    <ui:SymbolIcon FontSize="20"
-                                                                                   Symbol="Play20" />
-                                                                </controls:ToggleDock.Icon>
-                                                                <TextBlock Margin="16"
-                                                                           Text="No active session." />
-                                                            </layout:LayoutAnchorable>
-                                                        </layout:LayoutAnchorGroup>
-                                                    </layout:LayoutAnchorSide>
-                                                </layout:LayoutRoot.LeftSide>
-                                                <layout:LayoutRoot.BottomSide>
-                                                    <layout:LayoutAnchorSide>
-                                                        <layout:LayoutAnchorGroup>
-                                                            <layout:LayoutAnchorable Title="Terminal"
-                                                                                     ContentId="toggle-terminal">
-                                                                <controls:ToggleDock.Icon>
-                                                                    <ui:SymbolIcon FontSize="20"
-                                                                                   Symbol="Code20" />
-                                                                </controls:ToggleDock.Icon>
-                                                                <TextBlock Margin="16"
-                                                                           FontFamily="Consolas"
-                                                                           Text="PS &gt;" />
-                                                            </layout:LayoutAnchorable>
-                                                            <layout:LayoutAnchorable Title="Problems"
-                                                                                     ContentId="toggle-problems">
-                                                                <controls:ToggleDock.Icon>
-                                                                    <ui:SymbolIcon FontSize="20"
-                                                                                   Symbol="Warning20" />
-                                                                </controls:ToggleDock.Icon>
-                                                                <TextBlock Margin="16"
-                                                                           Text="No problems." />
-                                                            </layout:LayoutAnchorable>
-                                                        </layout:LayoutAnchorGroup>
-                                                    </layout:LayoutAnchorSide>
-                                                </layout:LayoutRoot.BottomSide>
-                                                <layout:LayoutPanel>
-                                                    <layout:LayoutDocumentPane>
-                                                        <layout:LayoutDocument Title="Document 1"
-                                                                               ContentId="toggle-document-1">
-                                                            <TextBlock Margin="24"
-                                                                       Text="Document 1" />
-                                                        </layout:LayoutDocument>
-                                                        <layout:LayoutDocument Title="Document 2"
-                                                                               ContentId="toggle-document-2">
-                                                            <TextBlock Margin="24"
-                                                                       Text="Document 2" />
-                                                        </layout:LayoutDocument>
-                                                    </layout:LayoutDocumentPane>
-                                                </layout:LayoutPanel>
-                                            </layout:LayoutRoot>
-                                        </dock:ToggleDockingManager>
-                                        <Border Grid.Row="1"
-                                                Padding="12,0"
-                                                Background="{DynamicResource AccentFillColorDefaultBrush}">
-                                            <DockPanel TextElement.Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}">
-                                                <TextBlock VerticalAlignment="Center"
-                                                           DockPanel.Dock="Right"
-                                                           Text="UTF-8" />
-                                                <TextBlock VerticalAlignment="Center"
-                                                           Text="Ready" />
-                                            </DockPanel>
-                                        </Border>
-                                    </Grid>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
+        <ui:TitleBar Grid.Row="0">
+            <ui:TitleBar.Header>
+                <CheckBox Content="Light Theme"
+                          IsChecked="{Binding IsLightTheme, Mode=TwoWay}" />
+            </ui:TitleBar.Header>
+        </ui:TitleBar>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="Docking">
+                <dock:DockingManager>
+                    <dock:DockingManager.Theme>
+                        <theme:WPFUITheme />
+                    </dock:DockingManager.Theme>
+                    <layout:LayoutRoot>
+                        <layout:LayoutRoot.LeftSide>
+                            <layout:LayoutAnchorSide>
+                                <layout:LayoutAnchorGroup>
+                                    <layout:LayoutAnchorable Title="Toolbox"
+                                                             AutoHideMinWidth="220"
+                                                             ContentId="classic-toolbox">
+                                        <ListBox Margin="8"
+                                                 Background="Transparent"
+                                                 BorderThickness="0">
+                                            <ListBoxItem Content="Button" />
+                                            <ListBoxItem Content="TextBlock" />
+                                            <ListBoxItem Content="TreeView" />
+                                        </ListBox>
+                                    </layout:LayoutAnchorable>
+                                    <layout:LayoutAnchorable Title="Properties"
+                                                             AutoHideMinWidth="220"
+                                                             ContentId="classic-properties">
+                                        <TextBlock Margin="16"
+                                                   Text="Name: Document 1" />
+                                    </layout:LayoutAnchorable>
+                                </layout:LayoutAnchorGroup>
+                            </layout:LayoutAnchorSide>
+                        </layout:LayoutRoot.LeftSide>
+                        <layout:LayoutPanel Orientation="Horizontal">
+                            <layout:LayoutPanel Orientation="Vertical">
+                                <layout:LayoutDocumentPaneGroup>
+                                    <layout:LayoutDocumentPane>
+                                        <layout:LayoutDocument Title="Document 1"
+                                                               ContentId="classic-document-1">
+                                            <TextBlock Margin="24"
+                                                       Text="Document 1" />
+                                        </layout:LayoutDocument>
+                                        <layout:LayoutDocument Title="Document 2"
+                                                               ContentId="classic-document-2">
+                                            <TextBlock Margin="24"
+                                                       Text="Document 2" />
+                                        </layout:LayoutDocument>
+                                    </layout:LayoutDocumentPane>
+                                </layout:LayoutDocumentPaneGroup>
+                                <layout:LayoutAnchorablePane DockHeight="160"
+                                                             DockMinHeight="80">
+                                    <layout:LayoutAnchorable Title="Output"
+                                                             ContentId="classic-output">
+                                        <TextBlock Margin="16"
+                                                   Text="Build succeeded." />
+                                    </layout:LayoutAnchorable>
+                                    <layout:LayoutAnchorable Title="Errors"
+                                                             ContentId="classic-errors">
+                                        <TextBlock Margin="16"
+                                                   Text="No errors." />
+                                    </layout:LayoutAnchorable>
+                                </layout:LayoutAnchorablePane>
+                            </layout:LayoutPanel>
+                            <layout:LayoutAnchorablePane DockMinWidth="180"
+                                                         DockWidth="300">
+                                <layout:LayoutAnchorable Title="Solution Explorer"
+                                                         ContentId="classic-explorer">
+                                    <TreeView Padding="8"
+                                              Background="Transparent"
+                                              BorderThickness="0">
+                                        <TreeViewItem Header="ExampleApp"
+                                                      IsExpanded="True">
+                                            <TreeViewItem Header="App.xaml" />
+                                            <TreeViewItem Header="MainWindow.xaml" />
+                                        </TreeViewItem>
+                                    </TreeView>
+                                </layout:LayoutAnchorable>
+                                <layout:LayoutAnchorable Title="Git"
+                                                         ContentId="classic-git">
+                                    <TextBlock Margin="16"
+                                               Text="No changes." />
+                                </layout:LayoutAnchorable>
+                            </layout:LayoutAnchorablePane>
+                        </layout:LayoutPanel>
+                    </layout:LayoutRoot>
+                </dock:DockingManager>
+            </TabItem>
+            <TabItem Header="ToggleDocking">
+                <dock:ToggleDockingManager ButtonSize="40"
+                                           DefaultDockHeight="180"
+                                           DefaultDockWidth="280"
+                                           LayoutPriority="BottomFullWidth">
+                    <dock:ToggleDockingManager.Theme>
+                        <theme:WPFUITheme />
+                    </dock:ToggleDockingManager.Theme>
+                    <layout:LayoutRoot>
+                        <layout:LayoutRoot.LeftSide>
+                            <layout:LayoutAnchorSide>
+                                <layout:LayoutAnchorGroup>
+                                    <layout:LayoutAnchorable x:Name="Explorer"
+                                                             Title="Explorer"
+                                                             ContentId="toggle-explorer">
+                                        <controls:ToggleDock.Icon>
+                                            <ui:SymbolIcon FontSize="20"
+                                                           Symbol="Folder20" />
+                                        </controls:ToggleDock.Icon>
+                                        <TreeView Padding="8"
+                                                  Background="Transparent"
+                                                  BorderThickness="0">
+                                            <TreeViewItem Header="ExampleApp"
+                                                          IsExpanded="True">
+                                                <TreeViewItem Header="App.xaml" />
+                                                <TreeViewItem Header="MainWindow.xaml" />
+                                            </TreeViewItem>
+                                        </TreeView>
+                                    </layout:LayoutAnchorable>
+                                    <layout:LayoutAnchorable Title="Search"
+                                                             ContentId="toggle-search">
+                                        <controls:ToggleDock.Icon>
+                                            <ui:SymbolIcon FontSize="20"
+                                                           Symbol="Search20" />
+                                        </controls:ToggleDock.Icon>
+                                        <TextBlock Margin="16"
+                                                   Text="No results." />
+                                    </layout:LayoutAnchorable>
+                                    <layout:LayoutAnchorable Title="Source Control"
+                                                             ContentId="toggle-git">
+                                        <controls:ToggleDock.Icon>
+                                            <ui:SymbolIcon FontSize="20"
+                                                           Symbol="Branch20" />
+                                        </controls:ToggleDock.Icon>
+                                        <TextBlock Margin="16"
+                                                   Text="No changes." />
+                                    </layout:LayoutAnchorable>
+                                    <layout:LayoutAnchorable Title="Run and Debug"
+                                                             ContentId="toggle-debug">
+                                        <controls:ToggleDock.Icon>
+                                            <ui:SymbolIcon FontSize="20"
+                                                           Symbol="Play20" />
+                                        </controls:ToggleDock.Icon>
+                                        <TextBlock Margin="16"
+                                                   Text="No active session." />
+                                    </layout:LayoutAnchorable>
+                                </layout:LayoutAnchorGroup>
+                            </layout:LayoutAnchorSide>
+                        </layout:LayoutRoot.LeftSide>
+                        <layout:LayoutRoot.BottomSide>
+                            <layout:LayoutAnchorSide>
+                                <layout:LayoutAnchorGroup>
+                                    <layout:LayoutAnchorable Title="Terminal"
+                                                             ContentId="toggle-terminal">
+                                        <controls:ToggleDock.Icon>
+                                            <ui:SymbolIcon FontSize="20"
+                                                           Symbol="Code20" />
+                                        </controls:ToggleDock.Icon>
+                                        <TextBlock Margin="16"
+                                                   FontFamily="Consolas"
+                                                   Text="PS &gt;" />
+                                    </layout:LayoutAnchorable>
+                                    <layout:LayoutAnchorable Title="Problems"
+                                                             ContentId="toggle-problems">
+                                        <controls:ToggleDock.Icon>
+                                            <ui:SymbolIcon FontSize="20"
+                                                           Symbol="Warning20" />
+                                        </controls:ToggleDock.Icon>
+                                        <TextBlock Margin="16"
+                                                   Text="No problems." />
+                                    </layout:LayoutAnchorable>
+                                </layout:LayoutAnchorGroup>
+                            </layout:LayoutAnchorSide>
+                        </layout:LayoutRoot.BottomSide>
+                        <layout:LayoutPanel>
+                            <layout:LayoutDocumentPane>
+                                <layout:LayoutDocument Title="Document 1"
+                                                       ContentId="toggle-document-1">
+                                    <TextBlock Margin="24"
+                                               Text="Document 1" />
+                                </layout:LayoutDocument>
+                                <layout:LayoutDocument Title="Document 2"
+                                                       ContentId="toggle-document-2">
+                                    <TextBlock Margin="24"
+                                               Text="Document 2" />
+                                </layout:LayoutDocument>
+                            </layout:LayoutDocumentPane>
+                        </layout:LayoutPanel>
+                    </layout:LayoutRoot>
+                </dock:ToggleDockingManager>
+            </TabItem>
+        </TabControl>
     </Grid>
 </ui:FluentWindow>

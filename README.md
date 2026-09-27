@@ -120,7 +120,9 @@ Define panels with AvalonDock's layout models and use `ToggleDock.Icon` / `Toggl
 
 ### Tabbed Hosts
 
-With AvalonDock 5.0.0, keep docking managers outside an enclosing `TabItem` or other `Selector`. For tabbed navigation, place the tab headers and page host in separate sibling containers, as in [MainWindow.xaml](src/ExampleApp/MainWindow.xaml). This avoids a read-only `IsSelectionActive` property conflict when focus moves to a floating window.
+The example places each docking manager directly inside a `TabItem` in [MainWindow.xaml](src/ExampleApp/MainWindow.xaml).
+
+AvalonDock 5.0.0 can raise a read-only `IsSelectionActive` property error when a manager inside a `Selector` transfers focus to a floating window. If your application encounters this issue, hosting the manager outside the enclosing `Selector` is a workaround; the theme does not modify AvalonDock's property synchronization.
 
 ## Floating Window Minimum Size
 
