@@ -302,7 +302,6 @@
 
     <Style BasedOn="{StaticResource {x:Type avalonDock:DockingManager}}"
            TargetType="{x:Type avalonDock:ToggleDockingManager}">
-        <Setter Property="controls:DockOverlayWindowAssist.IsEnabled" Value="True" />
         <Setter Property="AnchorablePaneControlStyle" Value="{StaticResource ToggleAnchorablePaneControlStyle}" />
         <Setter Property="GridSplitterHeight" Value="8" />
         <Setter Property="GridSplitterWidth" Value="8" />
@@ -388,5 +387,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="controls:DockOverlayWindowAssist.IsEnabled" Value="True" />
     </Style>
 </ResourceDictionary>
