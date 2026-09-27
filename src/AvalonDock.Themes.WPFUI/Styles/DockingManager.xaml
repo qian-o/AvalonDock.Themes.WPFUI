@@ -34,10 +34,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDock:DockingManager}">
-                    <Border Background="{TemplateBinding Background}"
+                    <Border Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Padding="{TemplateBinding Padding}">
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid FlowDirection="LeftToRight">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
